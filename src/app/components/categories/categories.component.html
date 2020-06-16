@@ -1,0 +1,79 @@
+<div class="mb-20 col-md-2 text-center user-input-add mt-30">
+    <button class="btn add d-block" (click)="addCatEnabled = !addCatEnabled">
+        <span>+</span>
+         <p class="d-inline-block">اضافة قسم</p>
+    </button>
+</div>
+
+<!-- add category start -->
+
+<div [ngClass]="{'d-none': !addCatEnabled}" class="add-something mb-30">
+    <form #userForm="ngForm" action="" class="user-form" (ngSubmit)="addCategory(userForm.value); userForm.reset();">
+        <div class="row no-gutters">
+            <div class="col-md-5 user-input-wrapper input-group pl-0">
+                <input 
+                    [ngClass]="{ 'is-invalid': name.invalid && name.touched , 'is-valid': !name.invalid && name.touched}"
+
+                    minlength="3" required #name="ngModel" ngModel name="name" class="form-control user-input d-block" placeholder="اسم القسم">
+                
+                <!-- <div *ngIf="!name.valid && name.touched" class="" >
+                    <div class="alert alert-danger text-right" *ngIf="name.errors.required"> اسم القسم مطلوب </div>
+                    <div class="alert alert-danger text-right" *ngIf="name.errors.minlength"> ادخل ثلاثة أحرف على الأقل</div>
+                </div> -->
+            </div>
+        
+            <div class="col-md-3 ph-10 user-input-wrapper file-wrapper">
+                <input required ngModel #img="ngModel" name="img" (change)="imageUpload($event)" type="file" class="ml-10 form-control user-input" />
+
+                <label for="f02">تحميل صورة</label>
+            </div>
+
+            <div class="col-md-2 text-center user-input-add">
+                <button [disabled]="!userForm.valid" class="pr-20  text-center btn add d-block" type="submit">
+                    <span>+</span>
+                     <p class="d-inline-block">اضافة </p>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- add category end -->
+
+
+
+<div  *ngIf="isLoading" class="mt-100 d-flex justify-content-center" >
+    <mat-spinner></mat-spinner>
+</div>
+
+
+<table *ngIf="!isLoading" class="table table-striped table-bordered text-right">
+    <tr>
+        <th>الصورة</th>
+        <th class="pr-20">القسم</th>
+    </tr>
+
+    <tr style="height: 200px;" *ngFor="let category of categories">
+        <td class="p-0 img-row" style="width: 250px;" [style.background]="'url(' + 'https://rentage.clicktopass.com/category/' + category.img + ')'"> 
+            <a href=""> تغيير الصورة</a>
+        </td>
+        
+        <td>
+          <div class="row cat-wrapper">
+              <div class="p-0 col-md-8">
+                <input (keyup.enter)="updateItem($event.target.value, category.id)" class="mr-0 pr-20 d-block title" [disabled] = "editCategoryDisabled"
+                  type="text" [value]="category.name" [id]="'item-' + category.id">
+              </div>
+      
+              <div class="icons-wrapper col row no-gutters">
+                  <button class="btn trash ml-10 mr-auto">
+                      <i (click)="deleteAlert(category.id)" class="fas fa-trash"></i>
+                  </button>
+                  
+                  <button (click) =enableUpdateItem(category.id) class="btn settings">
+                      <i class="fas fa-cog"></i>
+                  </button>
+              </div>
+            </div>    
+        </td>
+    </tr>
+</table>

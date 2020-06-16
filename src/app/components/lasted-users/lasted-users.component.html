@@ -1,0 +1,30 @@
+<!-- it will be repeated -->
+<app-search></app-search>
+
+<div *ngFor="let user of users" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
+    <div class="col-md-2">
+        <p>رقم </p>
+        <p>{{user?.phone}}</p>
+    </div>
+    <div class="col-md-3">
+        <p>الاسم</p>
+        <p>{{user?.name}}</p>
+    </div>
+    <div class="col-md-4">
+        <p>البريد الالكتروني</p>
+        <p>{{user?.email}}</p>
+    </div>
+    <div class="col-md-2">
+        <p>تاريخ</p>
+        <p>{{user?.created_at | date }}</p>
+    </div>
+
+    <div class="col-md-1 text-left">
+        <i class="fas fa-trash-alt"></i>
+    </div>
+</div>
+
+
+<div class="mt-100 d-flex justify-content-center" >
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>

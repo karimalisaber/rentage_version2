@@ -1,0 +1,62 @@
+@import "variables";
+.small-img{
+    width: 70px;
+    height: 70px;
+
+}
+
+td{
+    line-height: 70px;
+}
+
+th{
+    font-size: 1.4rem;
+}
+
+.fa-eye{
+    opacity: .8;
+    font-size: 1.4rem;
+    transition: $mainTransition;
+    &:hover{
+        color: $mainColor;
+        cursor: pointer;
+    }
+}
+
+// .client{
+//     .name{
+//         font-size: 1.4rem;
+//         font-weight: bold;
+//         color: $secondColor;
+//         margin-bottom: 2px;
+//     }
+
+//     .place{
+//         font-size: .9rem;
+//         font-weight: bold;
+//         color: $thirdColor;
+//     }
+// }
+
+// .general-look{
+//     font-size: 1.3rem;
+//     font-weight: 500;
+//     color: $secondColor;
+//     margin-bottom: 2px;
+// }
+
+// p.product-name {
+//     font-weight: 600 ;
+//     font-size: 1.4rem;
+
+// }
+
+// .details span{
+//     font-size: .8em;
+//     color: $thirdColor;
+// }
+
+// .left-img{
+//     background-repeat: none;
+//     background-size: cover;
+// }

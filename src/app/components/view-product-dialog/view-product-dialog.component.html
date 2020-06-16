@@ -1,0 +1,48 @@
+<div class="text-right order-wrapper custom-shadow m-20 p-20">
+    <div class="row client pr-20 general-look" >
+        <img class="small-img" src="assets/images/karim.jpg" alt="">
+  
+        <div class="col-md-9 row">
+            <div class="col mb-20">
+                <p class="name">كريم</p>
+                <div class="w-100"></div>
+                <span class="place">{{post.city}}</span>
+            </div>
+            <div class="w-100"></div>
+
+            <div class="product-details col-md-5">
+                <div class="row">
+                    <p class="col-6 product-name"> {{post.name}}</p>
+                    <p class="col-6">السعر: <span>{{post.price}}</span></p>
+                </div>
+                    <div class="details">
+                        <span> {{post.des}}</span>
+                    </div>
+
+                    <p class="pt-30">الكمية: <span>{{post.count}}</span></p>
+            </div>
+
+            <div class="col-md-3">
+                <p class="pb-10">رقم الطلب :  <span>10</span></p>
+                <p class="pb-10">الحالة :  <span> جديدة</span></p>
+                <p class="pb-10">التأمين :  <span>100 ريال</span></p>
+            </div>
+
+            <div class="col-md-4">
+                <p class="pb-10"> طريقة التسليم :   <span>من التاجر</span></p>
+                <p class="pb-10">التواريخ المتاحة </p>
+                <p class="pb-10">من  :  <span>{{post.start_date}}</span> إلى <span>{{post.end_date}}</span></p>
+            </div>
+         </div>
+
+         <div class="col row">        
+            <div class="col-md-10 left-img" [style.background] ="'url(' + 'assets/images/karim.jpg' + ')'" >
+                <!-- <img class="img-fluid left-img" src="assets/images/karim.jpg" alt=""> -->
+            </div>
+
+            <div class="col-md-2">
+                <i class="fas fa-trash-alt"></i>
+            </div>
+         </div>
+    </div>
+</div>

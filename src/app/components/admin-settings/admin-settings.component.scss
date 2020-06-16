@@ -1,0 +1,22 @@
+@import "variables";
+
+.fa-eye, .fa-eye-slash{
+    font-size: .7rem;
+    margin: 0;
+    color: $thirdColor;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+span.dots{
+    font-size: 3rem;
+    margin: -7px;
+}
+
+.stars-wrapper{
+    font-size: 1.2rem;
+}
+
+

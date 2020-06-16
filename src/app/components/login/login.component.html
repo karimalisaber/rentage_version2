@@ -1,0 +1,26 @@
+<form class="login-form" >
+    <div class="form-group user-wrapper">
+        <label #emailLabel for="email" class="user-label"> البريد الالكتروني</label>
+        <input (click)="animateLabel(emailLabel)" name="email" type="text" class="form-control input-user">
+    </div>
+
+    <div class="form-group user-wrapper">
+        <label #passwordLabel for="email" class="user-label"> كلمة المرور</label>
+        <input (click)="animateLabel(passwordLabel)" name="email" type="password" class="form-control input-user">
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="form-control submit" value="تسجيل الدخول">
+    </div>
+    
+    <!-- forget password and remember me -->
+    <div class="row remember-me">
+        <div class="col">
+            <input type="checkbox" name="remember-me">
+            <label for="remember-me" class="mr-10"> ذكرني</label>
+        </div>
+        <div class="text-left col">
+            <a class="forget-password" routerLink="forget-password" >هل نسيت كلمة المرور؟</a>
+        </div>
+    </div>
+</form>

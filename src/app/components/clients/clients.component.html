@@ -1,0 +1,84 @@
+<app-search></app-search>
+
+<!-- it will be repeated -->
+<section *ngIf="!isLoading">
+    <div *ngFor="let client of clients" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
+        <div class="col-md-6">
+            <div class="row">
+                <!-- <div class="col-md-2"> -->
+                    <!-- <img class="img-fluid circle img-small" src="assets/images/karim.jpg" alt=""> -->
+                <!-- </div> -->
+    
+                <div class="col-md">
+                    <p>الاسم</p>
+                    <p class="name details">{{client.name}} </p>
+                </div>
+    
+                <div class="col-md small">
+                    <p>عدد الإعلانات</p>
+                    <p class="details">{{client.all_orders_count}}</p>
+                </div>
+               
+                <div class="col-md small">
+                    <p>عدد الطلبات</p>
+                    <p class="details">{{client.all_posts_count}}</p>
+                </div>
+                
+                <div class="col-md small">
+                    <p>الرسائل</p>
+                    <p class="details">10</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 row no-gutters">
+            <div class="col-md-3 small">
+                <p>التقييم</p>
+                <div>
+                    <div class="d-inline fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+    
+                    <div class="d-inline un-fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+    
+                </div>
+            </div>
+            
+            <div class="col-md-3 small">
+                <p>التقييم للاعلانات</p>
+                <div>
+                    <div class="d-inline fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+    
+                    <div class="d-inline un-fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-5">
+                <p>تاريخ التسجيل</p>
+                <p class="details date">{{client.created_at | date}}</p>
+            </div>
+            
+            <div class="col-md-1 text-left">
+                    <i class="fas fa-trash-alt"></i>            
+            </div>
+        </div>
+    </div>    
+</section>
+
+
+<div class="mt-100 d-flex justify-content-center" >
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+</div>

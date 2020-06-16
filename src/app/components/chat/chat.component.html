@@ -1,0 +1,76 @@
+<section class="row chat-wrapper pb-80">
+    <div class=" col-md-3 custom-shadow all-messages p-20">
+        <!-- <app-all-messages ></app-all-messages> -->
+
+        <div class="main-container">
+            <!-- search box -->
+            <div class="search input-group mb-20">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                </div> 
+                <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="اسم الشخص" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+            <!-- end of search box -->
+            
+            <!-- start users section -->
+            <div class="users-wrapper">
+                <div class="col user main-user text-center" *ngIf="specificUser">
+                    <!-- <img class="user-img" src="assets/images/karim.jpg" alt=""> -->
+            
+                    <span class="user-name mr-10"> {{currentUser.name}} </span>
+                </div>
+            
+                <div *ngIf="!specificUser" class="">        
+                    <a *ngFor="let user of filteredUsers" (click)="getSpecificUserChat(user)"  class="pv-20 user row">
+                        <div class="col text-right" >
+                            <!-- <img class="user-img" src="assets/images/karim.jpg" alt=""> -->
+                            <span class="user-name mr-10"> {{user.name}} </span>
+                        </div>
+            
+                        <svg class="mr-auto dots" height="22px" width="22px" viewBox="0 0 36 36">
+                            <g id="dots-3-horizontal" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                                <g id="Page-1" fill="#000000">
+                                    <path id="Fill-1"
+                                        d="M7,18 C7,16.4815417 8.23154167,15.25 9.75,15.25 C11.2684583,15.25 12.5,16.4815417 12.5,18 C12.5,19.5189167 11.2684583,20.75 9.75,20.75 C8.23154167,20.75 7,19.5189167 7,18 Z M15.25,18 C15.25,16.4815417 16.4815417,15.25 18,15.25 C19.5184583,15.25 20.75,16.4815417 20.75,18 C20.75,19.5189167 19.5184583,20.75 18,20.75 C16.4815417,20.75 15.25,19.5189167 15.25,18 Z M23.5,18 C23.5,16.4815417 24.7315417,15.25 26.25,15.25 C27.7684583,15.25 29,16.4815417 29,18 C29,19.5189167 27.7684583,20.75 26.25,20.75 C24.7315417,20.75 23.5,19.5189167 23.5,18 Z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            
+            <div *ngIf="specificUser" class="">
+                <a *ngFor="let user of filteredUsers" (click) = "getSpecificChat(user)"  class="pv-20 user row">
+                    <div class="col text-right" >
+                        <span [ngClass] ="{'active': user === specificUserData }" class="user-name mr-10"> {{user.name}} </span>
+                    </div>
+            
+                    <svg class="mr-auto dots" height="22px" width="22px" viewBox="0 0 36 36">
+                        <g id="dots-3-horizontal" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                            <g id="Page-1" fill="#000000">
+                                <path id="Fill-1"
+                                    d="M7,18 C7,16.4815417 8.23154167,15.25 9.75,15.25 C11.2684583,15.25 12.5,16.4815417 12.5,18 C12.5,19.5189167 11.2684583,20.75 9.75,20.75 C8.23154167,20.75 7,19.5189167 7,18 Z M15.25,18 C15.25,16.4815417 16.4815417,15.25 18,15.25 C19.5184583,15.25 20.75,16.4815417 20.75,18 C20.75,19.5189167 19.5184583,20.75 18,20.75 C16.4815417,20.75 15.25,19.5189167 15.25,18 Z M23.5,18 C23.5,16.4815417 24.7315417,15.25 26.25,15.25 C27.7684583,15.25 29,16.4815417 29,18 C29,19.5189167 27.7684583,20.75 26.25,20.75 C24.7315417,20.75 23.5,19.5189167 23.5,18 Z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+                
+            
+            </div>
+            <!-- end users section -->
+            
+            
+            <mat-spinner *ngIf="loading"></mat-spinner>
+            </div>
+
+    </div>
+
+    <!-- start specific-message section -->
+    <div *ngIf="specificChat" class="col-md-9 text-right"> 
+       <app-specific-chat [personalChat] ="false" [chatData]="chatData" [firstUser]="currentUser" [secondUser]="specificUserData"></app-specific-chat>
+    <!-- end specific-message section -->
+    </div>
+</section>

@@ -1,0 +1,187 @@
+@import "variables";
+
+.nav-wrapper{
+    z-index: 100;
+    position: relative;
+    width: 100%; 
+    height: $navHeight;
+    background-color: $secondColor;   
+
+    .nav-black{
+        padding: 0;
+
+        .nav-bottom{
+            margin-top: 30px;
+            background-color: rgb(32,32,32);
+            border-radius: 10px;
+            padding: 15px;
+
+            a, button{
+                font-size: 1.2rem;
+                transition: $mainTransition;
+            }
+            a.active, button.active{
+                color: $mainColor;
+            }
+        }
+    }
+
+    .nav-item{
+        font-size: 1.2rem;
+        font-weight: bold;
+    
+        button{
+            background-color: transparent;
+            border: 0;
+            color: #fff;
+
+            &:hover{
+                color: $mainColor
+            }
+
+        }
+    }
+
+    .nav-white{
+        position: absolute;
+        top: 100%;
+        transform: translateY(-50%);
+        right: 0;
+        width: 100%;
+
+        .nav-control-item {
+            padding: 0;
+            
+            a.active{
+                box-shadow: 1px 1px 1px 1px $mainColor;
+                background-color: $mainColor;
+                
+                .progress{
+                    background-color: #fff;
+                    
+                    .progress-bar{
+                        background-color: $secondColor;   
+                    }
+                }
+            }
+
+            a{
+                transition: $mainTransition;
+                color: $secondColor;
+                background-color: $itemBackground;
+                border-radius: 10px;
+                box-shadow: .2px .2px 2px  0px gray !important;
+    // box-shadow: 1px 1px 1px 1px $itemBackground;
+                color: $secondColor;
+                font-size: 1.3rem;
+                display: block;
+                width: 100%; 
+                padding: 20px 10px;
+                height: 80px;
+                
+                &:hover{
+                    box-shadow: 1px 1px 1px 1px $mainColor;
+                    background-color: $mainColor;
+
+                    .progress{
+                        background-color: #fff;
+                        
+                        .progress-bar{
+                            background-color: $secondColor;   
+                        }
+                    }
+                    
+                }
+
+                .number{
+                    display: inline-block;
+                    color: $mainColor;
+                    background-color: $secondColor;
+                    border-radius: 50%;
+                    width: 30px;
+                    line-height: 30px;
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+}
+
+
+// general 
+
+.log-out{
+    font-size: 1.3rem;
+
+}
+
+.fa-bell, .fa-comment-alt {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: $mainTransition;
+    &:hover{
+        cursor: pointer;
+        color: $mainColor
+    }
+}
+
+
+.badge-warning{
+    position: relative;
+    top: -10px;
+    left: -7px;
+}
+
+.fa-circle{
+    margin-right: 5px;
+    position: relative;
+    top: -15px;
+    color: $mainColor;
+    font-size: .7rem;    
+}
+
+.notafication-item{
+    width: 200px !important;
+    margin: auto;
+    padding: 0 30px;
+    transition: $mainTransition;
+    margin-bottom: 8px;
+
+    &:hover{
+        cursor: pointer;
+        background-color: #fff;
+    }
+
+    img{
+        margin-top: 5px;
+    }
+
+    .details{
+        margin-right: 8px;
+        p.name{
+            font-size: 1.2rem;;
+        }
+
+        p.not-details{
+            font-size: .8rem;
+            font-weight: bold;
+            color: $thirdColor;
+        }
+    }
+}
+
+.btn{
+    color:#fff;
+}
+
+
+// updates
+.mat-item{
+    display: block;
+    font-size: 1.3rem;
+    padding: 0 50px;
+    transition: $mainTransition;
+    &:hover{
+        background-color: gray;
+    }
+}

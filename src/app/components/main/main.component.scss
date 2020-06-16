@@ -1,0 +1,18 @@
+@import "variables";
+.widget{
+     height: $widgetHeight;
+
+    .right-widget-wrapper{
+        height: 100%;
+        // background: $itemBackground;
+        padding: 15px;
+        max-height: 100%;
+    }
+
+    .chart-wrapper{
+        height: $widgetHeight;
+        max-height: $widgetHeight;
+        // background: $itemBackground;
+        overflow: hidden;
+    }
+}

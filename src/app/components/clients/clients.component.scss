@@ -1,0 +1,52 @@
+@import "variables";
+
+.user-wrapper{
+    border-radius: 15px;
+
+    p{
+        font-size: 1.5rem;
+        color: $secondColor;
+        font-weight: 520;
+    }
+
+    .small
+    {
+        padding: 0;
+        p{
+            font-size: 1.2rem !important;
+
+        }
+    }
+}
+
+.left-img{
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 8px;
+}
+
+.img-small{
+    width: 60px;
+    height: 60px;
+}
+
+.date-wrapper{
+    p{
+        font-size: 1.2rem;
+
+    }
+
+    p.date{
+        font-size: 1.4rem;
+    }
+}
+.details{
+    color: #797979 !important;
+    font-size: 1.8rem !important;
+    font-weight: 650 !important;
+
+    &.name, &.date{
+        font-weight: 550 !important;
+        font-size: 1.7rem !important;
+    }
+}

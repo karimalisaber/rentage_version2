@@ -1,0 +1,606 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "variables";
+@import "framework";
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~@angular\material\prebuilt-themes\pink-bluegrey.css';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+// ----------------------------------
+            // globals
+// ----------------------------------
+
+
+html, body { 
+    padding-bottom: 40px !important; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+
+a{
+    color: #f2f2f2;
+
+    &:hover{
+        color: $mainColor;
+    }
+
+    a.active{
+        color: $mainColor;
+    }
+}
+
+.user-img-rounded-small{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+//icons 
+.fa-trash-alt , .fa-cog{
+    font-size: 1.2rem;
+
+    &:hover{
+        color: $mainColor;
+        cursor: pointer;
+    }
+    
+}
+
+.un-fill-starts{
+    color: $thirdColor;
+}
+
+.fill-starts{
+    color: $mainColor
+}
+
+
+//small image
+
+.small-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+// helpers
+.custom-shadow{
+    box-shadow: .2px .2px 2px  0px #000 !important;
+    // background: $itemBackground;
+    border-radius: 5px;
+}
+
+.shadow{
+    box-shadow: .2px .2px 2px  0px #000 !important;
+    // background: $itemBackground;
+    border-radius: 5px;
+}
+
+// for any progress
+.progress{
+    border-radius: 0;
+    background-color: $secondColor;
+    height: 10px;
+    transition: $mainTransition;
+    .progress-bar{
+        transition: $mainTransition;
+        background-color: $mainColor;  
+    }
+}
+
+// ---------------------------------------
+//          login properities
+// ---------------------------------------
+
+.login-form{
+    padding: 0 150px 0 100px;
+    font-size: 20px;
+    color: $thirdColor;
+    
+    .user-wrapper{
+        position: relative;
+        margin-bottom: 30px;
+        .input-user{
+            caret-color: $thirdColor;
+            height: 20px;
+            font-size: 25px;
+            font-weight: bold;
+            padding: 30px  5px;
+            border: none;
+            border-bottom: 2px solid $thirdColor;
+            border-radius: 0;
+            transition: $mainTransition;
+            color: $thirdColor;
+            
+        }
+
+        .user-label{
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 10%;
+        }
+
+        .animate{
+            position: static;
+        }
+    }
+
+    // submit button
+    .submit{
+        margin-top: 50px;
+        font-size: 1.5rem;
+        height: 70px;
+        line-height: 70px;
+        border: 0;
+        padding: 0;
+        text-align: center;
+        background-color: $secondColor;
+        color: $mainColor;
+    }
+    .remember-me{
+        .forget-password{
+            color: $thirdColor;
+
+            &:hover{
+                color: $mainColor
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------
+//                          end login  section 
+// ---------------------------------------------------------------
+
+
+// ---------------------------------------------------------------
+//                          start chat section 
+// ---------------------------------------------------------------
+
+@import "variables";
+$newMessageHeight: 55px;
+$mainHeight: 600px; // for messages
+.chat-wrapper{
+   
+// start custom search box
+.search{
+    $borderRadius: 15px; // for all inner items
+
+    border-radius: $borderRadius;
+    // border: 1px solid $thirdColor !important;
+
+    input{
+        border: 0;
+        border-top-left-radius: $borderRadius !important;
+        border-bottom-left-radius: $borderRadius !important;
+
+    }
+    
+    .input-group-prepend{
+        margin-right: 0 !important;
+
+        span.input-group-text{
+            border-top-right-radius: $borderRadius;
+            border-bottom-right-radius: $borderRadius;                        
+            border: 0;
+            // border-radius: 0;
+            background: #fff;
+        }
+    }
+//end custom search box
+}
+
+//all messages
+.all-messages{
+    height: 600px;
+    overflow-y: hidden;
+    transition: all .6s;
+    &:hover{
+        overflow-y: auto;
+    }
+// all messages end
+}
+.main-user.user{
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: $mainColor;
+
+}
+
+// start user 
+.user{
+    color: $thirdColor;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: $mainTransition;
+    &:hover{
+        font-weight: 650;
+        cursor: pointer;
+        .dots{
+            display: block !important;
+        }
+    }
+    width: 100%;
+    .user-img{
+        width: 30px;
+        // height: 30px;
+        border-radius: 50%;
+    }
+  
+
+    .dots{
+        display: none;
+
+        &:hover{
+            cursor: pointer;
+
+        }
+    }
+// end user
+}
+
+.messages-section-small{ // message container
+    height: calc( 100% - #{$specificUserHeight} );
+    position: relative;
+    overflow: hidden;
+    transition: all .5s;
+    &:hover{
+        overflow-y: auto;
+    }
+}
+
+.messages-section-personal{ // message container for personal
+    height: calc( 100% - #{$specificUserHeight  + $newMessageHeight} );
+    position: relative;
+    overflow: hidden;
+    transition: all .5s;
+    &:hover{
+        overflow-y: auto;
+    }
+}
+
+.specific-message{
+    height: $mainHeight;
+    color: $secondColor;
+    .messages-wrapper{
+
+        .time{ //used twice
+            margin-top: 7px;
+            color: $thirdColor;
+            font-weight: 550;
+        }
+
+        .outcomming-message-wrapper{
+          margin-bottom: 15px; 
+          .img-wrapper{
+            // width: 50px;
+            height: 100%;
+            position: relative;
+            .user-img{
+                // bottom: 0;
+                // right: 0;
+                // position: absolute;
+                width: 50px;
+                // height: 50px;
+                border-radius: 50%;
+            }
+        }
+        }
+
+        .outcomming-message, .incomming-message{
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.3rem;
+            border: 1px solid $thirdColor;
+        }
+            
+        .incomming-message-wrapper{
+          margin-bottom: 15px;
+
+            .img-wrapper{
+                width: 50px;
+                height: 100%;
+                position: relative;
+              
+                .user-img{
+                    // bottom: 0;
+                    // left: 0;
+                    // position: absolute;
+                    // width: 50px;
+                    // height: 50px;
+                    border-radius: 50%;
+                }
+            }
+        }    
+    }
+}
+
+.new-message{
+    position: relative;
+    padding-bottom: 10px;
+    background-color: #fff;
+    height: $newMessageHeight;
+    
+    .arrow{
+        transform: rotate(-135deg);
+        color: $thirdColor;
+        font-size: 20px;
+        position: absolute;
+        left: 15px;
+        top: calc(50% - 15px);
+    }
+    
+    textarea{
+        height: calc(#{$newMessageHeight} - 10px); // it will be margin bottom
+        position: absolute;
+        left: 0;
+        right: 0;
+         padding-left: 30px;
+        border: 0;
+        resize: none;
+        &:active, &:focus {
+            border: 0
+        }
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }        
+}
+
+// general settings 
+.specific-user{
+    border-radius: 5px;
+    height: $specificUserHeight;
+    background-color: #fff;
+    color: #000 !important;
+    font-size: 1.4rem !important;
+    .dots{
+        display: block !important;
+    }
+}
+
+/* Scrollbar styles */
+    ::-webkit-scrollbar {
+        width: 10px;
+      // height: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        // border: 1px solid $secondColor;
+        // border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: $thirdColor;
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: $secondColor;  
+    }
+//end chat-wrapper
+}
+
+// ---------------------------------------------------------------
+//                          end chat section 
+// ---------------------------------------------------------------
+
+// ---------------------------------------------------------------
+//                          start order box section 
+// ---------------------------------------------------------------
+
+.client{
+    padding-top: 30px;
+    .name{
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: $secondColor;
+        margin-bottom: 2px;
+    }
+
+    .place{
+        font-size: .9rem;
+        font-weight: bold;
+        color: $thirdColor;
+    }
+}
+
+.general-look{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: $secondColor;
+    margin-bottom: 2px;
+}
+
+p.product-name {
+    font-weight: 600 ;
+    font-size: 1.4rem;
+
+}
+
+.details span{
+    font-size: .8em;
+    color: $thirdColor;
+}
+
+.left-img{
+    background-repeat: none;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px $thirdColor;
+}
+
+// --------------------------------------------
+            // orders box end
+// --------------------------------------------
+
+
+// --------------------------------------------
+            // start users
+// --------------------------------------------
+
+.user-wrapper{
+    border-radius: 15px;
+
+    p{
+        font-size: 1.5rem;
+        color: $secondColor;
+        font-weight: 500;
+    }
+}
+
+// --------------------------------------------
+            // end users
+// --------------------------------------------
+
+
+
+// --------------------------------------------
+     // end users, add user, slider .. etc
+// --------------------------------------------
+
+.add-something{
+    .input-group{
+        padding-right: 0;
+        
+        .user-input{
+            height: 50px;
+    
+            &:focus{
+                border-color: $thirdColor;
+            }
+        }
+    }
+}
+
+.user-input-add{
+        transition: $mainTransition;
+        border-radius: 5px;
+        margin-left: 0;
+        background-color: $secondColor;
+        color: #f2f2f2;
+        font-size: 1.3rem;
+    
+        .add{
+            font-size: 1.2rem;
+            color: #fff;
+            line-height: 18px;
+            padding-top: 12px;
+            span{
+             padding: 0 5px;
+             border: 1px solid #fff;
+             margin-left: 30px;
+             border-radius: 50%;
+            }
+
+            &:not(:disabled):hover{ 
+                color: $mainColor !important;
+                cursor: pointer;
+                span{
+                border: 1px solid $mainColor;
+                }
+            }
+        }
+}
+    
+// --------------------------------------------
+            // end add somethind
+// --------------------------------------------
+
+.mat-menu-panel{
+    background: $itemBackground;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    
+}
+
+// .mat-menu-panel.padding-large{
+//     padding: 10px 40px;
+// }
+
+.mat-menu-item{
+    text-align: center !important; 
+    color: $secondColor;
+    font-size: 1.3rem;
+    line-height: 35px !important;
+    height: auto !important;
+    transition: $mainTransition;
+    
+    &:hover{
+        color: $mainColor;
+    }
+}
+
+.mat-menu-item-submenu-trigger::after {
+    color: $thirdColor;
+}   
+
+
+// ---------------------------------------------
+//          add something with img
+// ---------------------------------------------
+
+/* Hide the file input using
+  opacity */
+  [type=file] {
+    position: absolute; // to skip the flow
+  //   filter: alpha(opacity=0);
+    opacity: 0;
+    z-index: 2;
+}
+
+input[type=file] + label {
+  border-radius: 3px;
+  margin: 0;
+  width: 100%;
+  max-height: 50px;
+  padding: 15px;
+  text-align: center;
+  height: 100%;
+  opacity: .6;
+  color: $secondColor;
+  border: 1px solid $secondColor;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+
+.btn-primary{
+    // font-size: 1.5rem;
+    background-color: $mainColor;
+    border-radius: 0;
+    // padding: 20px ;
+    border: 0;
+    transition: $mainTransition;
+    &:hover{
+        color: $mainColor;
+        background-color: $secondColor;
+    }
+}
+
+.page-item.active{
+    border: 0;
+    .page-link{
+        background-color: $mainColor;
+    }
+}
+
+.page-link.active{
+    
+    background-color: $mainColor;
+}
+
+
+.mat-menu-panel {
+    border-radius: 13px !important;
+}
+
+mat-progress-spinner circle, .mat-spinner circle {
+    stroke: gray;
+}

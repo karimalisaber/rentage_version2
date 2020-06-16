@@ -1,0 +1,149 @@
+<nav class="nav-wrapper">
+    <div class="container nav-black">
+            <div class="nav-top">
+                <ul class="row no-gutters pv-30">
+                    <!-- <li class="ml-40"> -->
+                        <!-- <a href="">  -->
+                            <!-- <i class="far fa-comment-alt"></i> -->
+                            <!-- <i class="fas fa-circle"></i> -->
+                        <!-- </a> -->
+                    <!-- </li> -->
+                    
+                    <li>
+                        <a mat-flat-button [matMenuTriggerFor]="notaficationMenu">
+                            <span class="badge badge-warning rounded-circle">4</span>
+
+                            <i class="far fa-bell"></i> </a> </li>
+
+                    <mat-menu  xPosition="after" #notaficationMenu="matMenu" class="text-center">
+                        <div class="row notafication-item no-gutters text-right">
+                             <img src="assets/images/karim.jpg" alt="" class="user-img-rounded-small">
+                            <div class="col details">
+                                <p class="name p-0 m-0"> محمد أحمد</p>
+                                <p class="not-details p-0 m-0"> نشر اعلان لاب توب</p>
+                            </div>    
+                        </div>
+                    </mat-menu>
+
+                    <li class="mr-auto log-out">
+                        <a routerLink="login"> <i class="ml-10 fas fa-power-off">                            
+                            </i> تسجيل الخروج 
+                        </a> 
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-bottom">
+                <ul class="row">
+                    <li class="nav-item col-md-1 text-right">
+                        <a routerLinkActive="active" routerLink="/main">الرئيسية</a> 
+                    </li>
+
+                    <li class="nav-item col">
+                        <button mat-flat-button [matMenuTriggerFor]="catMenu" class="">
+                           <i class="fas fa-chevron-down"></i> الأقسام
+                        </button>
+                       
+                    <!-- <mat-menu #catMenu="matMenu">
+                        <a class="mat-item padding-large" routerLink="/products/servicesservice" mat-menu-item>الكترونيات</a>
+                        <a class="mat-item padding-large" routerLink="/products/servicesservice" mat-menu-item>ملابس</a>
+                        <a class="mat-item padding-large" routerLink="/products/servicesservice" mat-menu-item>اكسسوارات</a>
+                        <a class="mat-item padding-large" routerLink="/products/servicesservice" mat-menu-item>حفلات</a>
+                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>ألعاب</a>
+                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>رياضة</a>
+                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>رحلات</a>
+                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>كتب</a>
+                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>أدوات</a>
+                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>أخرى</a>
+                    </mat-menu> -->
+                         
+                        <mat-menu  #catMenu="matMenu">
+                            <button [routerLink] ="'/products/' + cat.id" *ngFor="let cat of categories$ | async" class="mat-item padding-large pv-0 mv-0" mat-menu-item>
+                                {{cat.name}} 
+                            </button>
+                        </mat-menu>
+                        
+                    </li>
+
+                    <!-- <li class="nav-item col"> <a routerLinkActive="active" routerLink="/adds">الاعلانات</a> </li> -->
+      
+                    <li class="nav-item col"> <a routerLinkActive="active" routerLink="/clients"> العملاء</a> </li>
+                   
+                    <li class="nav-item col"> 
+                        <button mat-flat-button [matMenuTriggerFor]="reviewsMenu"> 
+                            <i class="fas fa-chevron-down"></i> التقيمات
+                        </button>
+                    </li>
+
+                    <mat-menu #reviewsMenu="matMenu">
+                        <a class="mat-item padding-large" routerLink="/reviews/services" mat-menu-item>الخدمة</a>
+                        <a class="mat-item padding-large" routerLink="/reviews/clients" mat-menu-item>العملاء</a>
+                    </mat-menu>
+
+                    <li mat-flat-button [matMenuTriggerFor]="settingsMenu" class="nav-item col ml-10">
+                        <button>
+                            <i class="fas fa-chevron-down"></i> الاعدادات
+                        </button>
+                    </li>
+
+                    <mat-menu xPosition="before" #settingsMenu="matMenu">
+                        <a class="mat-item padding-large" routerLink="/settings/admins" mat-menu-item>الأدمن</a>
+                        <a class="mat-item padding-large" routerLink="/settings/members" mat-menu-item>الأعضاء</a>
+                        <a class="mat-item padding-large" routerLink="/settings/categories" mat-menu-item>الأقسام</a>
+                        <a class="mat-item padding-large" routerLink="/settings/sliders" mat-menu-item>السلايدر</a>
+                    </mat-menu>
+                </ul>
+            </div>
+    </div>
+
+    <div class="nav-white ">
+        <div class="container">
+            <ul class="row text-center" >
+                <li class="nav-control-item col ml-40">
+                   <a routerLink="/messages" routerLinkActive="active">
+                       <p class="title"> <span class="number"> <i class="far fa-comments"></i></span> الرسائل </p>
+                       <!-- <div class="progress">
+                           <div class="progress-bar" style="width: 25%"></div>
+                       </div> -->
+                   </a>
+                </li>
+                 <li class="nav-control-item col ml-40">
+                    <a routerLink="/blocked-orders" routerLinkActive="active">
+                        <p class="title"> <span class="number"> 20</span> تحت المراجعة </p>
+                        <!-- <div class="progress">
+                            <div class="progress-bar" style="width: 25%"></div>
+                        </div> -->
+                    </a>
+                 </li>
+
+                 <li class="nav-control-item col ml-40">
+                    <a routerLink="/accepted-orders" routerLinkActive="active">
+                        <p class="title"> <span class="number"> 20</span> تمت مراجعتها</p>
+                        <!-- <div class="progress">
+                            <div class="progress-bar" style="width: 25%"></div>
+                        </div> -->
+                    </a>
+                 </li>
+                
+                 
+                <li class="nav-control-item col ml-40">
+                    <a routerLink="/clients-orders" routerLinkActive="active">
+                        <p class="title"> <span class="number"> 20</span> طلبات العملاء </p>
+                        <!-- <div class="progress">
+                            <div class="progress-bar" style="width: 25%"></div>
+                        </div> -->
+                    </a>
+                 </li>
+
+                 <li class="nav-control-item col">
+                    <a routerLink="/last-users" routerLinkActive="active">
+                        <p class="title"> <span class="number"> <i class="fas fa-users"></i></span> آخر المسجلين </p>
+                        <!-- <div class="progress">
+                            <div class="progress-bar" style="width: 25%"></div>
+                        </div> -->
+                    </a>
+                 </li>
+            </ul>
+        </div>
+    </div>
+</nav>

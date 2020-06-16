@@ -1,0 +1,63 @@
+<div class="reviews-wrapper custom-shadow">
+    <div class="row text-center">
+        <div class="col-md-2">
+            <h4 class="title">الاسم</h4>
+            
+            <div *ngIf="product" class="for-product">
+                <p class="product-name">asus laptop</p>
+                <img class="img-fluid review-img" src="assets/images/karim.jpg" alt="">   
+            </div>
+
+            <div *ngIf="!product" >
+                <p class="name">كريم علي</p>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <h4 class="title">التقييمات </h4>
+
+            <div class="specific-review-wrapper">
+            <div *ngFor="let i of [0,1]" class="specific-review text-right row no-gutters">
+                <img class="user-img-rounded-small ml-20" src="assets/images/karim.jpg" alt="">
+                <p class="col user-name ">كريم علي</p>
+
+                <div class="stars-wrapper d-inline-block text-left">
+                    <div class="d-inline fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+    
+                    <div class="d-inline un-fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="w-100"></div>
+            </div>
+
+            <a class="d-block text-left" routerLink="specific-user-review">
+                <span >المزيد <i class="fas fa-chevron-down"></i> </span>
+            </a>
+            </div>
+        </div>
+
+        <div class="col-md-2 count">
+            <h4 class="title">العدد</h4>
+
+            <div class="mb-20 stars-wrapper d-inline-block text-left">
+                <div class="d-inline fill-starts">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+
+                <div class="d-inline un-fill-starts">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <p class="number">50</p>
+        </div>
+    </div>
+</div>

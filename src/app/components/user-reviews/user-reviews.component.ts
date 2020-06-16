@@ -1,0 +1,17 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-user-reviews',
+  templateUrl: './user-reviews.component.html',
+  styleUrls: ['./user-reviews.component.scss']
+})
+export class UserReviewsComponent implements OnInit {
+
+  product: boolean = false;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

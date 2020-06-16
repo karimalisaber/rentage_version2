@@ -1,0 +1,19 @@
+@import "variables";
+
+.login-wrapper{
+    text-align: right;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    .logo{
+        padding: 60px 0;
+        display: flex;
+        justify-content: center;
+        border-right: 2px solid $thirdColor;
+        img{
+            width: 250px;
+            height: 250px;
+        }
+    }
+
+}

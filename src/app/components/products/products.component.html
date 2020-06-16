@@ -1,0 +1,127 @@
+<app-search></app-search>
+
+<div *ngIf="isLoading" class="d-flex mt-100 justify-content-center">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading">
+  <app-order-wrapper *ngFor="let post of posts" class="mt-10" [post]="post"></app-order-wrapper>
+
+</div>
+
+<div class="mb-30"></div>
+<!-- start pagination -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li (click) = "prevPosts()" class="page-item">
+      <button class="page-link " aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </button>
+    </li>
+
+    
+    <li *ngFor="let page of pages.pagesNumber; index as i" class="page-item">
+      <button (click)="otherPosts(i+1);" [id] ="'item-' + (i+1)" [class.active]="i===pages.current_page - 1" class="page-link" >{{i + 1}}</button>
+    </li>
+  
+    <li (click) = "nextPosts()" class="page-item">
+      <button class="page-link" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- <div class="row category text-right no-gutters">
+    <h2 class="cat-name pl-20">أجهزة كمبيوتر </h2>
+    <h3 class="cat-branch">لاب توب</h3>
+</div>
+
+<div class="text-right order-wrapper custom-shadow m-20 p-20">    
+    <div class="row client pr-20 general-look">  
+        <div class="col-md-9 row">
+            <h2 class="col-12 w-100 product name">asuss</h2>
+
+            <div class="col-md-3">
+                <div class="mb-20 stars-wrapper d-inline-block text-left">
+                    <div class="d-inline fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+    
+                    <div class="d-inline un-fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="w-100"></div>
+                <img class="small-img" src="assets/images/karim.jpg" alt="">
+                <span class="d-inline-block mh-10"> فهد آل الشيخ</span>
+                <a href=""> <i class="far fa-comment-alt"></i> </a>
+            </div>
+
+            <div class="col-md-2">
+                <p class="pb-10">السعر: <span>100 ريال</span></p>                
+                <p>المدينة : <span>الدمام</span></p>                
+            </div>
+
+            <div class="col-md-2">
+                <p class="pb-10">الحالة :  <span>جديدة</span></p>
+                <p> الكمية :  <span> 5 </span> <span>قطع</span></p>
+            </div>
+
+            <div class="col-md-5">
+                <p class="pb-10">التواريخ المتاحة </p>
+                <p>من  :  <span>2/2/2020</span> إلى <span>2/10/20</span></p>
+            </div>
+         </div>
+
+         <span class="status pl-10 text-left">
+            <i class="fas fa-toggle-on"></i>
+            <i class="fas btn-warn fa-toggle-off"></i>
+        </span>
+
+         <div class="col row">
+            <div class="col-md-9 img-wrapper" >
+                <img class="img-fluid left-img" src="assets/images/karim.jpg" alt="">
+            </div>
+
+            <div class="col-md-3">
+                <i class="fas fa-trash-alt"></i>
+            </div>
+         </div>
+    </div>
+</div> -->
+<!-- 
+
+<div class="coursers-wrapper row">
+    <div *ngFor="let post of posts" class="col-md-3 mb-20">
+      <app-add-item [post]="post"> </app-add-item>
+    </div>
+  </div>
+   -->
+  <!-- start pagination -->
+  <!-- <nav aria-label="Page navigation example mt-20">
+    <ul class="pagination">
+      <li (click) = "prevPosts()" class="page-item">
+        <button class="page-link " aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </button>
+      </li>
+  
+      
+      <li *ngFor="let page of pages.pagesNumber; index as i" class="page-item">
+        <button (click)="otherPosts($event ,i+1);" [class.active]="i===0" [id] ="'item-' + (i+1)" [class.first]="i===0" class="page-link" >{{i + 1}}</button>
+      </li>
+    
+      <li (click) = "nextPosts()" class="page-item">
+        <button class="page-link" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </button>
+      </li>
+    </ul>
+  </nav> -->
+<!-- end pagination -->
+  

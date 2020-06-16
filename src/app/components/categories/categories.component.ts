@@ -1,0 +1,117 @@
+import { Categories } from './../../interfaces/categories';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AssetsService } from 'src/app/services/assets.service';
+
+@Component({
+  selector: 'app-categories',
+  templateUrl: './categories.component.html',
+  styleUrls: ['./categories.component.scss']
+})
+export class CategoriesComponent implements OnInit {
+  isLoading: boolean = true;
+  categories:Categories[];
+  editCategoryDisabled: boolean = true;
+  addCatEnabled: boolean = false;
+  newCategory: FormData = new FormData(); // for post new slider
+  imageFile: any = null; // for uploaded image
+
+  constructor(private apiRequest:ApiService, private snackBar: MatSnackBar, private assets: AssetsService) { }
+
+  ngOnInit(): void {
+    this.getAllCategories();
+  }
+
+  private getAllCategories(){
+    this.isLoading = true;
+    this.apiRequest.getAllCategories()
+      .subscribe(
+        res => this.categories = res
+        ,()=> {}
+        ,()=> this.isLoading = false
+      );
+  }
+  
+  private getUpdateItemId(id){
+    let element = document.getElementById('item-' + id);
+   
+    this.editCategoryDisabled = !this.editCategoryDisabled;
+    return element;
+  }
+
+  enableUpdateItem(id){
+    let element =  this.getUpdateItemId(id);
+    if (!this.editCategoryDisabled) setTimeout( () =>  element.focus() ,100);
+  }
+
+  updateItem(name:string , id:number){
+    let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
+    let item = this.categories.filter(res => res.id === id)[0];
+    let oldName = this.categories[itemIndex].name;
+    this.categories[itemIndex].name = name;
+   
+    this.editCategoryDisabled = !this.editCategoryDisabled;
+    
+    this.apiRequest.updateCategory(id, {name}).subscribe(
+      data=> {
+        this.categories.splice(itemIndex, 1, item);
+        this.snackBar.open('تم تعديل اسم القسم ', `x` , {duration: 1500})
+      },error => {
+        this.snackBar.open('حدثت مشكلة أثناء تعديل القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+        this.categories[itemIndex].name = oldName;
+      }
+    );
+  }
+
+  deleteAlert(id){
+    this.assets.deleteAlert(id).subscribe(res=> res? this.deleteCategory(id): false );
+  }
+
+  private deleteCategory(id){
+    let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
+    let item = this.categories.filter(res=> res.id === id)[0];
+    this.categories.splice(itemIndex, 1);
+    
+    this.apiRequest.deleteCategory(id)
+     .subscribe(
+       res=> this.snackBar.open('تم حذف القسم بنجاح', `` , {duration: 1500}), 
+      
+       () => {
+        this.snackBar.open('لم يتم حذف القسم برجاء المحاولة مرة أخرى', `` ,{duration: 1500})
+        this.categories.splice(itemIndex, 0, item);
+       }
+    );
+  }
+
+  private resetInputs(){
+    this.imageFile = null;
+  }
+
+  
+  imageUpload(event){
+    if(event.target.files){
+      this.imageFile = event.target.files[0];
+    }
+  }
+  
+  addCategory(data){
+    delete data.img;
+    this.isLoading = true;
+    this.newCategory.append("name", data.name);
+    this.newCategory.append("img", this.imageFile, this.imageFile.name);
+    
+    this.apiRequest.addCategory(this.newCategory)
+    
+      .subscribe((res: {data}) => {
+        // this.categories.push(res.data); // push to the view
+        this.resetInputs(); // reset inputs
+        location.reload();
+
+        this.snackBar.open('تم اضافة قسم جديد', `` , {duration: 1500})
+
+      }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+    );
+  }
+
+}

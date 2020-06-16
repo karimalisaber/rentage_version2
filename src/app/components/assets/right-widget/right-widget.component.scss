@@ -1,0 +1,15 @@
+@import "variables";
+
+.widget-wrapper{
+    height: $widgetHeight;
+    padding: 12px 10px;   
+.chart-wrapper{
+    height: $widgetHeight;
+}
+.subtitle{
+    p{
+        font-weight: bold;
+        margin: 7px 0;
+    }
+}
+}

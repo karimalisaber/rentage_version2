@@ -1,0 +1,42 @@
+<!-- <div class="coursers-wrapper row">
+  <div *ngFor="let post of posts" class="col-md-3 mb-20">
+    <app-add-item [post]="post"> </app-add-item>
+  </div>
+</div> -->
+
+<app-search></app-search>
+
+<!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
+
+
+<div *ngIf="isLoading" class="mt-100 d-flex justify-content-center" >
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="">
+  <app-order-wrapper *ngFor="let post of posts" class="mt-10" [post]="post"></app-order-wrapper>
+</div>
+
+<div class="mb-30"></div>
+<!-- start pagination -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li (click) = "prevPosts()" class="page-item">
+      <button class="page-link " aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </button>
+    </li>
+
+    
+    <li *ngFor="let page of pages.pagesNumber; index as i" class="page-item">
+      <button (click)="otherPosts(i+1);" [id] ="'item-' + (i+1)" [class.active]="i===pages.current_page - 1" class="page-link" >{{i + 1}}</button>
+    </li>
+  
+    <li (click) = "nextPosts()" class="page-item">
+      <button class="page-link" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </button>
+    </li>
+  </ul>
+</nav>
+<!-- end pagination -->

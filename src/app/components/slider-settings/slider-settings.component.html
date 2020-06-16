@@ -1,0 +1,24 @@
+<div class="add-something mb-30">
+    <form #userForm="ngForm" action="" class="user-form">
+     <div class="row">        
+        <div class="col-md-3 user-input-wrapper file-wrapper">
+            <input ngModel name="image" required (change)="imageUpload($event)" type="file" class="ml-10 form-control user-input" />
+            <label for="f02">تحميل صورة</label>
+        </div>
+
+        <div class="col-md-3 text-center user-input-add">
+            <button type="submit" [disabled]="userForm.invalid" (click) = "addSlider()" class="add btn">
+                <span>+</span>
+                <p class="d-inline-block">اضافة سلايدر</p>
+            </button>
+        </div>
+     </div>
+    </form>
+</div>
+
+<div *ngFor="let slider of sliders" class="card mb-40 row">
+    
+    <i (click)="deleteAlert(slider.id)" class="fas fa-trash"></i>
+
+    <img [src]="'https://rentage.clicktopass.com/slider/' + slider.img" class="card-img-top" [alt]="slider.id">
+</div>
