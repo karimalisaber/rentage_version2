@@ -8,6 +8,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LastedUsersComponent implements OnInit {
 users;
+filteredUsers;
+
 isLoading: boolean = false;
   constructor(private api : ApiService) { }
 
@@ -16,11 +18,14 @@ isLoading: boolean = false;
     this.api.getUserList()
     .subscribe(
       res=>{
-        this.users = res;
+        this.filteredUsers = this.users = res;
       },
       ()=>{},
       ()=> this.isLoading = false
     );
   }
 
+  filter(value){
+    this.filteredUsers = (value)? this.users.filter(res=> res.name.toLowerCase().includes(value.trim().toLowerCase())): this.users;    
+  }
 }

@@ -72,7 +72,6 @@
 </div> -->
 
 
-
 <app-search></app-search>
 
 <!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
@@ -83,13 +82,9 @@
 </div>
 
  <div *ngIf="!isLoading" class="">
-  <app-order-wrapper *ngFor="let post of posts" class="mt-10" [post]="post"></app-order-wrapper>
+  <app-order-wrapper [wattingOrders]="false" *ngFor="let post of posts" class="mt-10" [post]="post"></app-order-wrapper>
 </div>
 
-<div *ngIf="!isLoading" class="">
-  <app-order-wrapper *ngFor="let post of posts" class="mt-10" [post]="post"></app-order-wrapper>
-
-</div>\
 
 <div class="mb-30"></div>
 <!-- start pagination -->

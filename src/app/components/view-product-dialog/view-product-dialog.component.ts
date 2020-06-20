@@ -14,10 +14,10 @@ post ;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
       private http: HttpClient
-    ) { }
+    ) {}
 
   ngOnInit(): void {
-    console.log(this.data.id);
+  
     
     this.http.get(getSpecificPostesUrl + this.data.id).pipe(map((res:any) => res.data))
     .subscribe(res=>{

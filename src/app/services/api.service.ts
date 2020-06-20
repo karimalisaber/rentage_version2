@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map, take} from "rxjs/operators";
-import { getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl } from 'src/assets/environment/environmentVariables';
+import { getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl } from 'src/assets/environment/environmentVariables';
 import { Categories } from '../interfaces/categories';
 import { Slider } from '../interfaces/slider';
   
@@ -17,6 +17,11 @@ export class ApiService {
 
   getAllCategories(): Observable<Categories[]>{
     return this.http.get(getAllCategoriesUrl).pipe(map((res:any)=>res.data));
+  }
+
+  
+  getSpecificCategory(id){
+    return this.http.get(getSpecificCategoryUrl+id).pipe(map((res:any)=>res.data));
   }
 
   getAllSliders(): Observable<Slider[]>{
@@ -54,6 +59,10 @@ export class ApiService {
   // updatesomthing
   updateCategory(id , item){
     return this.http.post(updateCategoryNameUrl + id, item)
+  }
+
+  acceptPost(id){
+    return this.http.put(acceptOrderUrl + id, {})
   }
 
   // get new orders

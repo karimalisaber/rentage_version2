@@ -4,7 +4,7 @@
             <div class="col text-right">
                 <img class="user-img" src="assets/images/user.png" alt="">
 
-                <span class="user-name mr-10"> {{firstUser.name}} </span>
+                <span class="user-name mr-10"> {{firstUserName}} </span>
             </div>
 
             
@@ -20,17 +20,17 @@
     </div>
 
 
-    <div class="main-wrapper pt-30 ph-20" [ngClass] = "{'messages-section-small': !personalChat, 'messages-section-personal': personalChat}">        
+    <div class="main-wrapper pt-30 ph-20 messages-section-small">        
         
         <div *ngIf="isLoading" class="loading" >
             <mat-spinner></mat-spinner>
         </div>
 
         <div *ngFor="let message of chatData" class="messages-wrapper mr-20 no-gutters">
-            <div *ngIf="message.sender_id === firstUser.id" class="row no-gutters outcomming-message-wrapper">
+            <div *ngIf="message.sender_id == firstUserId" class="row no-gutters outcomming-message-wrapper">
                 <div class="ml-10 img-wrapper">
                     <!-- <img class=" user-img" src="assets/images/karim.jpg" alt=""> -->
-                    <h2 class="name user-img">{{firstUser.name}}</h2>
+                    <h2 class="name user-img">{{firstUserName}}</h2>
                 </div>
 
                 <div  class="col-md">
@@ -47,7 +47,7 @@
             </div>
             <div class="w-100"></div>
 
-            <div *ngIf="message.sender_id === secondUser.id" class="row no-gutters mr-auto incomming-message-wrapper">
+            <div *ngIf="message.sender_id == secondUser.id" class="row no-gutters mr-auto incomming-message-wrapper">
                 <div class="col-md rigth">
                     <div class=" incomming-message">
                         <span class=""> {{message.body}}</span>                        
@@ -66,13 +66,4 @@
             <div class="w-100"></div>
         </div>      
     </div>
-
-
-    <!-- <div *ngIf="personalChat" class="form-group new-message ">
-        <textarea class="form-control"> </textarea>
-
-        <div class="text-left arrow">
-            <i class="fas fa-location-arrow"></i>
-        </div>
-    </div> -->
 </div>

@@ -1,0 +1,35 @@
+<div *ngIf="category" class="upload-img">
+    <p class="title-dashboard-section text-center">تعديل القسم</p>
+    <div class="uploaded-img">
+      <img class="img-fluid" [src]="imgUrl" alt="">
+    </div>
+  
+    <form #userForm="ngForm" action="" (ngSubmit)="updateSlider(userForm.value)">
+      <div class="custom-file d-flex justify-content-start">
+        <input #image="ngModel" ngModel name="image"
+        (change) = "imageUpload($event)" 
+        type="file" class="custom-file-input" id="customFile">
+
+        <label class="custom-file-label" for="customFile">
+        </label>
+      </div>
+    
+      <div class="form-group">
+        <label for="title" class="d-block text-right mt-10"> تغيير اسم القسم</label>
+        <input [(ngModel)]="category.name" #name="ngModel" required minlength="2" name="name"
+          [ngClass]="{'is-invalid': name.invalid && name.touched , 'is-valid': !name.invalid && name.touched}"
+          type="text" id="name" class="form-control">
+  
+        <div *ngIf="!name.valid && name.touched">
+          <div class="alert alert-danger text-right" *ngIf="name.errors.required"> من فضلك أدخل اسم القسم </div>
+          <div class="alert alert-danger text-right" *ngIf="name.errors.minlength">  اسم القسم يجب أن يكون  حرفين على الأقل </div>
+        </div>
+      </div>
+
+      <div class="submit float-right">
+        <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary ml-10"> تعديل القسم</button>
+        <button class="btn btn-danger"  mat-dialog-close > الرجوع مع الحفظ
+      </button>
+      </div>
+    </form>
+  </div>

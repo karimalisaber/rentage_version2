@@ -1,1 +1,16 @@
+@import "variables";
 // order box style in scss
+.right-wrapper{
+    position: relative;
+    mat-slide-toggle{
+        position: absolute;
+        z-index: 1000;
+        left: 30px;
+        // width: 150px;
+        color:$mainColor;
+        .custom-control-input{
+            // width: 150px;
+        }
+    }
+
+}

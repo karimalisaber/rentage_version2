@@ -55,8 +55,7 @@ export class ProductsComponent implements OnInit , OnDestroy {
     this.api.getCatPosts(this.catId, this.pages.current_page)
     .subscribe(res=>{
       this.posts = res.data;
-      console.log(res.data);
-      
+    
       this.pages.current_page = res.current_page;
       this.pages.lastPage = res.last_page;
       this.pages.pagesNumber = Array(this.pages.lastPage);
@@ -105,7 +104,7 @@ export class ProductsComponent implements OnInit , OnDestroy {
      });
 
       this.getPosts();
-    }  
+    }
 
   }
 

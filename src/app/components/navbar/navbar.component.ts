@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,18 @@ import { ApiService } from 'src/app/services/api.service';
 export class NavbarComponent implements OnInit {
   categories$;
   
-  constructor(private getApi: ApiService ) { }
+  constructor(private getApi: ApiService, private router: Router ) { }
 
   ngOnInit(): void {
     this.categories$ = this.getApi.getAllCategories();
   }
 
+  
+  logOut(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    
+    this.router.navigate(['/login']);
+  }
+  
 }

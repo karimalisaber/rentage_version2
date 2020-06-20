@@ -3,12 +3,12 @@
         <div class="col-md-2">
             <h4 class="title">الاسم</h4>
             
-            <div *ngIf="product" class="for-product">
+            <div *ngIf="type ==='services'" class="for-product">
                 <p class="product-name">asus laptop</p>
                 <img class="img-fluid review-img" src="assets/images/karim.jpg" alt="">   
             </div>
 
-            <div *ngIf="!product" >
+            <div *ngIf="type ==='clients'" >
                 <p class="name">كريم علي</p>
             </div>
         </div>
@@ -18,7 +18,7 @@
 
             <div class="specific-review-wrapper">
             <div *ngFor="let i of [0,1]" class="specific-review text-right row no-gutters">
-                <img class="user-img-rounded-small ml-20" src="assets/images/karim.jpg" alt="">
+                <img class="user-img-rounded-small ml-20" src="assets/images/user.png" alt="">
                 <p class="col user-name ">كريم علي</p>
 
                 <div class="stars-wrapper d-inline-block text-left">

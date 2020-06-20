@@ -1,9 +1,15 @@
-<app-search></app-search>
+<div class="main-search">
+    <form action="">
+      <input (keyup)="filter($event.target.value)" type="search" name="" id="" placeholder="بحث">
+      <input class="btn-search" type="submit" value="بحث">
+    </form>
+</div>
+  
 
 <!-- it will be repeated -->
 <section *ngIf="!isLoading">
-    <div *ngFor="let client of clients" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
-        <div class="col-md-6">
+    <div *ngFor="let client of filteredClients" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
+        <div class="col-md-7">
             <div class="row">
                 <!-- <div class="col-md-2"> -->
                     <!-- <img class="img-fluid circle img-small" src="assets/images/karim.jpg" alt=""> -->
@@ -11,30 +17,30 @@
     
                 <div class="col-md">
                     <p>الاسم</p>
-                    <p class="name details">{{client.name}} </p>
+                    <button class="name btn details">{{client.name}} </button>
                 </div>
     
                 <div class="col-md small">
                     <p>عدد الإعلانات</p>
-                    <p class="details">{{client.all_orders_count}}</p>
+                    <button class="btn btn-primary details">{{client.all_orders_count}}</button>
                 </div>
                
                 <div class="col-md small">
                     <p>عدد الطلبات</p>
-                    <p class="details">{{client.all_posts_count}}</p>
+                    <button class="btn btn-primary details">{{client.all_posts_count}}</button>
                 </div>
                 
                 <div class="col-md small">
                     <p>الرسائل</p>
-                    <p class="details">10</p>
+                    <a [routerLink]="['/messages', client.id, client.name]" class="btn btn-primary details">10</a>
                 </div>
             </div>
         </div>
         
-        <div class="col-md-6 row no-gutters">
-            <div class="col-md-3 small">
+        <div class="col-md-5 row no-gutters">
+            <div class="col-md-4 small">
                 <p>التقييم</p>
-                <div>
+                <button class="btn">
                     <div class="d-inline fill-starts">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -46,28 +52,12 @@
                         <i class="fas fa-star"></i>
                     </div>
     
-                </div>
+                </button>
             </div>
-            
-            <div class="col-md-3 small">
-                <p>التقييم للاعلانات</p>
-                <div>
-                    <div class="d-inline fill-starts">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-    
-                    <div class="d-inline un-fill-starts">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-5">
+        
+            <div class="col-md-7">
                 <p>تاريخ التسجيل</p>
-                <p class="details date">{{client.created_at | date}}</p>
+                <button class="btn details date">{{client.created_at | date}}</button>
             </div>
             
             <div class="col-md-1 text-left">
@@ -77,8 +67,6 @@
     </div>    
 </section>
 
-
 <div class="mt-100 d-flex justify-content-center" >
     <mat-spinner *ngIf="isLoading"></mat-spinner>
-
 </div>

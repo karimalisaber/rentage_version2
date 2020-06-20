@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AssetsService } from 'src/app/services/assets.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditCatDialogComponent } from './../edit-cat-dialog/edit-cat-dialog.component';
 
 @Component({
   selector: 'app-categories',
@@ -17,7 +19,7 @@ export class CategoriesComponent implements OnInit {
   newCategory: FormData = new FormData(); // for post new slider
   imageFile: any = null; // for uploaded image
 
-  constructor(private apiRequest:ApiService, private snackBar: MatSnackBar, private assets: AssetsService) { }
+  constructor(private apiRequest:ApiService, private snackBar: MatSnackBar, private assets: AssetsService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -112,6 +114,13 @@ export class CategoriesComponent implements OnInit {
 
       }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     );
+  }
+
+  
+  editImage(cat){
+    this.dialog.open(EditCatDialogComponent, {
+      data: {cat}
+    });
   }
 
 }

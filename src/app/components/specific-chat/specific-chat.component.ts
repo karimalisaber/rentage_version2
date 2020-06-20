@@ -11,22 +11,21 @@ export class SpecificChatComponent implements OnInit , OnChanges {
   @Input('chatData') chatData;
   @Input('secondUser') secondUser;
   @Input('firstUser') firstUser;
+  // @Input('firstUser') firstName;
+  @Input('isLoading') isLoading;
   
-  
+
   // mapedChat;
   constructor() { }
 
   ngOnInit(): void {
+  
+    
   }
 
   ngOnChanges(){
-    
-    // this.chatData.map(
-      console.log(this.firstUser);
-      console.log(this.secondUser);
-      
-    // )
-
+    console.log(this.secondUser, 'second');
+    console.log(this.firstUser);
   }
 
 

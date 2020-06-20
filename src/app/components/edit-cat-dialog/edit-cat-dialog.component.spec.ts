@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClientsOrdersComponent } from './clients-orders.component';
+import { EditCatDialogComponent } from './edit-cat-dialog.component';
 
-describe('ClientsOrdersComponent', () => {
-  let component: ClientsOrdersComponent;
-  let fixture: ComponentFixture<ClientsOrdersComponent>;
+describe('EditCatDialogComponent', () => {
+  let component: EditCatDialogComponent;
+  let fixture: ComponentFixture<EditCatDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClientsOrdersComponent ]
+      declarations: [ EditCatDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClientsOrdersComponent);
+    fixture = TestBed.createComponent(EditCatDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -19,17 +19,19 @@ import { UserReviewsComponent } from './components/user-reviews/user-reviews.com
 import { ProductsComponent } from './components/products/products.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
-import { ClientsOrdersComponent } from './components/clients-orders/clients-orders.component';
+import { ClientChatComponent } from './components/client-chat/client-chat.component';
+
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
-  { path: '', redirectTo: '/main', pathMatch: 'full'},
-  {path: 'main', component:  MainComponent},
+  { path: '', redirectTo: '/admin', pathMatch: 'full'},
+  {path: 'admin', component:  MainComponent},
   {path: 'messages', component:  ChatComponent},
+  {path: 'messages/:id/:name', component:  ClientChatComponent},
   {path: 'view-chats', component:  ViewChatsComponent},
   {path: 'adds', component:  AddsComponent},
   {path: 'clients', component:  ClientsComponent},
-  {path: 'clients-orders', component:  ClientsOrdersComponent},
   {path: 'add-category', component:  AddCategoryComponent},
 
   {path: 'settings/sliders', component: SliderSettingsComponent},

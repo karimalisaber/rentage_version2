@@ -16,7 +16,8 @@ export class ChatComponent implements OnInit {
   filteredUsers;
   specificChat: boolean = false;  
   currentUser; // first user
-  
+  isLoading:boolean = false ; // for chat
+
   constructor(private api : ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -35,48 +36,54 @@ export class ChatComponent implements OnInit {
       );
   }
 
-  getSpecificChat(user){
-    this.specificChat = true;
-    this.specificUserData = user;
-    this.api.getSpecificRoom(user.chatRoomId)
-    .subscribe(res=>{
-      this.chatData = res;
-    })
-    
-    
-  }
+  // getSpecificChat(user){ 
+  //   this.isLoading = true;
+  //   this.specificChat = true;
+  //   this.specificUserData = user;
+  //   this.api.getSpecificRoom(user.chatRoomId)
+  //   .subscribe(res=>{
+  //     this.chatData = res;
+      
+  //   },()=>{}
+  //   ,()=>this.isLoading = false
+  //   );
+  // }
 
+  // getSpecificUserChat(user){
+  //   this.loading = true;
 
-  getSpecificUserChat(user){
-    this.loading = true;
+  //   this.currentUser = user;
 
-    this.currentUser = user;
-
-    this.api.getSpecificUserChat(user.id)
-      .subscribe(
-        res=>{
+  //   this.api.getSpecificUserChat(user.id)
+  //     .subscribe(
+  //       res=>{
           
-            this.users = this.filteredUsers = res.map(res=> {
-            return res.user2_data.id !== user.id? res.user2_data : res.user1_data;
-            });
+  //           this.users = this.filteredUsers = res.map(res=> {
+  //           return res.user2_data.id !== user.id? res.user2_data : res.user1_data;
+  //           });
 
-            let roomsIds = res.map(res=> res.id)
+  //           let roomsIds = res.map(res=> res.id)
 
-            this.users.forEach((element, i) => {
-                element['chatRoomId'] = roomsIds[i];
-            });
-          this.specificUser = true ;
-        },
-        ()=> {},
-        ()=>{
-          this.loading= false;
-        }
-      );
-  }
+  //           this.users.forEach((element, i) => {
+  //               element['chatRoomId'] = roomsIds[i];
+  //           });
+  //         this.specificUser = true ;
+  //       },
+  //       ()=> {},
+  //       ()=>{
+  //         this.loading= false;
+  //       }
+  //     );
+  // }
 
   
   filter(value){
     this.filteredUsers = (value)? this.users.filter(res=> res.name.toLowerCase().includes(value.trim().toLowerCase())): this.users;    
   }
 
+
+  reload(){
+    location.reload();
+  }
 }
+

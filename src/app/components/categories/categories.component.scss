@@ -7,8 +7,8 @@ th{
 }
 
 .img-row{
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
     position: relative;
 
     &:hover{

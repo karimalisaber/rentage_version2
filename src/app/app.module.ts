@@ -47,8 +47,13 @@ import { MonthChartComponent } from './components/assets/month-chart/month-chart
 import { YearChartComponent } from './components/assets/year-chart/year-chart.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { UserOrdersComponent } from './components/user-orders/user-orders.component';
-import { ClientsOrdersComponent } from './components/clients-orders/clients-orders.component';
 import { SearchComponent } from './components/search/search.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { LightboxModule } from 'ngx-lightbox';
+import { EditCatDialogComponent } from './components/edit-cat-dialog/edit-cat-dialog.component';
+import { ClientChatComponent } from './components/client-chat/client-chat.component';
+import { SpecificClientChatComponent } from './components/specific-client-chat/specific-client-chat.component';
 
 declare var require: any;
 @NgModule({
@@ -88,14 +93,19 @@ declare var require: any;
     YearChartComponent,
     AddItemComponent,
     UserOrdersComponent,
-    ClientsOrdersComponent,
-    SearchComponent
+    SearchComponent,
+    EditCatDialogComponent,
+    ClientChatComponent,
+    SpecificClientChatComponent,
+
+
   ],
   entryComponents:[
     materialEntryComponents,
     ViewProductDialogComponent
   ],
   imports: [
+ 
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -103,9 +113,15 @@ declare var require: any;
     HttpClientModule,
     AppRoutingModule,
     CarouselModule,
+    LightboxModule,
     ChartModule.forRoot(require('highcharts')),
   ],
-  providers: [ApiService],
+  providers: [
+    ApiService,
+    AuthService,
+    AuthGuardService
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

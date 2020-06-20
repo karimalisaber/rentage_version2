@@ -14,7 +14,7 @@
 </div>
 
 <div *ngIf="!isLoading" class="">
-  <app-order-wrapper *ngFor="let post of posts" class="mt-10" [post]="post"></app-order-wrapper>
+  <app-order-wrapper [wattingOrders]="true" *ngFor="let post of posts" class="mt-10" [post]="post"></app-order-wrapper>
 </div>
 
 <div class="mb-30"></div>
@@ -26,7 +26,6 @@
         <span aria-hidden="true">&laquo;</span>
       </button>
     </li>
-
     
     <li *ngFor="let page of pages.pagesNumber; index as i" class="page-item">
       <button (click)="otherPosts(i+1);" [id] ="'item-' + (i+1)" [class.active]="i===pages.current_page - 1" class="page-link" >{{i + 1}}</button>

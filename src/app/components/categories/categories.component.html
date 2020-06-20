@@ -53,8 +53,8 @@
     </tr>
 
     <tr style="height: 200px;" *ngFor="let category of categories">
-        <td class="p-0 img-row" style="width: 250px;" [style.background]="'url(' + 'https://rentage.clicktopass.com/category/' + category.img + ')'"> 
-            <a href=""> تغيير الصورة</a>
+        <td class="p-0 img-row" style="width: 250px;" [style.background]="'url(' + 'https://rentage.clicktopass.com/public/category/' + category.img + ')'"> 
+            <a (click)="editImage(category)"> تغيير الصورة</a>
         </td>
         
         <td>

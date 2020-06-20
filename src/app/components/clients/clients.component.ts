@@ -8,6 +8,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ClientsComponent implements OnInit {
   clients;
+  filteredClients;
+
   isLoading= false;
 
   constructor(private api: ApiService) { }
@@ -21,13 +23,14 @@ export class ClientsComponent implements OnInit {
     this.api.getUserList()
       .subscribe(
         res=>{
-          this.clients = res;
-          console.log(this.clients);
-          
+          this.filteredClients = this.clients = res;      
         },
         ()=>{},
         ()=> this.isLoading = false 
       );
   }
-
+  
+  filter(value){
+    this.filteredClients = (value)? this.clients.filter(res=> res.name.toLowerCase().includes(value.trim().toLowerCase())): this.clients;    
+  }
 }

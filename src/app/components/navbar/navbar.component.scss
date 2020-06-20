@@ -65,7 +65,7 @@
                 }
             }
 
-            a{
+            a, button{
                 transition: $mainTransition;
                 color: $secondColor;
                 background-color: $itemBackground;
@@ -113,6 +113,15 @@
 .log-out{
     font-size: 1.3rem;
 
+    a{
+        color: #fff;
+        transition: $mainTransition;
+
+        &:hover{
+            cursor: pointer;
+            color: $mainColor;
+        }
+    }
 }
 
 .fa-bell, .fa-comment-alt {

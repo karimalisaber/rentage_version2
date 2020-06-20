@@ -26,7 +26,7 @@
                     </mat-menu>
 
                     <li class="mr-auto log-out">
-                        <a routerLink="login"> <i class="ml-10 fas fa-power-off">                            
+                        <a (click)="logOut()"> <i class="ml-10 fas fa-power-off">                            
                             </i> تسجيل الخروج 
                         </a> 
                     </li>
@@ -36,7 +36,7 @@
             <div class="nav-bottom">
                 <ul class="row">
                     <li class="nav-item col-md-1 text-right">
-                        <a routerLinkActive="active" routerLink="/main">الرئيسية</a> 
+                        <a routerLinkActive="active" routerLink="/admin">الرئيسية</a> 
                     </li>
 
                     <li class="nav-item col">
@@ -76,7 +76,7 @@
                     </li>
 
                     <mat-menu #reviewsMenu="matMenu">
-                        <a class="mat-item padding-large" routerLink="/reviews/services" mat-menu-item>الخدمة</a>
+                        <a class="mat-item padding-large" routerLink="/reviews/services" mat-menu-item>العروض </a>
                         <a class="mat-item padding-large" routerLink="/reviews/clients" mat-menu-item>العملاء</a>
                     </mat-menu>
 
@@ -88,7 +88,7 @@
 
                     <mat-menu xPosition="before" #settingsMenu="matMenu">
                         <a class="mat-item padding-large" routerLink="/settings/admins" mat-menu-item>الأدمن</a>
-                        <a class="mat-item padding-large" routerLink="/settings/members" mat-menu-item>الأعضاء</a>
+                        <!-- <a class="mat-item padding-large" routerLink="/settings/members" mat-menu-item>الأعضاء</a> -->
                         <a class="mat-item padding-large" routerLink="/settings/categories" mat-menu-item>الأقسام</a>
                         <a class="mat-item padding-large" routerLink="/settings/sliders" mat-menu-item>السلايدر</a>
                     </mat-menu>
@@ -99,7 +99,7 @@
     <div class="nav-white ">
         <div class="container">
             <ul class="row text-center" >
-                <li class="nav-control-item col ml-40">
+                <li class="nav-control-item col ml-60">
                    <a routerLink="/messages" routerLinkActive="active">
                        <p class="title"> <span class="number"> <i class="far fa-comments"></i></span> الرسائل </p>
                        <!-- <div class="progress">
@@ -107,34 +107,24 @@
                        </div> -->
                    </a>
                 </li>
-                 <li class="nav-control-item col ml-40">
+                 <li class="nav-control-item col ml-60">
                     <a routerLink="/blocked-orders" routerLinkActive="active">
-                        <p class="title"> <span class="number"> 20</span> تحت المراجعة </p>
+                        <p class="title"> <span class="number"> <i class="fas fa-binoculars"></i></span> تحت المراجعة </p>
                         <!-- <div class="progress">
                             <div class="progress-bar" style="width: 25%"></div>
                         </div> -->
                     </a>
                  </li>
 
-                 <li class="nav-control-item col ml-40">
+                 <li class="nav-control-item col ml-60">
                     <a routerLink="/accepted-orders" routerLinkActive="active">
-                        <p class="title"> <span class="number"> 20</span> تمت مراجعتها</p>
+                        <p class="title"> <span class="number"> <i class="fas fa-signature"></i></span> تمت مراجعتها</p>
                         <!-- <div class="progress">
                             <div class="progress-bar" style="width: 25%"></div>
                         </div> -->
                     </a>
                  </li>
                 
-                 
-                <li class="nav-control-item col ml-40">
-                    <a routerLink="/clients-orders" routerLinkActive="active">
-                        <p class="title"> <span class="number"> 20</span> طلبات العملاء </p>
-                        <!-- <div class="progress">
-                            <div class="progress-bar" style="width: 25%"></div>
-                        </div> -->
-                    </a>
-                 </li>
-
                  <li class="nav-control-item col">
                     <a routerLink="/last-users" routerLinkActive="active">
                         <p class="title"> <span class="number"> <i class="fas fa-users"></i></span> آخر المسجلين </p>

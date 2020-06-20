@@ -1,26 +1,52 @@
-<form class="login-form" >
+<form #userForm="ngForm" (ngSubmit)="login(userForm.value);" class="login-form" >
     <div class="form-group user-wrapper">
         <label #emailLabel for="email" class="user-label"> البريد الالكتروني</label>
-        <input (click)="animateLabel(emailLabel)" name="email" type="text" class="form-control input-user">
+        <input 
+            [ngClass]="{ 'is-invalid': email.invalid && email.touched , 'is-valid': !email.invalid && email.touched, 'pr-50': email.touched }"
+            ngModel #email="ngModel" required email (click)="animateLabel(emailLabel)" (focus)="animateLabel(emailLabel)" name="email" type="text" class="form-control input-user">
+
+            
+      <div *ngIf="!email.valid && email.touched" class="" >
+        <div class="alert alert-danger text-right" *ngIf="email.errors.required">من فضلك أدخل الايميل </div>
+        <div class="alert alert-danger text-right" *ngIf="email.errors.email">من فضلك أدخل الايميل بطريقة صححة </div>
+      </div>
     </div>
 
     <div class="form-group user-wrapper">
         <label #passwordLabel for="email" class="user-label"> كلمة المرور</label>
-        <input (click)="animateLabel(passwordLabel)" name="email" type="password" class="form-control input-user">
+        <input 
+            [ngClass]="{ 'is-invalid': password.invalid && password.touched , 'pr-50': password.touched , 'is-valid': !password.invalid && password.touched}"
+
+            password ngModel required #password="ngModel" (click)="animateLabel(passwordLabel)" (focus)="animateLabel(passwordLabel)" name="password" type="password" class="form-control input-user">
+
+        <div *ngIf="!password.valid && password.touched" class="" >
+            <div class="alert alert-danger text-right" *ngIf="password.errors.required">من فضلك أدخل كلمة المرور </div>
+        </div>
+    </div>
+
+    
+    <div *ngIf = "invalidLogin" class="pv-30 text-center login-alert alert alert-danger">
+        البريد الإلكتروني أو كلمة السر غير صحيحة
     </div>
 
     <div class="form-group">
-        <input type="submit" class="form-control submit" value="تسجيل الدخول">
+
+        <input [disabled]="!userForm.valid" type="submit" class="form-control submit" value="تسجيل الدخول">
     </div>
     
     <!-- forget password and remember me -->
     <div class="row remember-me">
         <div class="col">
             <input type="checkbox" name="remember-me">
-            <label for="remember-me" class="mr-10"> ذكرني</label>
+            <label for="remember-me" class="mr-10"> تذكرني</label>
         </div>
         <div class="text-left col">
             <a class="forget-password" routerLink="forget-password" >هل نسيت كلمة المرور؟</a>
         </div>
     </div>
 </form>
+
+<div *ngIf="isLoading" class="mt-100 d-flex justify-content-center" >
+    <mat-spinner></mat-spinner>
+  </div>
+  

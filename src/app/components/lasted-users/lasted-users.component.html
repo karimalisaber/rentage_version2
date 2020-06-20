@@ -1,7 +1,13 @@
 <!-- it will be repeated -->
-<app-search></app-search>
+<!-- <app-search></app-search> -->
+<div class="main-search">
+    <form action="">
+      <input (keyup)="filter($event.target.value)" type="search" name="" id="" placeholder="بحث">
+      <input class="btn-search" type="submit" value="بحث">
+    </form>
+</div>
 
-<div *ngFor="let user of users" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
+<div *ngFor="let user of filteredUsers" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
     <div class="col-md-2">
         <p>رقم </p>
         <p>{{user?.phone}}</p>

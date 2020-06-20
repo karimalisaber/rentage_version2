@@ -2,7 +2,18 @@
     <div class="row client pr-20 general-look">
         <img class="small-img" src="assets/images/user.png" alt="">
   
-        <div class="col-md-9 row">
+        <div class="col-md-9 row right-wrapper">
+            <!-- <div class="toggle custom-control custom-switch">
+                <input (change)="log(post.id)" [name]="post.id" type="checkbox" class="custom-control-input" >
+                <label class="custom-control-label" for="customSwitch1"></label>
+            </div> -->
+
+            
+            <!-- <mat-slide-toggle (change)="log(post.id)"></mat-slide-toggle> -->
+            <mat-slide-toggle *ngIf="wattingOrders" (change)="acceptPost(post.id)">
+          قبول الطلب
+        </mat-slide-toggle>
+
             <div class="col mb-20">
                 <p class="name">{{post.name}}</p>
                 <div class="w-100"></div>
@@ -15,11 +26,12 @@
                     <p class="col-6 product-name"> {{post.name}}</p>
                     <p class="col-6">السعر: <span>{{post.price}}</span></p>
                 </div>
-                    <div class="details">
-                        <span> {{post.desc}}</span>
-                    </div>
+               
+                <div class="details">
+                    <span> {{post.desc}}</span>
+                </div>
 
-                    <p class="pt-30">الكمية: <span>{{post.count}} قطع</span></p>
+                <p class="pt-30">الكمية: <span>{{post.count}} قطع</span></p>
             </div>
 
             <div class="col-md-3">
@@ -35,12 +47,12 @@
             </div>
          </div>
 
-         <div class="col row">        
-            <div class="col-md-10 left-img" [style.background] ="'url(' + 'assets/images/karim.jpg' + ')'" >
+         <div class="col-md-3 row">        
+            <div (click)="open(post.post_imgs)" class="col-md-10 hover left-img" [style.background] ="'url(' + 'http://rentage.clicktopass.com/public/posts/' + post.post_imgs[0]?.name + ')'" >
                 <!-- <img class="img-fluid left-img" src="assets/images/karim.jpg" alt=""> -->
             </div>
 
-            <div (click) ="deletePost(post.id)" class="col-md-2">
+            <div (click) ="deleteAlert(post.id)" class="col-md-2">
                 <i class="fas fa-trash-alt"></i>
             </div>
          </div>

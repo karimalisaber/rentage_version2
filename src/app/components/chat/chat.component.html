@@ -15,16 +15,20 @@
             
             <!-- start users section -->
             <div class="users-wrapper">
-                <div class="col user main-user text-center" *ngIf="specificUser">
-                    <!-- <img class="user-img" src="assets/images/karim.jpg" alt=""> -->
-            
-                    <span class="user-name mr-10"> {{currentUser.name}} </span>
+
+                <div *ngIf="specificUser">
+                    <a class="back" (click)="reload()"> <i class="fas fa-angle-right"></i> </a>
+                        
+                    <div class="col user main-user text-center">
+                        <img class="user-img" src="assets/images/user.png" alt="">                                
+                        <span class="user-name mr-10"> {{currentUser.name}} </span>
+                    </div>
                 </div>
             
                 <div *ngIf="!specificUser" class="">        
-                    <a *ngFor="let user of filteredUsers" (click)="getSpecificUserChat(user)"  class="pv-20 user row">
+                    <a *ngFor="let user of filteredUsers" [routerLink]="['/messages', user.id, user.name]"  class="pv-20 user row">
                         <div class="col text-right" >
-                            <!-- <img class="user-img" src="assets/images/karim.jpg" alt=""> -->
+                            <img class="user-img" src="assets/images/user.png" alt="">
                             <span class="user-name mr-10"> {{user.name}} </span>
                         </div>
             
@@ -39,7 +43,7 @@
                         </svg>
                     </a>
                 </div>
-            
+<!--             
             <div *ngIf="specificUser" class="">
                 <a *ngFor="let user of filteredUsers" (click) = "getSpecificChat(user)"  class="pv-20 user row">
                     <div class="col text-right" >
@@ -57,7 +61,7 @@
                     </svg>
                 </a>
             </div>
-                
+                 -->
             
             </div>
             <!-- end users section -->
@@ -65,12 +69,10 @@
             
             <mat-spinner *ngIf="loading"></mat-spinner>
             </div>
-
     </div>
 
-    <!-- start specific-message section -->
-    <div *ngIf="specificChat" class="col-md-9 text-right"> 
-       <app-specific-chat [personalChat] ="false" [chatData]="chatData" [firstUser]="currentUser" [secondUser]="specificUserData"></app-specific-chat>
-    <!-- end specific-message section -->
-    </div>
+<!-- 
+      <div *ngIf="specificChat" class="col-md-9 text-right"> 
+       <app-specific-chat [isLoading]="isLoading" [personalChat] ="false" [chatData]="chatData" [firstUser]="currentUser" [secondUser]="specificUserData"></app-specific-chat>
+      </div> -->
 </section>
