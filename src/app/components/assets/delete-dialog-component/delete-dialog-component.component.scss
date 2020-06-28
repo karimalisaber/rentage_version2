@@ -1,0 +1,78 @@
+@import "variables";
+$textColor: #6c757d;
+$secondAdminColor: #39AFD1;
+
+
+.second-admin-color{
+    color: $secondAdminColor;
+&:hover{
+    color: $secondAdminColor;
+}
+}
+
+h3{
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: $textColor;
+}
+
+.fa-exclamation{
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+
+    // line-height: 35px;
+    // font-weight: 400;
+    border-radius: 50%;
+    // padding: 10px;
+    border: 2px solid $secondAdminColor
+}
+
+mat-dialog-content{
+    font-size: .9rem;
+    color: $textColor;
+    font-weight: lighter;
+}
+
+.delete-btn{
+    box-shadow: 0 2px 6px 0 rgba(57,175,209,.5);
+    color: #fff;
+    background-color: #39afd1;
+    border-color: #39afd1;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .45rem .9rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .15rem;
+
+    color: #fff;
+    background-color: #2b99b9;
+    border-color: #2991ae;
+
+    &:hover {
+        border-color: #2991ae;
+        background-color: #2b99b9;
+    }
+}
+
+.cancel{
+    box-shadow: 0 2px 6px 0 rgba(250,92,124,.5);
+    color: #fff;
+    background-color: #fa5c7c;
+    border-color: #fa5c7c;
+
+    &:hover{
+        color: #fff;
+        background-color: #f9375e;
+        border-color: #f82b54;
+    }
+}

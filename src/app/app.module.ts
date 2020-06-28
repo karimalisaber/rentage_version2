@@ -50,10 +50,11 @@ import { UserOrdersComponent } from './components/user-orders/user-orders.compon
 import { SearchComponent } from './components/search/search.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
-import { LightboxModule } from 'ngx-lightbox';
+import {  LightboxModule } from 'ngx-lightbox';
 import { EditCatDialogComponent } from './components/edit-cat-dialog/edit-cat-dialog.component';
 import { ClientChatComponent } from './components/client-chat/client-chat.component';
 import { SpecificClientChatComponent } from './components/specific-client-chat/specific-client-chat.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 declare var require: any;
 @NgModule({
@@ -97,6 +98,7 @@ declare var require: any;
     EditCatDialogComponent,
     ClientChatComponent,
     SpecificClientChatComponent,
+    SnackbarComponent,
 
 
   ],

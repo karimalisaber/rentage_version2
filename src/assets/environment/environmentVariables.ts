@@ -7,6 +7,7 @@ export const getAllCategoriesUrl = "https://rentage.clicktopass.com/api/dashboar
 export const getSpecificCategoriesUrl = "https://rentage.clicktopass.com/api/dashboard/specific_categories/";
 
 export const getAllSlidersUrl = "https://rentage.clicktopass.com/api/dashboard/all_sliders";
+export const getAllAdminsUrl = "https://rentage.clicktopass.com/api/dashboard/admins_list";
 export const getSpecificSlidersUrl = "https://rentage.clicktopass.com/api/dashboard/specific_slider/";
 export const getSpecificCategoryUrl = "https://rentage.clicktopass.com/api/dashboard/specific_category/";
 
@@ -28,6 +29,7 @@ export const getAllCatPostesUrl = "https://rentage.clicktopass.com/api/mobile/ca
 export const addSliderUrl = "https://rentage.clicktopass.com/api/dashboard/add_slider";
 export const addCategoryUrl = "https://rentage.clicktopass.com/api/dashboard/add_category";
 export const loginUrl = "https://rentage.clicktopass.com/api/auth/login";
+export const postUserUrl = "https://rentage.clicktopass.com/api/auth/admin_register";
 
 // all update 
 export const updateSliderUrl = "https://rentage.clicktopass.com/api/dashboard/update_slider/";
@@ -39,5 +41,6 @@ export const acceptOrderUrl = "https://rentage.clicktopass.com/api/dashboard/upd
 export const deleteSliderUrl = "https://rentage.clicktopass.com/api/dashboard/delete_slider/";
 export const deleteCategoryUrl = "https://rentage.clicktopass.com/api/dashboard/delete_category/";
 export const deletePostUrl = "https://rentage.clicktopass.com/api/dashboard/delete_post/";
+export const deleteUserUrl = "https://rentage.clicktopass.com/api/auth/delete_user/";
 
 // httpss://www.facebook.com/

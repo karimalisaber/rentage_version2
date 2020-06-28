@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 
 export class SliderSettingsComponent implements OnInit { 
+  isLoading:boolean = false;
   slider: FormData = new FormData(); // for post new slider
   sliders;
 
@@ -31,17 +32,15 @@ export class SliderSettingsComponent implements OnInit {
       this.apiRequest.addSlider(this.slider)
       .subscribe((res: {data}) => {
          this.sliders.push(res.data); // push to the view
-         this.resetInputs(); // reset inputs
-
-         this.snackBar.open('تم اضافة سلايدر جديد', `` , {duration: 1500})
-
+         this.assets.addSuccess();
+         location.reload();
     }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     );
   }
 
-  private resetInputs(){
-    this.imageFile = null;
-  }
+  // private resetInputs(){
+  //   this.imageFile = null;
+  // }
 
   deleteAlert(id){
     this.assets.deleteAlert(id).subscribe(res=> res? this.deleteSlider(id): false );
@@ -54,7 +53,7 @@ export class SliderSettingsComponent implements OnInit {
     
     this.apiRequest.deleteSlider(id)
      .subscribe(
-       res=> this.snackBar.open('تم حذف السلايدر بنجاح', `` , {duration: 1500}), 
+       res=> this.assets.deleteSuccess(), 
       () => {
         this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` ,{duration: 1500})
         this.sliders.splice(itemIndex, 0, item);

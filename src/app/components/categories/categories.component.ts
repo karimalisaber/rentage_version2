@@ -57,8 +57,9 @@ export class CategoriesComponent implements OnInit {
     
     this.apiRequest.updateCategory(id, {name}).subscribe(
       data=> {
+        this.assets.addSuccess();
         this.categories.splice(itemIndex, 1, item);
-        this.snackBar.open('تم تعديل اسم القسم ', `x` , {duration: 1500})
+        
       },error => {
         this.snackBar.open('حدثت مشكلة أثناء تعديل القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500})
         this.categories[itemIndex].name = oldName;
@@ -77,7 +78,7 @@ export class CategoriesComponent implements OnInit {
     
     this.apiRequest.deleteCategory(id)
      .subscribe(
-       res=> this.snackBar.open('تم حذف القسم بنجاح', `` , {duration: 1500}), 
+       res=> this.assets.deleteSuccess(), 
       
        () => {
         this.snackBar.open('لم يتم حذف القسم برجاء المحاولة مرة أخرى', `` ,{duration: 1500})
@@ -86,9 +87,9 @@ export class CategoriesComponent implements OnInit {
     );
   }
 
-  private resetInputs(){
-    this.imageFile = null;
-  }
+  // private resetInputs(){
+  //   this.imageFile = null;
+  // }
 
   
   imageUpload(event){
@@ -99,28 +100,20 @@ export class CategoriesComponent implements OnInit {
   
   addCategory(data){
     delete data.img;
-    this.isLoading = true;
     this.newCategory.append("name", data.name);
     this.newCategory.append("img", this.imageFile, this.imageFile.name);
     
     this.apiRequest.addCategory(this.newCategory)
     
       .subscribe((res: {data}) => {
-        // this.categories.push(res.data); // push to the view
-        this.resetInputs(); // reset inputs
-        location.reload();
-
-        this.snackBar.open('تم اضافة قسم جديد', `` , {duration: 1500})
-
+        this.assets.addSuccess().afterDismissed().subscribe(res=>{location.reload();});
       }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     );
   }
-
   
   editImage(cat){
     this.dialog.open(EditCatDialogComponent, {
       data: {cat}
     });
   }
-
 }

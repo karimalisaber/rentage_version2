@@ -40,7 +40,7 @@ export class ClientChatComponent implements OnInit {
       this.chatData = res;
     },()=>{}
     ,()=>this.isLoading = false
-    );    
+    );
   }
 
 

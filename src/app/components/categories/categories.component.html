@@ -51,7 +51,6 @@
         <th>الصورة</th>
         <th class="pr-20">القسم</th>
     </tr>
-
     <tr style="height: 200px;" *ngFor="let category of categories">
         <td class="p-0 img-row" style="width: 250px;" [style.background]="'url(' + 'https://rentage.clicktopass.com/public/category/' + category.img + ')'"> 
             <a (click)="editImage(category)"> تغيير الصورة</a>
@@ -59,8 +58,8 @@
         
         <td>
           <div class="row cat-wrapper">
-              <div class="p-0 col-md-8">
-                <input (keyup.enter)="updateItem($event.target.value, category.id)" class="mr-0 pr-20 d-block title" [disabled] = "editCategoryDisabled"
+              <div class="p-0 col-md-9">
+                <input (keyup.enter)="updateItem($event.target.value, category.id)" class="mr-0 pr-20 d-block title w-100" [disabled] = "editCategoryDisabled"
                   type="text" [value]="category.name" [id]="'item-' + category.id">
               </div>
       

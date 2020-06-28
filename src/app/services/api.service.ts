@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map, take} from "rxjs/operators";
-import { getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl } from 'src/assets/environment/environmentVariables';
+import { getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl, getAllAdminsUrl, deleteUserUrl, postUserUrl } from 'src/assets/environment/environmentVariables';
 import { Categories } from '../interfaces/categories';
 import { Slider } from '../interfaces/slider';
   
@@ -51,7 +51,6 @@ export class ApiService {
     return this.http.delete(deleteCategoryUrl +id).pipe(take(1));
   }
 
-  
   deletePost(id){
     return this.http.delete(deletePostUrl +id).pipe(take(1));
   }
@@ -83,7 +82,6 @@ export class ApiService {
     return this.http.get(getUserListUrl).pipe(map((res: any)=>res.data), take(1));
   }
   
-
   // chat 
   getSpecificUserChat(id){
     return this.http.get(getSpecificUserChatUrl + id).pipe(map((res: any)=>res.data), take(1));
@@ -93,4 +91,17 @@ export class ApiService {
     return this.http.get(getSpecificRoomUrl + id).pipe(map((res: any)=>res.data), take(1));
   }
 
+  // admins 
+  
+  getAllAdmins(){
+    return this.http.get(getAllAdminsUrl).pipe(map((res: any)=>res.data), take(1));
+  }
+
+  deleteUser(id){
+    return this.http.get(deleteUserUrl + id).pipe(map((res: any)=>res.data), take(1));
+  }
+
+  postUser(user){
+    return this.http.post(postUserUrl, user);
+  }
 }

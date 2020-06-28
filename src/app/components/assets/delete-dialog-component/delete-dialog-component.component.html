@@ -1,4 +1,4 @@
-<h2 mat-dialog-title class="text-right" > تأكيد عملية الحذف </h2>
+<!-- <h2 mat-dialog-title class="text-right" > تأكيد عملية الحذف </h2>
 
 <mat-dialog-content>
     <p> أنت على وشك حذف بيانات مهمة، البيانات التي ستحذفها لن تستطيع استعادتها، هل تريد اتمام عملية الحذف؟ </p>
@@ -7,4 +7,25 @@
 <mat-dialog-actions>
     <button class="btn btn-danger ml-10"   mat-dialog-close="yes"> تأكيد </button>
     <button class="btn btn-primary"  mat-dialog-close="no"> رجوع</button>
-</mat-dialog-actions>
+</mat-dialog-actions> -->
+
+<div class="main-wrapper ph-50 pv-30" >
+    <div class="warn d-flex justify-content-center second-admin-color">
+        <div class="">
+            <i class="fas fa-exclamation "></i>
+        </div>
+    </div>
+    
+    <h3 class="mb-20" mat-dialog-title> احترس! </h3>
+    
+    <mat-dialog-content class="text-center mb-20">
+        تأكيد عملية الحذف؟
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <button class="delete-btn ml-10 cancel"   mat-dialog-close="yes"> تأكيد </button>
+
+        <button class="delete-btn"  mat-dialog-close="no"> رجوع</button>
+    
+    </mat-dialog-actions>    
+</div>

@@ -10,7 +10,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./blocked-orders.component.scss']
 })
 export class BlockedOrdersComponent implements OnInit {
-
   isLoading: boolean = false;
 
   posts;
@@ -28,15 +27,12 @@ export class BlockedOrdersComponent implements OnInit {
     this.getPosts();
   }
 
-  
   private setCurrentPage() {
     this.route.queryParamMap
       .subscribe(
         res =>  this.pages.current_page = parseInt(res.get('page')) || 1 
       )
   }
-
-
 
   private getPosts(){
     this.isLoading = true;
@@ -68,7 +64,6 @@ export class BlockedOrdersComponent implements OnInit {
     }
   }
   
-
   nextPosts(){
     if (this.pages.current_page < this.pages.lastPage){
       this.pages.current_page ++;
@@ -81,7 +76,6 @@ export class BlockedOrdersComponent implements OnInit {
     }    
   }
 
-
   prevPosts(){
     if (this.pages.current_page > 1){
       this.pages.current_page --;
@@ -93,6 +87,4 @@ export class BlockedOrdersComponent implements OnInit {
       this.getPosts();
     }  
   }
-
-
 }

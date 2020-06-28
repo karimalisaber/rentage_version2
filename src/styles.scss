@@ -430,16 +430,11 @@ p.product-name {
 }
 
 .left-img{
-    background-repeat: none;
-    background-size: cover;
+    background-repeat: none !important;
+    background-size: cover !important;
     border-radius: 10px;
     box-shadow: 1px 1px 1px 1px $thirdColor;
 }
-
-// --------------------------------------------
-            // orders box end
-// --------------------------------------------
-
 
 // --------------------------------------------
             // start users
@@ -607,10 +602,6 @@ mat-progress-spinner circle, .mat-spinner circle {
 }
 
 
-
-
-
-
 ///////////////////////////////////////////////////
 // search
 ///////////////////////////////////////////////////
@@ -646,3 +637,14 @@ mat-progress-spinner circle, .mat-spinner circle {
     font-weight: bold;
   }
 }
+
+
+// snack bar 
+// .snack-wrapper{
+//     height: 100px;
+//     background-color: #42B783;
+//     width: 300px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }

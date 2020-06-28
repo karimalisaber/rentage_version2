@@ -17,8 +17,8 @@ isLoading: boolean = false;
     this.isLoading = true;
     this.api.getUserList()
     .subscribe(
-      res=>{
-        this.filteredUsers = this.users = res;
+      res=>{ 
+        this.filteredUsers = this.users = res.reverse().splice(0,20);
       },
       ()=>{},
       ()=> this.isLoading = false

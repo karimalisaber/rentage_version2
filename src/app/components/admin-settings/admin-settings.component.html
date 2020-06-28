@@ -1,19 +1,32 @@
 <!-- add admin start -->
 <div class="add-something mb-30">
-    <form action="" class="user-form">
+    <form #userForm="ngForm" class="user-form" (ngSubmit)="register(userForm.value)">
         <div class="row ">
             <div class="col-md-10">
                 <div class="row">
-                <div class="col-md-4 user-input-wrapper input-group">
-                    <input class="form-control user-input" placeholder="الاسم">
+                <div class="col-md-3 user-input-wrapper input-group">
+                    <input #name= "ngModel"
+                        [ngClass]="{ 'is-invalid': name.invalid && name.touched , 'is-valid': !name.invalid && name.touched}"
+
+                        ngModel name="name" required class="form-control user-input" placeholder="الاسم">
                 </div>
             
-                <div class="col-md-4 user-input-wrapper input-group">
-                    <input class="form-control user-input" type="email" placeholder="البريد الالكتروني">
+                <div class="col-md-3 user-input-wrapper input-group">
+                    <input #email= "ngModel"
+                        [ngClass]="{ 'is-invalid': email.invalid && email.touched || emailExists , 'is-valid': !email.invalid && email.touched}"
+                        ngModel name="email" required email class="form-control user-input" type="email" placeholder="البريد الالكتروني">
                 </div>
                 
-                <div class="col-md-4 user-input-wrapper input-group">
-                    <input class="form-control user-input" type="password" placeholder="كلمة السر">
+                <div class="col-md-3 user-input-wrapper input-group">
+                    <input #phone= "ngModel"
+                        [ngClass]="{ 'is-invalid': phone.invalid && phone.touched, 'is-valid': !phone.invalid && phone.touched}"
+                        ngModel name="phone" required type="number" class="form-control user-input" placeholder="الهاتف">
+                </div>
+                
+                <div class="col-md-3 user-input-wrapper input-group">
+                    <input #password= "ngModel"
+                        [ngClass]="{ 'is-invalid': password.invalid && password.touched , 'is-valid': !password.invalid && password.touched}"
+                        ngModel name="password" required class="form-control user-input" type="password" placeholder="كلمة السر">
                 </div>
             </div>
         </div>
@@ -21,67 +34,86 @@
             <div class="col-md-2 text-center user-input-add">
                 <div class="add">
                     <span>+</span>
-                     <p *ngIf="admin" class="d-inline-block">اضافة أدمن</p>
-                     <p *ngIf="!admin" class="d-inline-block">اضافة عضو</p>
+                     <input type="submit" [disabled]="userForm.invalid" class="d-inline-block btn whtie-color" value="اضافة أدمن">
+                     <!-- <p *ngIf="!admin" class="d-inline-block">اضافة عضو</p> -->
                 </div>
             </div>
         </div>
+
+        <div class="alert alert-danger row col-md-10 mt-10" *ngIf="emailExists">هذا البريد الالكتروني موجود بالفعل من فضل أدخل بريد الكتروني آخر </div>
     </form>
 </div>
 <!-- add admin end -->
 
+<div class="main-search">
+    <form action="">
+      <input (keyup)="filter($event.target.value)" type="search" name="" id="" placeholder="بحث">
+      <input class="btn-search" type="submit" value="بحث">
+    </form>
+</div>
+
+<div *ngIf="isLoading" class="mt-100 d-flex justify-content-center" >
+    <mat-spinner></mat-spinner>
+</div>
+
 <!-- it will be repeated -->
-<div class="user-wrapper custom-shadow row text-center pv-20 mb-40">
-    
-    <div class="col-md-3">
-        <p>الاسم</p>
-        <p>محمود علي</p>
-    </div>
-    <div class="col-md-4">
-        <p>البريد الالكتروني</p>
-        <p>karim@gmail.com</p>
-    </div>
-
-    <div *ngIf="admin" class="col-md-2">
-        <p>كلمة السر</p>
-        <p> 
-            <span class="dots"> . </span>
-            <span class="dots"> . </span>
-            <span class="dots"> . </span>
-            <span class="dots"> . </span>
-            
-            <i (click)="viewPassword = true" *ngIf="!viewPassword" class="fas fa-eye"></i>
-            <i (click)="viewPassword = false" *ngIf="viewPassword" class="fas fa-eye-slash"></i>
-        </p>
-    </div>
-
-    <div *ngIf="!admin" class="col-md-2">
-        <p>تاريخ التسجيل</p>
-        <p>2/2/2020</p>
-    </div>
-
-
-    <div *ngIf="admin" class="col-md-2 text-left mt-10">
-        <i class="fas fa-cog"></i>
-    </div>
-    
-    
-    <div *ngIf="!admin" class="col-md-2 text-left mt-20">
-        <div class="stars-wrapper d-inline-block text-left">
-            <div class="d-inline fill-starts">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-
-            <div class="d-inline un-fill-starts">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
+<div *ngFor="let admin of filteredAdminList">
+    <div *ngIf="!isLoading" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
+        <div class="col-md-3">
+            <p>الاسم</p>
+            <p>{{admin?.user_data?.name}}</p>
         </div>
-    </div>
-
-    <div class="col-md-1 mt-10">
-        <i class="fas fa-trash-alt"></i>
-    </div>
+        <div class="col-md-5">
+            <p>البريد الالكتروني</p>
+            <p>{{admin?.user_data?.email}}</p>
+        </div>
+    
+        <div class="col-md-3">
+            <p>الهاتف</p>
+            <p>{{admin?.user_data?.phone}}</p>
+        </div>
+    <!-- 
+        <div class="col-md-2">
+            <p>كلمة السر</p>
+            <p> 
+                <span class="dots"> . </span>
+                <span class="dots"> . </span>
+                <span class="dots"> . </span>
+                <span class="dots"> . </span>
+                
+                <i (click)="viewPassword = true" *ngIf="!viewPassword" class="fas fa-eye"></i>
+                <i (click)="viewPassword = false" *ngIf="viewPassword" class="fas fa-eye-slash"></i>
+            </p>
+        </div> -->
+    
+        <!-- <div *ngIf="!admin" class="col-md-2">
+            <p>تاريخ التسجيل</p>
+            <p>2/2/2020</p>
+        </div> -->
+    
+    
+        <!-- <div class="col-md-1 text-left mt-10"> -->
+            <!-- <i class="fas fa-cog"></i> -->
+        <!-- </div> -->
+        
+        
+        <!-- <div *ngIf="!admin" class="col-md-1 text-left mt-20">
+            <div class="stars-wrapper d-inline-block text-left">
+                <div class="d-inline fill-starts">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+    
+                <div class="d-inline un-fill-starts">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div> -->
+    
+        <div class="col-md-1 mt-10">
+            <i (click)="deleteUserAlert(admin.id)" class="fas fa-trash-alt"></i>
+        </div>
+    </div>    
 </div>

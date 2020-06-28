@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { EditCatDialogComponent } from 'src/app/components/edit-cat-dialog/edit-cat-dialog.component';
+import { SnackbarComponent } from './../../components/snackbar/snackbar.component';
 
 const MaterialComponents =[
   MatDialogModule,
@@ -17,7 +18,8 @@ const MaterialComponents =[
 
 export const materialEntryComponents = [
   DeleteDialogComponentComponent,
-  EditCatDialogComponent
+  EditCatDialogComponent,
+  SnackbarComponent
 ];
 
 
@@ -26,7 +28,7 @@ export const materialEntryComponents = [
   ],
 
   imports: [ MaterialComponents ],
-  
+
   exports: [ 
     MaterialComponents,
   ],

@@ -41,10 +41,7 @@ export class OrderWrapperComponent implements OnInit {
   deletePost(id){
     this.api.deletePost(id).subscribe(
       res=>{
-
-        location.reload();
-        
-        this.snackBar.open('تم الحذف', `` , {duration: 1500})
+        this.assets.deleteSuccess().afterDismissed().subscribe(res=>{location.reload();});
 
       }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     );
@@ -58,7 +55,7 @@ export class OrderWrapperComponent implements OnInit {
   acceptPost(id){
     this.api.acceptPost(id).subscribe(
       res=>{
-        location.reload();
+        this.assets.addSuccess().afterDismissed().subscribe(res=>{location.reload();});
       }
     );    
   }
@@ -67,10 +64,6 @@ export class OrderWrapperComponent implements OnInit {
     let postsImgs =[];
     post.filter(res=> postsImgs.push({'src': this.url + res.name}))
     
-    this._lightbox.open(postsImgs, 1);
-
-    console.log(postsImgs);
-    // console.log(post);
-    
+    this._lightbox.open(postsImgs, 1);   
   }
 }

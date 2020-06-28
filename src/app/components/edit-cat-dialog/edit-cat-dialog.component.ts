@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from './../../services/api.service';
+import { AssetsService } from 'src/app/services/assets.service';
 
 @Component({
   selector: 'app-edit-cat-dialog',
@@ -22,21 +23,21 @@ export class EditCatDialogComponent  {
     @Inject(MAT_DIALOG_DATA) public data,
     private http: HttpClient,
     private snackBar: MatSnackBar,
-    private api: ApiService
+    private api: ApiService,
+    private assets: AssetsService
   ) { }
 
   ngOnInit() {
-    console.log(this.data);
-    
-    this.api.getSpecificCategory(this.data.cat.id).subscribe(res => {
-      this.category = res;
-      this.imgUrl = 'http://rentage.clicktopass.com/public/category/' + this.data.cat.img;
-      console.log(res)
-      
-      
-    });
+    this.getSpecificCategory();
+ 
   }
 
+  private getSpecificCategory(){
+    this.api.getSpecificCategory(this.data.cat.id).subscribe(res => {
+      this.category = res;
+      this.imgUrl = 'http://rentage.clicktopass.com/public/category/' + this.data.cat.img;     
+    });
+  }
 
   imageUpload(event) {
     if (event.target.files) {
@@ -58,8 +59,7 @@ export class EditCatDialogComponent  {
     this.api.updateCategory(this.data.cat.id, this.item)
       .subscribe(
         () =>  {
-          this.snackBar.open('تم تعديل القسم بنجاح', `` , {duration: 1500})
-          location.reload();
+          this.assets.addSuccess().afterDismissed().subscribe((res)=> location.reload())
         },
         () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
       );

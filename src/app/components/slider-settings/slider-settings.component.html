@@ -16,9 +16,15 @@
     </form>
 </div>
 
-<div *ngFor="let slider of sliders" class="card mb-40 row">
+<div *ngIf="!isLoading" class="">
+    <div *ngFor="let slider of sliders" class="card mb-40 row">
     
-    <i (click)="deleteAlert(slider.id)" class="fas fa-trash"></i>
-
-    <img [src]="'https://rentage.clicktopass.com/public/slider/' + slider.img" class="card-img-top" [alt]="slider.id">
+        <i (click)="deleteAlert(slider.id)" class="fas fa-trash"></i>
+    
+        <img [src]="'https://rentage.clicktopass.com/public/slider/' + slider.img" class="card-img-top" [alt]="slider.id">
+    </div>    
 </div>
+
+<div *ngIf="isLoading" class="mt-100 d-flex justify-content-center" >
+    <mat-spinner></mat-spinner>
+  </div>
