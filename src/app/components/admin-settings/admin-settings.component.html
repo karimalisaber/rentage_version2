@@ -52,68 +52,31 @@
     </form>
 </div>
 
+
+
 <div *ngIf="isLoading" class="mt-100 d-flex justify-content-center" >
     <mat-spinner></mat-spinner>
 </div>
 
-<!-- it will be repeated -->
-<div *ngFor="let admin of filteredAdminList">
-    <div *ngIf="!isLoading" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
-        <div class="col-md-3">
-            <p>الاسم</p>
-            <p>{{admin?.user_data?.name}}</p>
+
+
+<div *ngIf="!isLoading">
+    <section *ngFor="let admin of filteredAdminList" class="client-wrapper">
+        <div class="user-header text-center row no-gutters">
+            <h3 class="header mb-0 text-right col-md-4 pr-50">الاسم</h3>
+            <h3 class="header mb-0 col-md-4"> البريد الالكتروني </h3>
+            <h3 class="header mb-0 col-md-4">الهاتف</h3>      
         </div>
-        <div class="col-md-5">
-            <p>البريد الالكتروني</p>
-            <p>{{admin?.user_data?.email}}</p>
-        </div>
-    
-        <div class="col-md-3">
-            <p>الهاتف</p>
-            <p>{{admin?.user_data?.phone}}</p>
-        </div>
-    <!-- 
-        <div class="col-md-2">
-            <p>كلمة السر</p>
-            <p> 
-                <span class="dots"> . </span>
-                <span class="dots"> . </span>
-                <span class="dots"> . </span>
-                <span class="dots"> . </span>
-                
-                <i (click)="viewPassword = true" *ngIf="!viewPassword" class="fas fa-eye"></i>
-                <i (click)="viewPassword = false" *ngIf="viewPassword" class="fas fa-eye-slash"></i>
-            </p>
-        </div> -->
-    
-        <!-- <div *ngIf="!admin" class="col-md-2">
-            <p>تاريخ التسجيل</p>
-            <p>2/2/2020</p>
-        </div> -->
-    
-    
-        <!-- <div class="col-md-1 text-left mt-10"> -->
-            <!-- <i class="fas fa-cog"></i> -->
-        <!-- </div> -->
         
-        
-        <!-- <div *ngIf="!admin" class="col-md-1 text-left mt-20">
-            <div class="stars-wrapper d-inline-block text-left">
-                <div class="d-inline fill-starts">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-    
-                <div class="d-inline un-fill-starts">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div> -->
-    
-        <div class="col-md-1 mt-10">
-            <i (click)="deleteUserAlert(admin.id)" class="fas fa-trash-alt"></i>
-        </div>
-    </div>    
+        <div class="details row no-gutters text-center">
+            <h4 class="col-md-4 mb-0 text-right pr-50"> <span class="item p-0">{{admin?.user_data?.name}}</span> </h4>
+            <h4 class="col-md-4 mb-0 text-center"> <span class="item p-0">{{admin?.user_data?.email}}</span> </h4>
+            <h4 class="col-md-4 mb-0 text-center"> <span class="item p-0">{{admin?.user_data?.phone}}</span> </h4>
+          
+          
+            <button (click)="deleteUserAlert(admin.id)" class="btn delete">
+                <i class="fas fa-trash-alt"></i> 
+            </button>
+        </div>    
+    </section>
 </div>

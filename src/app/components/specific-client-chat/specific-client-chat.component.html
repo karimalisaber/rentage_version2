@@ -27,29 +27,29 @@
         </div>
 
         <div *ngFor="let message of chatData" class="messages-wrapper mr-20 no-gutters">
-            <div *ngIf="message.sender_id == firstUserId" class="row no-gutters outcomming-message-wrapper">
-                <div class="ml-10 img-wrapper">
+            <div *ngIf="message.sender_id == firstUserId" class="outcomming-message-wrapper">
+                <!-- <div class="ml-10 img-wrapper"> -->
                     <!-- <img class=" user-img" src="assets/images/karim.jpg" alt=""> -->
-                    <h2 class="name user-img">{{firstUserName}}</h2>
-                </div>
+                    <h2 class="name user-img mb-0 pb-0">{{firstUserName}}</h2>
+                <!-- </div> -->
 
-                <div  class="col-md">
                     <div class="outcomming-message">
                         <span class=""> {{message.body}}</span>
                     </div>
                 
-               
+
                     <small class="time">
                         {{message.created_at | date }}
                     </small>
-                </div>
-                
             </div>
             <div class="w-100"></div>
 
-            <div *ngIf="message.sender_id == secondUser.id" class="row no-gutters mr-auto incomming-message-wrapper">
-                <div class="col-md rigth">
-                    <div class=" incomming-message">
+
+            <div *ngIf="message.sender_id != firstUserId" class="incomming-message-wrapper">
+                <div class="rigth">
+                    <h2 class="mb-0 name text-left w-100 user-img">{{secondUserName}}</h2>
+
+                    <div class="incomming-message">
                         <span class=""> {{message.body}}</span>                        
                     </div>   
 
@@ -58,10 +58,9 @@
                      </small>
                 </div>
               
-                <div class="mr-10 img-wrapper">
-                    <h2 class="name user-img">{{secondUser.name}}</h2>
+                <!-- <div class="mr-10 img-wrapper"> -->
                     <!-- <img class="user-img" src="assets/images/karim.jpg" alt=""> -->
-                </div>
+                <!-- </div> -->
             </div>
             <div class="w-100"></div>
         </div>      

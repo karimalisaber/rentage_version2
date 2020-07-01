@@ -15,10 +15,13 @@
     }
 }
    
-.user-name.active{
-    color: #000;
-    font-weight: bold;
+.active{
+    .user-name{
+        color: #000;
+        font-weight: bold;
+    }
 }
+
 
 .back{
     color: #000;

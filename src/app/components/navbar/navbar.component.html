@@ -8,7 +8,7 @@
                             <!-- <i class="fas fa-circle"></i> -->
                         <!-- </a> -->
                     <!-- </li> -->
-                    
+
                     <li>
                         <a mat-flat-button [matMenuTriggerFor]="notaficationMenu">
                             <span class="badge badge-warning rounded-circle">4</span>
@@ -70,15 +70,17 @@
                     <li class="nav-item col"> <a routerLinkActive="active" routerLink="/clients"> العملاء</a> </li>
                    
                     <li class="nav-item col"> 
-                        <button mat-flat-button [matMenuTriggerFor]="reviewsMenu"> 
+                        <!-- <button mat-flat-button [matMenuTriggerFor]="reviewsMenu"> 
                             <i class="fas fa-chevron-down"></i> التقيمات
-                        </button>
-                    </li>
+                        </button> -->
 
+                        <a routerLinkActive="active" routerLink="/reviews"> التقييمات</a> 
+                    </li>
+<!-- 
                     <mat-menu #reviewsMenu="matMenu">
                         <a class="mat-item padding-large" routerLink="/reviews/services" mat-menu-item>العروض </a>
                         <a class="mat-item padding-large" routerLink="/reviews/clients" mat-menu-item>العملاء</a>
-                    </mat-menu>
+                    </mat-menu> -->
 
                     <li mat-flat-button [matMenuTriggerFor]="settingsMenu" class="nav-item col ml-10">
                         <button>
@@ -106,9 +108,9 @@
                            <div class="progress-bar" style="width: 25%"></div>
                        </div> -->
                    </a>
-                </li>
+                </li> 
                  <li class="nav-control-item col ml-60">
-                    <a routerLink="/blocked-orders" routerLinkActive="active">
+                    <a routerLink="/recieved_orders" routerLinkActive="active">
                         <p class="title"> <span class="number"> <i class="fas fa-binoculars"></i></span> تحت المراجعة </p>
                         <!-- <div class="progress">
                             <div class="progress-bar" style="width: 25%"></div>

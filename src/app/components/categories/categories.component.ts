@@ -91,7 +91,6 @@ export class CategoriesComponent implements OnInit {
   //   this.imageFile = null;
   // }
 
-  
   imageUpload(event){
     if(event.target.files){
       this.imageFile = event.target.files[0];

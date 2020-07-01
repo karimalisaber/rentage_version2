@@ -8,13 +8,15 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./client-chat.component.scss']
 })
 export class ClientChatComponent implements OnInit {
-  chatData;
+  // chatData;
   users; 
   loading: boolean = false;
-  specificUserData; // second user
+  
+  // specificUserData; // second user
 
   filteredUsers;
-  specificChat: boolean = false;
+  // specificChat: boolean = false;
+ 
   currentUser; // first user
   currentUserId; // first user
   isLoading:boolean = false ; // for chat
@@ -31,20 +33,22 @@ export class ClientChatComponent implements OnInit {
     this.currentUser = this.route.snapshot.paramMap.get('name');
   }
 
-  getSpecificChat(user){ 
-    this.isLoading = true;
-    this.specificChat = true;
-    this.specificUserData = user;
-    this.api.getSpecificRoom(user.chatRoomId)
-    .subscribe(res=>{
-      this.chatData = res;
-    },()=>{}
-    ,()=>this.isLoading = false
-    );
-  }
+  // getSpecificChat(user){ 
+  //   this.isLoading = true;
+  //   this.specificChat = true;
+  //   this.specificUserData = user;
+  //   console.log(user);
+    
+  //   this.api.getSpecificRoom(user.chatRoomId)
+  //   .subscribe(res=>{
+  //     this.chatData = res;
+  //   },()=>{}
+  //   ,()=>this.isLoading = false
+  //   );
+  // }
 
 
-  getSpecificUserChat(){
+  getSpecificUserChat(){ // get users not chat
     this.loading = true;
 
     this.api.getSpecificUserChat(this.currentUserId)
@@ -68,10 +72,9 @@ export class ClientChatComponent implements OnInit {
         }
       );
   }
-
+  
   filter(value){
     this.filteredUsers = (value)? this.users.filter(res=> res.name.toLowerCase().includes(value.trim().toLowerCase())): this.users;    
   }
-
   
 }

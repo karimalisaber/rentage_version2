@@ -1,3 +1,15 @@
+<!-- 
+<div class="header">
+    <h3 class="header col">الاسم</h3>
+    <h3 class="header col">عدد الاعلانات </h3>
+    <h3 class="header col">عدد الطلبات</h3>
+    <h3 class="header col">الرسائل</h3>
+    <h3 class="header col">التقييم</h3>
+    <h3 class="header col">تاريخ التسجيل</h3>
+</div> -->
+
+
+
 <div class="main-search">
     <form action="">
       <input (keyup)="filter($event.target.value)" type="search" name="" id="" placeholder="بحث">
@@ -5,67 +17,48 @@
     </form>
 </div>
   
-
-<!-- it will be repeated -->
-<section *ngIf="!isLoading">
-    <div *ngFor="let client of filteredClients" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
-        <div class="col-md-7">
-            <div class="row">
-                <!-- <div class="col-md-2"> -->
-                    <!-- <img class="img-fluid circle img-small" src="assets/images/karim.jpg" alt=""> -->
-                <!-- </div> -->
-    
-                <div class="col-md">
-                    <p>الاسم</p>
-                    <button class="name btn details">{{client.name}} </button>
-                </div>
-    
-                <div class="col-md small">
-                    <p>عدد الإعلانات</p>
-                    <button class="btn btn-primary details">{{client.all_orders_count}}</button>
-                </div>
-               
-                <div class="col-md small">
-                    <p>عدد الطلبات</p>
-                    <button class="btn btn-primary details">{{client.all_posts_count}}</button>
-                </div>
-                
-                <div class="col-md small">
-                    <p>الرسائل</p>
-                    <a [routerLink]="['/messages', client.id, client.name]" class="btn btn-primary details">10</a>
-                </div>
-            </div>
+<div *ngIf="!isLoading">
+    <section *ngFor="let client of filteredClients" class="client-wrapper">
+        <div class="user-header text-center row no-gutters">
+            <h3 class="header mb-0 text-right col-md-2 pr-50">الاسم</h3>
+            <h3 class="header mb-0 col-md-2">عدد الاعلانات </h3>
+            <h3 class="header mb-0 col-md-2">عدد الطلبات</h3>
+            <h3 class="header mb-0 col-md-2">الرسائل</h3>
+            <h3 class="header mb-0 col-md-2">التقييم</h3>
+            <h3 class="header mb-0 col-md-2 pl-50">تاريخ التسجيل</h3>
         </div>
         
-        <div class="col-md-5 row no-gutters">
-            <div class="col-md-4 small">
-                <p>التقييم</p>
-                <button class="btn">
-                    <div class="d-inline fill-starts">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-    
-                    <div class="d-inline un-fill-starts">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-    
+        <div class="details row no-gutters text-center">
+            <h4 class="col-md-2 mb-0 text-right pr-50"> <span class="item font-weight-lighter p-0">{{client.name}}</span> </h4>
+            <a routerLink="/" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_orders_count}} </span> </a>
+            <a [routerLink]="['/owner_orders', client.id, client.name]" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_posts_count}}</span> </a>
+            <a [routerLink]="['/messages', client.id, client.name]" class="col-md-2 mb-0 text-center"> <span class="item click  ">15</span> </a>
+            <h4 class="col-md-2 mb-0 text-center">
+            <button class="btn">
+                <div class="d-inline fill-starts">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+        
+                <div class="d-inline un-fill-starts">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+        
                 </button>
-            </div>
+            </h4>
         
-            <div class="col-md-7">
-                <p>تاريخ التسجيل</p>
-                <button class="btn details date">{{client.created_at | date}}</button>
-            </div>
+            <h4 class="col-md-2 text-center mb-0 pl-50"> <span class="item date">{{client.created_at | date}}</span> </h4>
             
-            <div class="col-md-1 text-left">
-                    <i (click)="deleteUserAlert(client.id)" class="fas fa-trash-alt"></i>            
-            </div>
-        </div>
-    </div>    
-</section>
+            <button (click)="deleteUserAlert(client.id)" class="btn delete">
+                <i class="fas fa-trash-alt"></i> 
+            </button>
+        </div>    
+    </section>
+</div>
+
+
 
 <div class="mt-100 d-flex justify-content-center" >
     <mat-spinner *ngIf="isLoading"></mat-spinner>

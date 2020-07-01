@@ -25,10 +25,8 @@ import { PasswordSentComponent } from './components/password-sent/password-sent.
 import { ChatComponent } from './components/chat/chat.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllChatsComponent } from './components/all-chats/all-chats.component';
-import { SpecificChatComponent } from './components/specific-chat/specific-chat.component';
 import { AllMessagesComponent } from './components/chat/all-messages/all-messages.component';
 import { SpecificMessageComponent } from './components/chat/specific-message/specific-message.component';
-import { ViewChatsComponent } from './components/chat/view-chats/view-chats.component';
 import { OrderWrapperComponent } from './components/order-wrapper/order-wrapper.component';
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
 import { MembersSettingsComponent } from './components/members-settings/members-settings.component';
@@ -55,6 +53,8 @@ import { EditCatDialogComponent } from './components/edit-cat-dialog/edit-cat-di
 import { ClientChatComponent } from './components/client-chat/client-chat.component';
 import { SpecificClientChatComponent } from './components/specific-client-chat/specific-client-chat.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { AllOwnersOrdersComponent } from './components/all-owners-orders/all-owners-orders.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 declare var require: any;
 @NgModule({
@@ -77,10 +77,8 @@ declare var require: any;
     PasswordSentComponent,
     ChatComponent,
     AllChatsComponent,
-    SpecificChatComponent,
     AllMessagesComponent,
     SpecificMessageComponent,
-    ViewChatsComponent,
     OrderWrapperComponent,
     AdminSettingsComponent,
     MembersSettingsComponent,
@@ -99,6 +97,7 @@ declare var require: any;
     ClientChatComponent,
     SpecificClientChatComponent,
     SnackbarComponent,
+    AllOwnersOrdersComponent,
 
 
   ],
@@ -107,7 +106,6 @@ declare var require: any;
     ViewProductDialogComponent
   ],
   imports: [
- 
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -119,10 +117,7 @@ declare var require: any;
     ChartModule.forRoot(require('highcharts')),
   ],
   providers: [
-    ApiService,
-    AuthService,
-    AuthGuardService
-  
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

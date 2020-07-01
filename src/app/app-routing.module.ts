@@ -12,7 +12,6 @@ import { LoginWrapperComponent } from './components/login-wrapper/login-wrapper.
 import { PasswordSentComponent } from './components/password-sent/password-sent.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { ViewChatsComponent } from './components/chat/view-chats/view-chats.component';
 import { AdminSettingsComponent } from './components/admin-settings/admin-settings.component';
 import { SliderSettingsComponent } from './components/slider-settings/slider-settings.component';
 import { UserReviewsComponent } from './components/user-reviews/user-reviews.component';
@@ -22,14 +21,18 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
 import { ClientChatComponent } from './components/client-chat/client-chat.component';
 
 import { AuthGuardService } from './services/auth-guard.service';
+import { AllOwnersOrdersComponent } from './components/all-owners-orders/all-owners-orders.component';
+import { SpecificClientChatComponent } from './components/specific-client-chat/specific-client-chat.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
   { path: '', redirectTo: '/admin', pathMatch: 'full'},
   {path: 'admin', component:  MainComponent},
   {path: 'messages', component:  ChatComponent},
-  {path: 'messages/:id/:name', component:  ClientChatComponent},
-  {path: 'view-chats', component:  ViewChatsComponent},
+  {path: 'messages/:id/:name', component:  ClientChatComponent, children:[
+    {path: ':secondId/:secondName/:roomId', component:  SpecificClientChatComponent},
+
+  ]},
   {path: 'adds', component:  AddsComponent},
   {path: 'clients', component:  ClientsComponent},
   {path: 'add-category', component:  AddCategoryComponent},
@@ -39,10 +42,11 @@ const routes: Routes = [
   {path: 'settings/:type', component:  AdminSettingsComponent},
   {path: 'settings/:type', component: AdminSettingsComponent},
   
-  {path: 'blocked-orders', component:  BlockedOrdersComponent},
+  {path: 'recieved_orders', component:  BlockedOrdersComponent},
+  {path: 'owner_orders/:id/:name', component:  AllOwnersOrdersComponent},
   {path: 'accepted-orders', component:  AcceptedOrdersComponent},
   {path: 'last-users', component:  LastedUsersComponent},
-  {path: 'reviews/:type', component:  UserReviewsComponent},
+  {path: 'reviews', component:  UserReviewsComponent},
   {path: 'products/:cat_id', component:  ProductsComponent},
   
 ]},
@@ -50,7 +54,10 @@ const routes: Routes = [
   {path: '', component: LoginComponent },
   {path: 'forget-password', component:  ForgetPasswordComponent},
   {path: 'password-sent', component:  PasswordSentComponent},
-  ]}
+    
+]},
+{path: '**', redirectTo: ''},
+
 ];
 
 @NgModule({

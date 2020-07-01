@@ -7,21 +7,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user-reviews.component.scss']
 })
 export class UserReviewsComponent implements OnInit {
-  type;
-  product: boolean = false;
 
   constructor(private route : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getPageType();
   }
 
-  getPageType(){
-    this.route.paramMap
-      .subscribe(
-        res=>{
-          this.type = res.get('type');
-        }
-      )
-  }
 }

@@ -24,6 +24,7 @@ export const getAllAcceptedPostesUrl = "https://rentage.clicktopass.com/api/dash
 export const getSpecificPostesUrl = "https://rentage.clicktopass.com/api/mobile/specific_post/";
 export const getAllNewPostesUrl = "https://rentage.clicktopass.com/api/dashboard/all_new_posts?page=";
 export const getAllCatPostesUrl = "https://rentage.clicktopass.com/api/mobile/category_posts_paginate/";
+export const getAllPostsForOwnersUrl = "https://rentage.clicktopass.com/api/mobile/all_orders_for_owner/";
 
 // all post 
 export const addSliderUrl = "https://rentage.clicktopass.com/api/dashboard/add_slider";

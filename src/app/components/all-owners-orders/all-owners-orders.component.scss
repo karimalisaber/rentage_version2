@@ -1,0 +1,30 @@
+@import "variables";
+
+.name{
+    font-size: 2rem;
+}
+
+.date br{
+    margin-bottom: 5px;
+}
+
+// order box style in scss
+.right-wrapper{
+    position: relative;
+    .status{
+        position: absolute;
+        z-index: 1000;
+        left: 30px;
+        // width: 150px;
+        color:$mainColor;
+        .custom-control-input{
+            // width: 150px;
+        }
+    }
+
+}
+
+
+.main-wrapper{
+    
+}

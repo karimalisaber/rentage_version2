@@ -22,10 +22,10 @@
                     <img class="user-img" src="assets/images/user.png" alt="">
                     <span class="user-name mr-10"> {{currentUser}} </span>
                 </div>
-
-                <a *ngFor="let user of filteredUsers" (click)="getSpecificChat(user)" class="pv-20 user row">
+                <!-- (click)="getSpecificChat(user)" -->
+                <a *ngFor="let user of filteredUsers" routerLinkActive="active" [routerLink]="['/messages',currentUserId ,currentUser, user.id, user.name, user.chatRoomId ]" class="pv-20 user row">
                     <div class="col text-right">
-                        <span [ngClass]="{'active': user === specificUserData }" class="user-name mr-10"> {{user.name}}
+                        <span class="user-name mr-10"> {{user.name}}
                         </span>
                     </div>
 
@@ -42,14 +42,17 @@
             </div>
             <!-- end users section -->
 
+
             <mat-spinner *ngIf="loading"></mat-spinner>
         </div>
     </div>
-
+    <!-- *ngIf="specificChat" -->
     <!-- start specific-message section -->
-    <div *ngIf="specificChat" class="col-md-9 text-right">
-        <app-specific-client-chat [isLoading]="isLoading" [chatData]="chatData"
-            [firstUserName]="currentUser" [firstUserId]="currentUserId" [secondUser]="specificUserData"></app-specific-client-chat>
+    <div  class="col-md-9 text-right">
+        <!-- <app-specific-client-chat [isLoading]="isLoading" [chatData]="chatData"
+            [firstUserName]="currentUser" [firstUserId]="currentUserId" [secondUser]="specificUserData"></app-specific-client-chat> -->
         <!-- end specific-message section -->
+        
+        <router-outlet> </router-outlet>
     </div>
 </section>

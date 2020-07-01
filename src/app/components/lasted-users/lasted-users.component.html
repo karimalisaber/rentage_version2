@@ -7,29 +7,25 @@
     </form>
 </div>
 
-<div *ngFor="let user of filteredUsers" class="user-wrapper custom-shadow row text-center pv-20 mb-40">
-    <div class="col-md-2">
-        <p>رقم </p>
-        <p>{{user?.phone}}</p>
-    </div>
-    <div class="col-md-3">
-        <p>الاسم</p>
-        <p>{{user?.name}}</p>
-    </div>
-    <div class="col-md-4">
-        <p>البريد الالكتروني</p>
-        <p>{{user?.email}}</p>
-    </div>
-    <div class="col-md-3">
-        <p>تاريخ</p>
-        <p>{{user?.created_at | date }}</p>
-    </div>
-
-    <div class="col-md-1 text-left">
-        <!-- <i class="fas fa-trash-alt"></i> -->
-    </div>
+<div *ngIf="!isLoading">
+    <section *ngFor="let user of filteredUsers"  class="client-wrapper">
+        <div class="user-header text-center row no-gutters">
+            <h3 class="header mb-0 text-right col-md-3 pr-50">الهاتف</h3>
+            <h3 class="header mb-0 col-md-3">الاسم </h3>
+            <h3 class="header mb-0 col-md-3">البريد الالكتروني</h3>
+            <h3 class="header mb-0 col-md-3">التاريخ</h3>
+        </div>
+        
+        <div class="details row no-gutters text-center">
+            <h4 class="col-md-3 mb-0 text-right pr-50"> <span class="item font-weight-lighter p-0">{{user?.phone}}</span> </h4>
+            <h4  class="col-md-3 mb-0 text-center"> <span class="item">{{user?.name}} </span> </h4>
+            <h4  class="col-md-3 mb-0 text-center"> <span class="item">{{user?.email}}</span> </h4>
+            <h4  class="col-md-3 mb-0 text-center"> <span class="item">{{user?.created_at | date}}</span> </h4>
+    
+            
+        </div>    
+    </section>
 </div>
-
 
 <div class="mt-100 d-flex justify-content-center" >
     <mat-spinner *ngIf="isLoading"></mat-spinner>
