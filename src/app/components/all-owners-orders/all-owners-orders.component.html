@@ -1,4 +1,57 @@
-<h1 class="text-right name mb-40">كل الطلبات المرسلة إلى <mark> {{userName}}</mark> </h1>
+<h1 class="text-right name mb-40"> الطلبات المرسلة إلى <mark> {{userName}}</mark> </h1>
+
+<section class="main-shadow post-wrapper mb-70">
+    <div class="user d-flex justify-content-center">
+        <i class="rounded-circle ml-10 far fa-user p-10"></i>
+        <div class="data m-0">
+            <h2 class="m-0 p-0">  محخمد أحمد</h2>
+            <h3 class="m-0">karim@gmail.com</h3>
+            <h3 class="m-0"> 0516101540</h3>
+        </div>
+    </div>
+
+    <button class="btn delete">
+        <i class="fas fa-trash-alt"></i> 
+    </button>
+
+    <div class="text-right post-data row pt-60 pb-20">
+        <div class="col-md-4 text-right pr-40 d-flex">
+            <div class="img-wrapper">
+                <img class="img-fluid post-img" src="assets/images/karim.jpg" alt="">
+            
+                <button class="d-block btn">
+                    <div class="d-inline fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+            
+                    <div class="d-inline un-fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </button>
+            </div>
+
+            <h3 class="overflow-hidden text-center pr-30 font-weight-normal">laptop lenovo x 5 z m p of fdasj;dsaljf</h3>
+        </div>
+        <div class="col-md-3 text-right pr-80">
+            <h3 class="second-title m-0 pb-10">السعر :  <span class="red-color">10</span></h3>
+            <h3 class="second-title m-0 pb-10">الكمية  :  <span> جديدة</span></h3>
+            <h3 class="second-title m-0 pb-10">الحالة :  <span>مستعملة</span></h3>
+        </div>
+        <div class="col-md-2 text-right">
+            <h3 class="second-title m-0 pb-10">التأمين :  <span class="red-color">10</span></h3>
+            <h3 class="second-title m-0 pb-10">رقم الطلب  :  <span> جديدة</span></h3>
+        </div>
+
+        <div class="col-md-3 text-right">
+            <h3 class="second-title date m-0 pb-10 text-success"><i class="fas fa-calendar-alt"></i>  تاريخ بدء الحجز :  <span class="date text-success">10/1212/021</span></h3>
+            <h3 class="second-title date m-0 pb-10 red-color "> <i class="fas fa-calendar-alt"></i> تاريخ انتهاء الحجز :  <span class="date red-color">20/10/2010</span></h3>
+            <h3 class="second-title date m-0 pb-10"> <i class="hidden fas fa-calendar-alt"></i> حالة الطلب :  <span class="text-success date">20/10/2010</span></h3>
+        </div>
+    </div>
+</section>
 
 
 <div *ngFor = "let post of posts" class="main-wrapper mb-20">

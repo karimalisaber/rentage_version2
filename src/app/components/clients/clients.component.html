@@ -30,10 +30,11 @@
         
         <div class="details row no-gutters text-center">
             <h4 class="col-md-2 mb-0 text-right pr-50"> <span class="item font-weight-lighter p-0">{{client.name}}</span> </h4>
-            <a routerLink="/" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_orders_count}} </span> </a>
-            <a [routerLink]="['/owner_orders', client.id, client.name]" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_posts_count}}</span> </a>
-            <a [routerLink]="['/messages', client.id, client.name]" class="col-md-2 mb-0 text-center"> <span class="item click  ">15</span> </a>
-            <h4 class="col-md-2 mb-0 text-center">
+            <a [routerLink]="['/owner_orders', client.id, client.name]"  class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_posts_count}} </span> </a>
+            <a routerLink="/" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_orders_count}}</span> </a>
+            <a [routerLink]="['/messages', client.id, client.name]" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client?.chats_count}}</span> </a>
+            <h4 *ngIf="client.rate > 0"  class="col-md-2 mb-0 text-center">
+            
             <button class="btn">
                 <div class="d-inline fill-starts">
                     <i class="fas fa-star"></i>
@@ -46,9 +47,14 @@
                     <i class="fas fa-star"></i>
                 </div>
         
-                </button>
+            </button>
+            
             </h4>
         
+            <h2 class="col-md-2 mb-0 text-center">
+                لا يوجد تقييم بعد    
+            </h2>
+
             <h4 class="col-md-2 text-center mb-0 pl-50"> <span class="item date">{{client.created_at | date}}</span> </h4>
             
             <button (click)="deleteUserAlert(client.id)" class="btn delete">

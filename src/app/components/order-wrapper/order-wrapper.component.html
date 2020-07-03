@@ -1,18 +1,71 @@
-<div *ngIf="post" class="text-right order-wrapper custom-shadow m-20 p-20 mb-20" >
+
+<section *ngIf="post" class="main-shadow post-wrapper mb-70">
+    <!-- <div class="user d-flex justify-content-center">
+        <i class="rounded-circle ml-10 far fa-user p-10"></i>
+        <div class="data m-0">
+            <h2 class="m-0 p-0">{{post?.name}}</h2>
+            <h3 class="m-0">{{post?.map}}</h3>
+        </div>
+    </div> -->
+
+    <button (click) ="deleteAlert(post.id)" class="btn delete">
+        <i class="fas fa-trash-alt"></i> 
+    </button>
+
+    <mat-slide-toggle *ngIf="wattingOrders" (change)="acceptPost(post.id)">
+        قبول الطلب
+    </mat-slide-toggle>
+
+    <div class="text-right post-data row pt-60 pb-20">
+        <div class="col-md-4 text-right pr-40 d-flex">
+            <div class="img-wrapper">
+                <img (click)="open(post?.post_imgs)" class="hover img-fluid post-img" [src]="'http://rentage.clicktopass.com/public/posts/' + post.post_imgs[0]?.name" alt="">
+            
+                <div *ngIf="post?.post_status==1 && post?.rate != 0" class="d-block btn">
+                    <div class="d-inline fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+            
+                    <div class="d-inline un-fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-hidden">
+                <h3 class="text-center pr-30 font-weight-normal">{{post?.name}}</h3>
+                <h5 class="text-right pr-30 font-weight-normal">{{post?.des}}</h5>
+            </div>
+        </div>
+        <div class="col-md-3 text-right pr-80">
+            <h3 class="second-title m-0 pb-10">السعر :  <span class="red-color">{{post?.price}}</span></h3>
+            <h3 class="second-title m-0 pb-10">الكمية  :  <span> {{post?.count}}</span></h3>
+            <h3 *ngIf="post.status == 1" class="second-title m-0 pb-10">الحالة :  <span>مستعملة</span></h3>
+            <h3 *ngIf="post.status == 0" class="second-title m-0 pb-10">الحالة :  <span>جديدة</span></h3>
+        </div>
+        <div class="col-md-2 text-right">
+            <h3 class="second-title m-0 pb-10">الموقع :  <span class="red-color">{{post.map}}</span></h3>
+            <h3 class="second-title m-0 pb-10">التأمين  :  <span>{{post?.insurance_amount}}</span></h3>
+        </div>
+
+        <div class="col-md-3 text-right">
+            <h3 class="second-title date m-0 pb-10 text-success"><i class="fas fa-calendar-alt"></i>  تاريخ بدء الحجز :  <span class="date text-success">{{post?.start_date}}</span></h3>
+            <h3 class="second-title date m-0 pb-10 red-color "> <i class="fas fa-calendar-alt"></i> تاريخ انتهاء الحجز :  <span class="date red-color">{{post?.end_date}}</span></h3>
+        </div>
+    </div>
+</section>
+
+<!-- <div *ngIf="post" class="text-right order-wrapper custom-shadow m-20 p-20 mb-20" >
     <div class="row client pr-20 general-look">
         <img class="small-img" src="assets/images/user.png" alt="">
  
         <div class="col-md-9 row right-wrapper">
-            <!-- <div class="toggle custom-control custom-switch">
-                <input (change)="log(post.id)" [name]="post.id" type="checkbox" class="custom-control-input" >
-                <label class="custom-control-label" for="customSwitch1"></label>
-            </div> -->
-
-            
-            <!-- <mat-slide-toggle (change)="log(post.id)"></mat-slide-toggle> -->
             <mat-slide-toggle *ngIf="wattingOrders" (change)="acceptPost(post.id)">
-          قبول الطلب
-        </mat-slide-toggle>
+                قبول الطلب
+            </mat-slide-toggle>
 
             <div class="col mb-20">
                 <p class="name">{{post?.name}}</p>
@@ -49,7 +102,6 @@
 
          <div class="col-md-3 row">        
             <div (click)="open(post?.post_imgs)" class="col-md-10 hover left-img" [style.background] ="'url(' + 'http://rentage.clicktopass.com/public/posts/' + post.post_imgs[0]?.name + ')'" >
-                <!-- <img class="img-fluid left-img" src="assets/images/karim.jpg" alt=""> -->
             </div>
 
             <div class="col-md-2">
@@ -57,4 +109,4 @@
             </div>
          </div>
     </div>
-</div>
+</div> -->

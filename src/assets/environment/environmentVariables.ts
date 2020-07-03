@@ -23,8 +23,9 @@ export const getSpecificRoomUrl = "https://rentage.clicktopass.com/api/chat/spec
 export const getAllAcceptedPostesUrl = "https://rentage.clicktopass.com/api/dashboard/old_posts_data_paginate?page=";
 export const getSpecificPostesUrl = "https://rentage.clicktopass.com/api/mobile/specific_post/";
 export const getAllNewPostesUrl = "https://rentage.clicktopass.com/api/dashboard/all_new_posts?page=";
-export const getAllCatPostesUrl = "https://rentage.clicktopass.com/api/mobile/category_posts_paginate/";
+export const getAllCatPostesUrl = "https://rentage.clicktopass.com/api/dashboard/dashboard_category_posts_data_paginate/";
 export const getAllPostsForOwnersUrl = "https://rentage.clicktopass.com/api/mobile/all_orders_for_owner/";
+export const getPostsSearchUrl = "https://rentage.clicktopass.com/api/search/search_dashboard";
 
 // all post 
 export const addSliderUrl = "https://rentage.clicktopass.com/api/dashboard/add_slider";

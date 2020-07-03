@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewProductDialogComponent } from '../view-product-dialog/view-product-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -18,6 +17,8 @@ export class BlockedOrdersComponent implements OnInit {
     lastPage: 1,
     pagesNumber : []
   }
+
+
 
   constructor(private api: ApiService, private dialog: MatDialog, private router: Router, private route: ActivatedRoute) { }
 
@@ -87,4 +88,22 @@ export class BlockedOrdersComponent implements OnInit {
       this.getPosts();
     }  
   }
+
+  search(word){
+    this.pages.current_page = 1;
+    this.isLoading = true;
+    this.api.getPostsSearch(word, 'old',this.pages.current_page )
+    .subscribe(res=>{
+      this.posts = res.data;
+      this.pages.current_page = res.current_page;
+      this.pages.lastPage = res.last_page;
+      this.pages.pagesNumber = Array(this.pages.lastPage);
+      window.scroll(0,0);    
+    }
+    ,()=>{},
+
+    ()=>{this.isLoading = false}
+    );
+  }
+  
 }

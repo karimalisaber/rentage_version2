@@ -72,6 +72,14 @@ a{
     border-radius: 5px;
 }
 
+
+.light-shadow{
+    box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+}
+.main-shadow{
+    box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.12);
+}
+
 .shadow{
     box-shadow: .2px .2px 2px  0px #000 !important;
     // background: $itemBackground;
@@ -737,4 +745,9 @@ mat-progress-spinner circle, .mat-spinner circle {
             margin-left: 5px;
         }
     }
+}
+
+.mat-slide-toggle-content {
+    font-size: 1.3rem;
+    font-weight: normal;
 }

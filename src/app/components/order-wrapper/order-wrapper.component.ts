@@ -14,21 +14,6 @@ export class OrderWrapperComponent implements OnInit {
   @Input('post') post;
   @Input('wattingOrders') wattingOrders;
   url = 'http://rentage.clicktopass.com/public/posts/';  
-  // constructor(private _lightbox: Lightbox) {
-  //   for (let i = 1; i <= 4; i++) {
-  //     const src = 'assets/images/' + i + '.jpg';
-  //     // const caption = 'Image ' + i + ' caption here';
-  //     const thumb = 'assets/images/' + i + '.jpg';
-      
-  //     const album = {
-  //        src: src,
-  //        caption: '',
-  //        thumb: thumb
-  //     };
- 
-  //     this._albums.push(album);
-  //   }
-  // }
  
 
 
@@ -62,8 +47,9 @@ export class OrderWrapperComponent implements OnInit {
 
   open(post){
     let postsImgs =[];
-    post.filter(res=> postsImgs.push({'src': this.url + res.name}))
-    
-    this._lightbox.open(postsImgs, 1);   
+    post.filter(res=> postsImgs.push({'src': this.url + res.name}));
+      // console.log(postsImgs);
+      
+    this._lightbox.open(postsImgs, 0);
   }
 }

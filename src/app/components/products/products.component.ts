@@ -108,6 +108,24 @@ export class ProductsComponent implements OnInit , OnDestroy {
 
   }
 
+
+  search(word){
+    this.pages.current_page = 1;
+    this.isLoading = true;
+    this.api.getPostsSearch(word, 'both',this.pages.current_page )
+    .subscribe(res=>{
+      this.posts = res.data;
+      this.pages.current_page = res.current_page;
+      this.pages.lastPage = res.last_page;
+      this.pages.pagesNumber = Array(this.pages.lastPage);
+      window.scroll(0,0);    
+    }
+    ,()=>{},
+
+    ()=>{this.isLoading = false}
+    );
+  }
+
   
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.

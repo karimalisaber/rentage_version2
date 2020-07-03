@@ -93,82 +93,22 @@ export class AcceptedOrdersComponent implements OnInit {
     }  
   }
 
-
-
-
-
-
-
-
-
-  // posts;
-  // admin: boolean =false;
-  // viewPassword:boolean = false; //for the small icon show password
-  // pages ={
-  //   currentPage : 1,
-  //   lastPage: 1,
-  //   pagesNumber : []
-  // }
   
-  // constructor(private api: ApiService, private dialog: MatDialog) { }
+  search(word){
+    this.pages.current_page = 1;
+    this.isLoading = true;
+    this.api.getPostsSearch(word, 'new',this.pages.current_page )
+    .subscribe(res=>{
+      this.posts = res.data;
+      this.pages.current_page = res.current_page;
+      this.pages.lastPage = res.last_page;
+      this.pages.pagesNumber = Array(this.pages.lastPage);
+      window.scroll(0,0);    
+    }
+    ,()=>{},
 
-  // ngOnInit(): void {
-  //   this.getPosts();
-  // }
-
-  // private getPosts(){
-  //   this.api.getAcceptedPosts(this.pages.currentPage)
-  //   .subscribe(res=>{
-  //     this.posts = res.data;
-  //     this.pages.currentPage = res.current_page;
-  //     this.pages.lastPage = res.last_page;
-  //     this.pages.pagesNumber = Array(this.pages.lastPage);
-  //     window.scroll(0,0);
-  // });
-  // }
-  // private toggleClasses(event?){
-  //   if(!event){      
-  //     let nextItem = document.querySelector('#item-' + this.pages.currentPage);
-  //     document.querySelector('.page-link.active')?.classList.remove('active');
-
-  //     nextItem?.classList.add("active");
-  //   }
-
-  //   else{
-  //     document.querySelector('.page-link.active')?.classList.remove('active');
-  //     event.target?.classList.add('active');
-  //   }
-  // }
-
-  // otherPosts(event,pageNumber){
-  //   if(pageNumber !== this.pages.currentPage){
-  //     this.pages.currentPage = pageNumber;
-      
-  //     this.getPosts();
+    ()=>{this.isLoading = false}
+    );
+  }
   
-  //     this.toggleClasses(event);
-  //   }  
-  // }
-  
-  // nextPosts(){
-  //   if (this.pages.currentPage < this.pages.lastPage){
-  //     this.pages.currentPage ++;
-     
-  //     this.getPosts();
-
-  //     this.toggleClasses();
-  //   }    
-  // }
-
-  
-  // prevPosts(){
-  //   if (this.pages.currentPage > 1){
-  //     this.pages.currentPage --;
-     
-  //     this.getPosts();
-
-  //     this.toggleClasses();
-  //   }    
-  // }
-
 }

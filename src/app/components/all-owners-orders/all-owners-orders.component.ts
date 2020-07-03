@@ -29,9 +29,9 @@ isLoading: boolean = false;
     this.isLoading = true;
     this.api.getAllPostsForOwner(this.userId)
       .subscribe(
-        res=> this.posts = res
-        // res=> console.log(res)
-        
+        // res=> this.posts = res
+        res=> console.log(res)
+
       ),
       ()=>{},
       ()=> this.isLoading = false

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map, take} from "rxjs/operators";
-import {getAllPostsForOwnersUrl,  getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl, getAllAdminsUrl, deleteUserUrl, postUserUrl } from 'src/assets/environment/environmentVariables';
+import {getAllPostsForOwnersUrl,  getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl, getAllAdminsUrl, deleteUserUrl, postUserUrl, getPostsSearchUrl } from 'src/assets/environment/environmentVariables';
 import { Categories } from '../interfaces/categories';
 import { Slider } from '../interfaces/slider';
   
@@ -82,6 +82,10 @@ export class ApiService {
     return this.http.get(getAllPostsForOwnersUrl + id).pipe(map((res: any)=>res.data), take(1));
   }
   
+  getPostsSearch(name, type, page){
+    return this.http.post(getPostsSearchUrl, {name, type, page}).pipe(map((res: any)=>res.data), take(1));
+  }
+
   // user list 
   getUserList(){
     return this.http.get(getUserListUrl).pipe(map((res: any)=>res.data), take(1));

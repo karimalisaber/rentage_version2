@@ -4,7 +4,12 @@
   </div>
 </div> -->
 
-<app-search></app-search>
+<div class="main-search">
+  <form (ngSubmit)="search(searchWord.value.trim())" action="">
+    <input #searchWord type="search" name="" id="" placeholder="بحث">
+    <input class="btn-search" type="submit" value="بحث">
+  </form>
+</div>
 
 <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
 

@@ -14,3 +14,133 @@
     }
 
 }
+
+mat-slide-toggle{
+    position: absolute;
+    z-index: 1000;
+    left: 30px;
+    // top: 20px;
+    width: 150px;
+    bottom: 35px;
+
+    color:$mainColor;
+    
+}
+
+
+.red-color{
+    color: #F85353 !important;
+}
+
+.fa-calendar-alt{
+    padding-left: 6px;
+    // color: #797979
+    opacity: .9;
+    color: #000;
+}
+
+.second-title{
+    font-size: 1.2rem !important;
+
+    span{
+        margin-right: 15px;
+        color: #797979;
+        font-weight: 400
+    }
+
+    .date{
+        font-size: .9rem;
+        margin-right: 5px;
+    }
+
+    &.date{
+        font-size: 1rem !important;
+        font-weight: 600;
+    }
+}
+
+.post-wrapper{
+    border: 1px solid $lightBorder;
+    border-radius: 15px;
+    position: relative;
+
+    
+    .delete{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-50% , -50%);
+        position: absolute;
+        background-color: #F85353;
+        width: 40px;
+        border-radius: 15px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1515;    
+        .fas{
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+
+    .user{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        // transform: translateY(-50%);
+        background-color:#fff;
+        z-index: 145485;
+        border: 1px solid  #797979;
+        border-radius: 15px;
+        width: 200px;
+        text-align: center;
+        padding: 12px;
+
+        .fa-user{
+            border: 1px solid  #797979;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2{
+            line-height: 1.1rem;
+        }
+
+        h3{
+            font-size: .8rem;
+            line-height: 1.3rem;        
+            color: #797979;
+        }
+    }
+
+    .post-data{
+
+        .post-img{
+            width: 140px;
+            max-width: 140px;
+            min-width: 140px;
+            height: 110px;
+            max-height: 110px;
+            min-height: 110px;
+        }
+         
+        .fa-star{
+            font-size: .8rem;
+            margin-left: 5px;
+        }
+
+        h3{
+            font-size: 1.2rem ;
+        }
+    }
+}
