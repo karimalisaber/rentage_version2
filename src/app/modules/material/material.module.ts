@@ -7,19 +7,23 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { EditCatDialogComponent } from 'src/app/components/edit-cat-dialog/edit-cat-dialog.component';
 import { SnackbarComponent } from './../../components/snackbar/snackbar.component';
+import { AddSubCatComponent } from 'src/app/add-sub-cat/add-sub-cat.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
-const MaterialComponents =[
+const MaterialModules =[
   MatDialogModule,
   MatMenuModule,
   MatSnackBarModule,
   MatProgressSpinnerModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatButtonToggleModule
 ]
 
 export const materialEntryComponents = [
   DeleteDialogComponentComponent,
   EditCatDialogComponent,
-  SnackbarComponent
+  SnackbarComponent,
+  AddSubCatComponent
 ];
 
 
@@ -27,10 +31,10 @@ export const materialEntryComponents = [
   declarations: [
   ],
 
-  imports: [ MaterialComponents ],
+  imports: [ MaterialModules ],
 
   exports: [ 
-    MaterialComponents,
+    MaterialModules,
   ],
 })
 export class MaterialModule { }

@@ -14,7 +14,7 @@ export class AssetsService {
   deleteAlert(id) {
     return  this.dialog.open(DeleteDialogComponentComponent,{
       panelClass: 'confirm-dialog-container',
-      position: {top: '20px'}
+      position: {top: '20px'},
     })
       .afterClosed().pipe(map(res=>{
         if(res === "yes") return true;
@@ -33,8 +33,5 @@ export class AssetsService {
 
     errorMessage(){
       return this.snack.open("لم تتم العملية حاول مرة أخرى", `x` , {duration: 1500});
-    }
- 
-
-    
+    }    
 }

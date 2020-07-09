@@ -41,6 +41,11 @@ export class AcceptedOrdersComponent implements OnInit {
     this.isLoading = true;
     this.api.getAcceptedPosts(this.pages.current_page)
     .subscribe(res=>{
+      res.data.filter(res=> { // map result
+        res.rate = Array(Math.round(res.rate)).fill('').map((res, i)=> res = i+1);
+        res.emptyRate = Array( 5 - Math.round(res.rate)).fill('').map((res, i)=> res = i+1);
+      });
+    
       this.posts = res.data;
       this.pages.current_page = res.current_page;
       this.pages.lastPage = res.last_page;

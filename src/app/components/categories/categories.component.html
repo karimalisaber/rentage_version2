@@ -50,6 +50,7 @@
     <tr>
         <th>الصورة</th>
         <th class="pr-20">القسم</th>
+        <th>القسم الفرعي</th>
     </tr>
     <tr style="height: 200px;" *ngFor="let category of categories">
         <td class="p-0 img-row" style="width: 250px;" [style.background]="'url(' + 'https://rentage.clicktopass.com/public/category/' + category.img + ')'"> 
@@ -58,21 +59,46 @@
         
         <td>
           <div class="row cat-wrapper">
-              <div class="p-0 col-md-9">
-                <input (keyup.enter)="updateItem($event.target.value, category.id)" class="mr-0 pr-20 d-block title w-100" [disabled] = "editCategoryDisabled"
-                  type="text" [value]="category.name" [id]="'item-' + category.id">
+              <div class="p-0 col-md-8">
+                <input (keyup.enter)="updateCat($event.target.value, category.id)" class="mr-0 pr-20 d-block title w-100" [disabled] = "editCategoryDisabled"
+                  type="text" [value]="category.name" [id]="'cat-' + category.id">
               </div>
       
               <div class="icons-wrapper col row no-gutters">
                   <button class="btn trash ml-10 mr-auto">
-                      <i (click)="deleteAlert(category.id)" class="fas fa-trash"></i>
+                      <i (click)="deleteAlert(category.id, 'cat')" class="fas fa-trash"></i>
                   </button>
                   
-                  <button (click) =enableUpdateItem(category.id) class="btn settings">
+                  <button (click) ="enableItemUpdate(category.id, 'cat-')" class="btn settings">
                       <i class="fas fa-cog"></i>
                   </button>
               </div>
             </div>    
         </td>
+
+        <!-- sub cat row -->
+        <td>
+            <div *ngFor="let subCat of category.sub_categories"  class="row cat-wrapper">
+                <div class="p-0 col-md-8">
+                  <input (keyup.enter)="updateSubCat($event.target.value, category.id, subCat.id)" class="mr-0 pr-20 d-block title w-100" [disabled] = "editCategoryDisabled"
+                    type="text" [value]="subCat.name" [id]="'subCat-' + subCat.id">
+                </div>
+        
+                <div class="icons-wrapper col row no-gutters">
+                    <button class="btn trash ml-10 mr-auto">
+                        <i (click)="deleteAlert(subCat.id, 'subCat')" class="fas fa-trash"></i>
+                    </button>
+                    
+                    <button (click) = "enableItemUpdate(subCat.id, 'subCat-')" class="btn settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+
+                </div>
+              </div>  
+
+              <button (click)="addSubCat(category.id)" class="btn plus-btn btn-primary rounded-circle">
+                  <i class="fas fa-plus"></i>
+              </button>
+          </td>
     </tr>
 </table>

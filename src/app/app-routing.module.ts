@@ -23,41 +23,42 @@ import { ClientChatComponent } from './components/client-chat/client-chat.compon
 import { AuthGuardService } from './services/auth-guard.service';
 import { AllOwnersOrdersComponent } from './components/all-owners-orders/all-owners-orders.component';
 import { SpecificClientChatComponent } from './components/specific-client-chat/specific-client-chat.component';
+import { AllClientsOrdersComponent } from './components/all-clients-orders/all-clients-orders.component';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent, children: [
-  { path: '', redirectTo: '/admin', pathMatch: 'full'},
-  {path: 'admin', component:  MainComponent},
-  {path: 'messages', component:  ChatComponent},
-  {path: 'messages/:id/:name', component:  ClientChatComponent, children:[
-    {path: ':secondId/:secondName/:roomId', component:  SpecificClientChatComponent},
+  {path: '', component: DashboardComponent, canActivate:[AuthGuardService], children: [
+    { path: '', redirectTo: '/admin', pathMatch: 'full'},
+    {path: 'admin', component:  MainComponent},
+    {path: 'messages', component:  ChatComponent},
+    {path: 'messages/:id/:name', component:  ClientChatComponent, children:[
+      {path: ':secondId/:secondName/:roomId', component:  SpecificClientChatComponent},
 
-  ]},
-  {path: 'adds', component:  AddsComponent},
-  {path: 'clients', component:  ClientsComponent},
-  {path: 'add-category', component:  AddCategoryComponent},
+    ]},
+    {path: 'adds', component:  AddsComponent},
+    {path: 'clients', component:  ClientsComponent},
+    {path: 'add-category', component:  AddCategoryComponent},
 
-  {path: 'settings/sliders', component: SliderSettingsComponent},
-  {path: 'settings/categories', component: CategoriesComponent},
-  {path: 'settings/:type', component:  AdminSettingsComponent},
-  {path: 'settings/:type', component: AdminSettingsComponent},
-  
-  {path: 'recieved_orders', component:  BlockedOrdersComponent},
-  {path: 'owner_orders/:id/:name', component:  AllOwnersOrdersComponent},
-  {path: 'accepted-orders', component:  AcceptedOrdersComponent},
-  {path: 'last-users', component:  LastedUsersComponent},
-  {path: 'reviews', component:  UserReviewsComponent},
-  {path: 'products/:cat_id', component:  ProductsComponent},
-  
+    {path: 'settings/sliders', component: SliderSettingsComponent},
+    {path: 'settings/categories', component: CategoriesComponent},
+    {path: 'settings/:type', component:  AdminSettingsComponent},
+    {path: 'settings/:type', component: AdminSettingsComponent},
+    
+    {path: 'recieved_orders', component:  BlockedOrdersComponent},
+    {path: 'owner_orders/:id/:name', component:  AllOwnersOrdersComponent},
+    {path: 'clients_orders/:id/:name', component:  AllClientsOrdersComponent},
+    {path: 'accepted-orders', component:  AcceptedOrdersComponent},
+    {path: 'last-users', component:  LastedUsersComponent},
+    {path: 'reviews', component:  UserReviewsComponent},
+    {path: 'products/:cat_id', component:  ProductsComponent},
+    
 ]},
+
   {path: 'login', component:  LoginWrapperComponent, children: [
   {path: '', component: LoginComponent },
   {path: 'forget-password', component:  ForgetPasswordComponent},
-  {path: 'password-sent', component:  PasswordSentComponent},
-    
+  {path: 'password-sent', component:  PasswordSentComponent}, 
 ]},
 {path: '**', redirectTo: ''},
-
 ];
 
 @NgModule({

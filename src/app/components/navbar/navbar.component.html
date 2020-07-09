@@ -46,24 +46,39 @@
                            <i class="fas fa-chevron-down"></i> الأقسام
                         </button>
                        
-                    <!-- <mat-menu #catMenu="matMenu">
-                        <a class="mat-item padding-large" routerLink="/products/servicesservice" mat-menu-item>الكترونيات</a>
-                        <a class="mat-item padding-large" routerLink="/products/servicesservice" mat-menu-item>ملابس</a>
-                        <a class="mat-item padding-large" routerLink="/products/servicesservice" mat-menu-item>اكسسوارات</a>
-                        <a class="mat-item padding-large" routerLink="/products/servicesservice" mat-menu-item>حفلات</a>
-                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>ألعاب</a>
-                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>رياضة</a>
-                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>رحلات</a>
-                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>كتب</a>
-                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>أدوات</a>
-                        <a class="mat-item padding-large" routerLink="/products/clients" mat-menu-item>أخرى</a>
-                    </mat-menu> -->
-                         
                         <mat-menu  #catMenu="matMenu">
-                            <button [routerLink] ="'/products/' + cat.id" *ngFor="let cat of categories$ | async" class="mat-item padding-large pv-0 mv-0" mat-menu-item>
-                                {{cat.name}} 
-                            </button>
+                            <div *ngFor="let cat of categories$ | async" class="">
+                                <div class="">
+                                    <a [routerLink] ="'/products/' + cat.id" mat-flat-button class="mat-item padding-large pv-0 mv-0" mat-menu-item>
+                                        {{cat.name}}
+                                    </a>
+                                </div>
+                               
+                                <!-- <div *ngIf="cat.sub_categories[0]" class="">
+                                    <a mat-flat-button [matMenuTriggerFor]="subCatatMenu"  class="mat-item padding-large pv-0 mv-0" mat-menu-item>
+                                        {{cat.name}}
+                                    </a>
+                                </div> -->
+<!--                              
+                                <div *ngIf="!cat.sub_categories[0]" class="">
+                                    <a mat-flat-button [routerLink] ="'/products/' + cat.id"  class="mat-item padding-large pv-0 mv-0" mat-menu-item>
+                                        {{cat.name}}
+                                    </a>
+                                </div> -->
+                                        
+                                <!-- <mat-menu  #subCatatMenu="matMenu">
+                                    <a [routerLink] ="'/products/' + cat.id" class="mat-item padding-large pv-0 mv-0" mat-menu-item>
+                                        
+                                        عرض الكل
+                                    </a>
+
+                                    <a *ngFor="let subCat of cat.sub_categories" class="mat-item padding-large pv-0 mv-0" mat-menu-item>
+                                        {{cat.name}} 
+                                    </a>
+                                </mat-menu> -->
+                            </div>
                         </mat-menu>
+                        
                         
                     </li>
 

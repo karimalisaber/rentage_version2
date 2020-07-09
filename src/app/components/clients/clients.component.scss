@@ -47,7 +47,39 @@
 
     &.name, &.date{
         font-weight: 550 !important;
-        font-size: 1.7rem !important;
+        font-size: 1.4rem !important;
+    }
+
+        
+    .item{
+        font-weight: bold !important;
+        font-size: .9rem !important;
     }
 }
 
+
+.client-wrapper{
+    position: relative;
+
+    .abs{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color:#fff;
+        z-index: 14;
+        border: 1px solid  #797979;
+        border-radius: 15px;
+        width: 250px;
+        text-align: center;
+        padding: 12px;
+
+        top: 100%;
+    }
+}
+
+.details{
+
+    .item.email{
+        font-size: .9rem !important;
+    }
+}

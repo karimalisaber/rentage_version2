@@ -18,43 +18,45 @@
 </div>
   
 <div *ngIf="!isLoading">
-    <section *ngFor="let client of filteredClients" class="client-wrapper">
+    <section *ngFor="let client of filteredClients" class="mb-80 client-wrapper">
+
+        
+
         <div class="user-header text-center row no-gutters">
-            <h3 class="header mb-0 text-right col-md-2 pr-50">الاسم</h3>
-            <h3 class="header mb-0 col-md-2">عدد الاعلانات </h3>
+            <h3 class="header mb-0  col-md-2 ">الاسم</h3>
+            <h3 class="header mb-0 col-md-2">البريد الالكتروني </h3>
+            <h3 class="header mb-0 col-md-2">الهاتف </h3>
+            <h3 class="header mb-0 col-md-1">عدد الاعلانات </h3>
             <h3 class="header mb-0 col-md-2">عدد الطلبات</h3>
-            <h3 class="header mb-0 col-md-2">الرسائل</h3>
-            <h3 class="header mb-0 col-md-2">التقييم</h3>
+            <h3 class="header mb-0 col-md-1">الرسائل</h3>
+            <!-- <h3 class="header mb-0 col-md-2">التقييم</h3> -->
             <h3 class="header mb-0 col-md-2 pl-50">تاريخ التسجيل</h3>
         </div>
         
         <div class="details row no-gutters text-center">
-            <h4 class="col-md-2 mb-0 text-right pr-50"> <span class="item font-weight-lighter p-0">{{client.name}}</span> </h4>
-            <a [routerLink]="['/owner_orders', client.id, client.name]"  class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_posts_count}} </span> </a>
-            <a routerLink="/" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_orders_count}}</span> </a>
-            <a [routerLink]="['/messages', client.id, client.name]" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client?.chats_count}}</span> </a>
-            <h4 *ngIf="client.rate > 0"  class="col-md-2 mb-0 text-center">
+            <h4 class="col-md-2 mb-0  "> 
+                <span class="item font-weight-lighter p-0">{{client.name}}</span> 
+                
+                <h6 class="mb-0">
+                
+                <button class="btn">
+                    <div *ngIf="client?.rate" class="d-inline fill-starts">
+                        <i *ngFor="let rate of client.rate" class="fas fa-star"></i>
+                    </div>
             
-            <button class="btn">
-                <div class="d-inline fill-starts">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-        
-                <div class="d-inline un-fill-starts">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-        
-            </button>
-            
+                    <div *ngIf="client?.emptyRate" class="d-inline un-fill-starts">
+                        <i *ngFor="let emptyRate of client.emptyRate" class="fas fa-star"></i>
+                    </div>
+                </button>
+                
+                </h6>
             </h4>
-        
-            <h2 class="col-md-2 mb-0 text-center">
-                لا يوجد تقييم بعد    
-            </h2>
-
+            <h3 class="col-md-2 mb-0 "> <span class="item email font-weight-lighter p-0">{{client.email}}</span> </h3>
+            <h3 class="col-md-2 mb-0 "> <span class="item font-weight-lighter p-0">{{client.phone}}</span> </h3>
+            <a [routerLink]="['/owner_orders', client.id, client.name]"  class="col-md-1 mb-0 text-center"> <span class="item click  ">{{client.all_posts_count}} </span> </a>
+            <a [routerLink]="['/clients_orders', client.id, client.name]" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_orders_count}}</span> </a>
+            <a [routerLink]="['/messages', client.id, client.name]" class="col-md-1 mb-0 text-center"> <span class="item click  ">{{client?.chats_count}}</span> </a>
+            
             <h4 class="col-md-2 text-center mb-0 pl-50"> <span class="item date">{{client.created_at | date}}</span> </h4>
             
             <button (click)="deleteUserAlert(client.id)" class="btn delete">

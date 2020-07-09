@@ -1,0 +1,23 @@
+<section class="pv-20 ph-30 cat-form white-background mainshadow black-color text-right">
+    <form #userForm="ngForm" (ngSubmit)="addSubCat(name.value)">
+        <h2 class="brawn-color">اضافة قسم فرعي</h2>
+
+        <div class="form-group">
+          <label class="main-label" for="question"> اسم الفرع <span class="text-danger">*</span> </label>
+          <input 
+            ngModel name="name" #name="ngModel" required minlength="2"
+            type="text" class="form-control" id="name" >
+        
+            <div *ngIf="!name.valid && name.touched" class="" >
+              <div class="alert alert-danger text-right" *ngIf="name.errors.required"> من فضلك أدخل اسم القسم الفرعي</div>
+              <div class="alert alert-danger text-right" *ngIf="name.errors.pattern"> أقل عدد مسموح به هو حرفان </div>
+            </div>
+        </div>
+
+        <div class="action d-inline">
+            <button type="submit" [disabled]="userForm.invalid" class="ph-0 btn btn-primary submit-btn">موافق</button>
+
+            <button mat-dialog-close class="btn btn-danger rounded-0 mh-20"> رجوع</button> 
+        </div>
+      </form>
+</section>

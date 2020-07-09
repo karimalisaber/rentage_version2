@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AssetsService } from 'src/app/services/assets.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditCatDialogComponent } from './../edit-cat-dialog/edit-cat-dialog.component';
+import { AddSubCatComponent } from './../../add-sub-cat/add-sub-cat.component';
 
 @Component({
   selector: 'app-categories',
@@ -35,40 +36,61 @@ export class CategoriesComponent implements OnInit {
       );
   }
   
-  private getUpdateItemId(id){
-    let element = document.getElementById('item-' + id);
+  private getUpdateCatId(id, idPrefix){
+    let element = document.getElementById(idPrefix + id);
    
     this.editCategoryDisabled = !this.editCategoryDisabled;
     return element;
   }
 
-  enableUpdateItem(id){
-    let element =  this.getUpdateItemId(id);
+  enableItemUpdate(catId, idPrefix){
+    let element =  this.getUpdateCatId(catId, idPrefix);
     if (!this.editCategoryDisabled) setTimeout( () =>  element.focus() ,100);
   }
 
-  updateItem(name:string , id:number){
+  updateCat(name:string , id:number){
     let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
     let item = this.categories.filter(res => res.id === id)[0];
     let oldName = this.categories[itemIndex].name;
-    this.categories[itemIndex].name = name;
-   
+    this.categories[itemIndex].name = name; 
     this.editCategoryDisabled = !this.editCategoryDisabled;
-    
+  
     this.apiRequest.updateCategory(id, {name}).subscribe(
       data=> {
+        
         this.assets.addSuccess();
         this.categories.splice(itemIndex, 1, item);
         
       },error => {
+        // console.log(error);
+
         this.snackBar.open('حدثت مشكلة أثناء تعديل القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500})
         this.categories[itemIndex].name = oldName;
       }
     );
   }
 
-  deleteAlert(id){
-    this.assets.deleteAlert(id).subscribe(res=> res? this.deleteCategory(id): false );
+  updateSubCat(name:string , catId:number, subCatId:number){  
+    this.apiRequest.updateSubCategory(subCatId, {name,category_id:catId }).subscribe(
+      data=> 
+         this.assets.addSuccess().afterDismissed().subscribe(res=> { location.reload()})
+       
+      ,error =>
+        this.snackBar.open('حدثت مشكلة أثناء تعديل القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+      
+    );
+  }
+
+  
+  deleteAlert(id , type){
+    this.assets.deleteAlert(id).subscribe(res=>  {
+      if(type ==="cat")
+       return res? this.deleteCategory(id): false
+
+      else if(type ==="subCat")
+       return res? this.deleteSubCategory(id): false
+
+    } );
   }
 
   private deleteCategory(id){
@@ -83,6 +105,20 @@ export class CategoriesComponent implements OnInit {
        () => {
         this.snackBar.open('لم يتم حذف القسم برجاء المحاولة مرة أخرى', `` ,{duration: 1500})
         this.categories.splice(itemIndex, 0, item);
+       }
+    );
+  }
+
+  
+  private deleteSubCategory(id){
+    this.apiRequest.deleteSubCategory(id)
+     .subscribe(
+       res=> {
+         this.assets.deleteSuccess(); 
+         location.reload();
+        },      
+       () => {
+        this.snackBar.open('لم يتم حذف القسم برجاء المحاولة مرة أخرى', `` ,{duration: 1500})
        }
     );
   }
@@ -108,6 +144,14 @@ export class CategoriesComponent implements OnInit {
         this.assets.addSuccess().afterDismissed().subscribe(res=>{location.reload();});
       }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     );
+  }
+ 
+  addSubCat(id){
+      this.dialog.open(AddSubCatComponent,{
+        data: id,
+        width: '40%',
+        height: '300px'
+      });
   }
   
   editImage(cat){

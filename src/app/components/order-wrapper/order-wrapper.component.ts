@@ -48,7 +48,6 @@ export class OrderWrapperComponent implements OnInit {
   open(post){
     let postsImgs =[];
     post.filter(res=> postsImgs.push({'src': this.url + res.name}));
-      // console.log(postsImgs);
       
     this._lightbox.open(postsImgs, 0);
   }

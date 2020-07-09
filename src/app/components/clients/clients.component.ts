@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AssetsService } from './../../services/assets.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-clients',
@@ -29,7 +30,13 @@ export class ClientsComponent implements OnInit {
     this.api.getUserList()
       .subscribe(
         res=>{
-          this.filteredClients = this.clients = res;      
+          
+          res.filter(res=> { // map result
+            res.rate = Array(Math.round(res.rate)).fill('').map((res, i)=> res = i+1);
+            res.emptyRate = Array( 5 - Math.round(res.rate)).fill('').map((res, i)=> res = i+1);
+          });
+        
+          this.filteredClients = this.clients = res;          
         },
         ()=>{},
         ()=> this.isLoading = false 

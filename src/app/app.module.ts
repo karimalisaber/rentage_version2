@@ -55,6 +55,9 @@ import { SpecificClientChatComponent } from './components/specific-client-chat/s
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { AllOwnersOrdersComponent } from './components/all-owners-orders/all-owners-orders.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AddSubCatComponent } from './add-sub-cat/add-sub-cat.component';
+import { AllClientsOrdersComponent } from './components/all-clients-orders/all-clients-orders.component';
+import { UserRatesDialogComponent } from './components/user-rates-dialog/user-rates-dialog.component';
 
 declare var require: any;
 @NgModule({
@@ -98,6 +101,9 @@ declare var require: any;
     SpecificClientChatComponent,
     SnackbarComponent,
     AllOwnersOrdersComponent,
+    AddSubCatComponent,
+    AllClientsOrdersComponent,
+    UserRatesDialogComponent,
 
 
   ],

@@ -1,6 +1,8 @@
 export interface Categories {
-    id: number
+    id: any
     name: String,
     img?: String
+    sub_categories?: Array<any>
+    
 }
 

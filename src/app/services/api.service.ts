@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map, take} from "rxjs/operators";
-import {getAllPostsForOwnersUrl,  getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl, getAllAdminsUrl, deleteUserUrl, postUserUrl, getPostsSearchUrl } from 'src/assets/environment/environmentVariables';
+import {getAllPostsForOwnersUrl,  getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl, getAllAdminsUrl, deleteUserUrl, postUserUrl, getPostsSearchUrl, updateSubCategoryNameUrl, deleteSubCategoryUrl, addSubCategoryUrl, getAcceptedPostsForOwnersUrl, getSubCatPostesUrl } from 'src/assets/environment/environmentVariables';
 import { Categories } from '../interfaces/categories';
 import { Slider } from '../interfaces/slider';
   
@@ -42,6 +42,10 @@ export class ApiService {
   }
 
   
+  addSubCat(subCat){
+    return this.http.post(addSubCategoryUrl , subCat ).pipe(take(1));
+  }
+
   // delete something 
   deleteSlider(id){
     return this.http.delete(deleteSliderUrl +id).pipe(take(1));
@@ -49,6 +53,11 @@ export class ApiService {
 
   deleteCategory(id){
     return this.http.delete(deleteCategoryUrl +id).pipe(take(1));
+  }
+
+  
+  deleteSubCategory(id){
+    return this.http.delete(deleteSubCategoryUrl +id).pipe(take(1));
   }
 
   deletePost(id){
@@ -59,6 +68,11 @@ export class ApiService {
   updateCategory(id , item){
     return this.http.post(updateCategoryNameUrl + id, item)
   }
+
+  updateSubCategory(subId, item){
+    return this.http.put(updateSubCategoryNameUrl + subId, item)
+  }
+
 
   acceptPost(id){
     return this.http.put(acceptOrderUrl + id, {})
@@ -76,10 +90,17 @@ export class ApiService {
   getCatPosts(id, pageNumber){
     return this.http.get(getAllCatPostesUrl + id + '?page=' + pageNumber).pipe(map((res: any)=>res.data), take(1));
   }
-  
+
+  getSubCatPosts(id, pageNumber){
+    return this.http.get(getSubCatPostesUrl + id + '?page=' + pageNumber).pipe(map((res: any)=>res.data), take(1));
+  }
   
   getAllPostsForOwner(id){
     return this.http.get(getAllPostsForOwnersUrl + id).pipe(map((res: any)=>res.data), take(1));
+  }
+
+  getAcceptedPostsForOwner(id){
+      return this.http.get(getAcceptedPostsForOwnersUrl + id).pipe(map((res: any)=>res.data), take(1));
   }
   
   getPostsSearch(name, type, page){

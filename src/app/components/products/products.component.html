@@ -6,14 +6,23 @@
 </div>
 
 
+<div *ngIf="this.currentCategory" class="mb-40 mt--40 d-flex justify-content-start">
+  <mat-button-toggle-group (change)="filterPosts($event.value)" value="all" name="filter" aria-label="Font Style">
+      <mat-button-toggle value="all"> عرض الكل </mat-button-toggle>
+      <mat-button-toggle  *ngFor="let subCat of this.currentCategory[0].sub_categories" [value]="subCat.id">{{subCat.name}}</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+
+
 <div *ngIf="isLoading" class="d-flex mt-100 justify-content-center">
   <mat-spinner></mat-spinner>
 </div>
 
 <div *ngIf="!isLoading">
   <app-order-wrapper [wattingOrders]="false" *ngFor="let post of posts" class="mt-10" [post]="post"></app-order-wrapper>
-
 </div>
+
 
 <div class="mb-30"></div>
 <!-- start pagination -->

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from './../../services/api.service';
+import { AssetsService } from 'src/app/services/assets.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-all-owners-orders',
@@ -13,11 +15,13 @@ userId;
 posts;
 isLoading: boolean = false;
 
-  constructor(private route: ActivatedRoute, private api: ApiService) { }
+
+  constructor(private route: ActivatedRoute, private api: ApiService, private assets: AssetsService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getOwnerData();
-    this.getPostsData();
+ 
+    this.getAllPostsForOwners();
   }
 
   private getOwnerData(){
@@ -25,15 +29,49 @@ isLoading: boolean = false;
     this.userId = this.route.snapshot.paramMap.get('id');
   }
 
-  private getPostsData(){
+  private getAllPostsForOwners(){
     this.isLoading = true;
     this.api.getAllPostsForOwner(this.userId)
       .subscribe(
-        // res=> this.posts = res
-        res=> console.log(res)
-
-      ),
+        res=> this.posts = res,
       ()=>{},
       ()=> this.isLoading = false
+      );
   }
+
+  private getAcceptedPostsForOwners(){
+    this.isLoading = true;
+    this.api.getAcceptedPostsForOwner(this.userId)
+      .subscribe(
+        res=> this.posts = res,
+      ()=>{},
+      ()=> this.isLoading = false
+      );
+  }
+
+  filterPosts(type){
+    if(type==="all"){
+      this.getAllPostsForOwners();
+      return
+    }
+    
+    if(type==="accepted"){
+      this.getAcceptedPostsForOwners();
+      return
+    }
+  }
+
+  deleteAlert(id){
+    this.assets.deleteAlert(id).subscribe(res=> res? this.deletePost(id): false );
+  }
+
+  deletePost(id){
+    this.api.deletePost(id).subscribe(
+      res=>{
+        this.assets.deleteSuccess().afterDismissed().subscribe(res=>{location.reload();});
+
+      }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+    );
+  }
+
 }

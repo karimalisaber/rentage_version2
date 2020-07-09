@@ -1,37 +1,28 @@
-<h1 class="text-right name "> الطلبات المرسلة إلى <mark> {{userName}}</mark> </h1>
-
-
-<div class="mb-40 d-flex justify-content-start">
-    <mat-button-toggle-group (change)="filterPosts($event.value)" value="all" name="filter" aria-label="Font Style">
-        <mat-button-toggle value="all">كل الطلبات </mat-button-toggle>
-        <mat-button-toggle value="accepted">الطلبات المقبولة</mat-button-toggle>
-    </mat-button-toggle-group>
-</div>
-
+<h1 class="text-right name mb-40"> الطلبات المرسلة إلى <mark> {{userName}}</mark> </h1>
 
 <div *ngIf="isLoading" class="mt-100 d-flex justify-content-center" >
     <mat-spinner></mat-spinner>
 </div>
-
+  
 <div *ngIf="!isLoading" class="">
-    <section *ngFor="let post of posts" class="main-shadow post-wrapper mb-70">
-        <div class="user d-flex justify-content-center">
+    <section  *ngFor="let post of posts" class="main-shadow post-wrapper mb-70">
+        <div *ngIf="post.user_data" class="user d-flex justify-content-center">
             <i class="rounded-circle ml-10 far fa-user p-10"></i>
             <div class="data m-0">
-                <h2 class="m-0 p-0"> {{post?.user_data?.name}}</h2>
-                <h3 class="m-0">{{post?.user_data?.email}}</h3>
-                <h3 class="m-0"> {{post?.user_data?.phone}}</h3>
+                <h2 class="m-0 p-0"> {{post.user_data.name}}</h2>
+                <h3 class="m-0">{{post.user_data.email}}</h3>
+                <h3 class="m-0"> {{post.user_data.phone}}</h3>
             </div>
         </div>
     
-        <button (click)=" deleteAlert(post.post_data.id)" class="btn delete">
+        <button  class="btn delete">
             <i class="fas fa-trash-alt"></i>
         </button>
     
         <div class="text-right post-data row pt-60 pb-20">
             <div class="col-md-4 text-right pr-40 d-flex">
                 <div class="img-wrapper">
-                    <img class="hover img-fluid post-img" src="assets/images/karim.jpg" alt="">
+                    <img class="hover img-fluid post-img left-img" src="assets/images/karim.jpg" alt="">
                 
                     <button class="d-block btn">
                         <div class="d-inline fill-starts">
@@ -69,6 +60,7 @@
                 <h3 *ngIf="post?.status === 1" class="second-title date m-0 pb-10"> <i class="hidden fas fa-calendar-alt"></i> حالة الطلب :  <span class="text-success date">تم قبول الطلب</span></h3>
             </div>
         </div>
-    </section>        
+    </section>
 </div>
+
 

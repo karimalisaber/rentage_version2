@@ -8,6 +8,7 @@
         </div>
     </div> -->
 
+
     <button (click) ="deleteAlert(post.id)" class="btn delete">
         <i class="fas fa-trash-alt"></i> 
     </button>
@@ -19,24 +20,21 @@
     <div class="text-right post-data row pt-60 pb-20">
         <div class="col-md-4 text-right pr-40 d-flex">
             <div class="img-wrapper">
-                <img (click)="open(post?.post_imgs)" class="hover img-fluid post-img" [src]="'http://rentage.clicktopass.com/public/posts/' + post.post_imgs[0]?.name" alt="">
+                <img (click)="open(post?.post_imgs)" class="hover img-fluid post-img left-img" [src]="'http://rentage.clicktopass.com/public/posts/' + post.post_imgs[0]?.name" alt="">
             
-                <div *ngIf="post?.post_status==1 && post?.rate != 0" class="d-block btn">
-                    <div class="d-inline fill-starts">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                <div *ngIf="post?.post_status==1" class="d-block btn">
+                    <div *ngIf="post?.rate" class="d-inline fill-starts">
+                        <i *ngFor="let rate of post.rate" class="fas fa-star"></i>
                     </div>
             
-                    <div class="d-inline un-fill-starts">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div *ngIf="post?.emptyRate" class="d-inline un-fill-starts">
+                        <i *ngFor="let emptyRate of post.emptyRate" class="fas fa-star"></i>
                     </div>
                 </div>
             </div>
 
             <div class="overflow-hidden">
-                <h3 class="text-center pr-30 font-weight-normal">{{post?.name}}</h3>
+                <h3 class="text-center pl-0 pr-30 font-weight-normal">{{post?.name}}</h3>
                 <h5 class="text-right pr-30 font-weight-normal">{{post?.des}}</h5>
             </div>
         </div>
@@ -52,8 +50,8 @@
         </div>
 
         <div class="col-md-3 text-right">
-            <h3 class="second-title date m-0 pb-10 text-success"><i class="fas fa-calendar-alt"></i>  تاريخ بدء الحجز :  <span class="date text-success">{{post?.start_date}}</span></h3>
-            <h3 class="second-title date m-0 pb-10 red-color "> <i class="fas fa-calendar-alt"></i> تاريخ انتهاء الحجز :  <span class="date red-color">{{post?.end_date}}</span></h3>
+            <h3 class="second-title date m-0 pb-10 text-success"><i class="fas fa-calendar-alt"></i>  متاح من تاريخ :  <span class="date text-success">{{post?.start_date}}</span></h3>
+            <h3 class="second-title date m-0 pb-10 red-color "> <i class="fas fa-calendar-alt"></i> متاح حتى تاريخ:  <span class="date red-color">{{post?.end_date}}</span></h3>
         </div>
     </div>
 </section>
