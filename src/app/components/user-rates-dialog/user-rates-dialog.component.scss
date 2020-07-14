@@ -1,0 +1,107 @@
+@import "variables";
+.reviews-wrapper{
+
+    p.name{
+        opacity: .9;
+        color: $secondColor;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+
+
+    color: $thirdColor;
+    background-color: $itemBackground;
+    padding: 30px 20px;
+    border-radius: 5px;
+
+    .title{
+        font-size: 1.5rem;
+        color: $thirdColor;
+    }
+
+    .review-img{
+        // height: 75px; 
+        width: 90%;
+    }
+
+    .specific-review-wrapper{
+        color: $secondColor;
+        background-color: #fff;
+        padding: 15px 25px;
+        border-radius: 10px;
+        .specific-review{
+            // background-color: #fff;
+            padding: 5px 0 ;
+
+            .user-name{
+                font-size: 1.1rem;
+                margin-top: 2px;
+            }
+        }
+
+        a{
+            margin-top: -10px;
+            padding: 0;
+            color: $secondColor 
+        }
+    }
+
+    .count{
+        .number{
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+    }
+}
+
+
+
+@import "variables";
+
+.spcific-rate{
+    margin-top: 10px;
+    border: 1px solid $thirdColor;
+    border-radius: 10px;
+}
+
+ .fa-user, .number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    border: 1px solid $thirdColor;
+    border-radius: 50%;
+    font-size: 3.5rem;
+    color: $thirdColor;
+    width: 85px;
+    height: 85px;
+    margin-bottom: 10px;
+}
+
+.fa-eye, .fa-eye-slash{
+    font-size: .7rem;
+    margin: 0;
+    color: $thirdColor;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+span.dots{
+    font-size: 3rem;
+    margin: -7px;
+}
+
+.stars-wrapper{
+    font-size: 1.2rem;
+}
+
+
+.whtie-color:hover{
+    color: $mainColor !important;
+}
+
+.details{
+    height: auto !important;
+}

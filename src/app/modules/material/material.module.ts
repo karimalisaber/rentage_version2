@@ -9,6 +9,7 @@ import { EditCatDialogComponent } from 'src/app/components/edit-cat-dialog/edit-
 import { SnackbarComponent } from './../../components/snackbar/snackbar.component';
 import { AddSubCatComponent } from 'src/app/add-sub-cat/add-sub-cat.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { PostsRatesDialogComponent } from 'src/app/components/posts-rates-dialog/posts-rates-dialog.component';
 
 const MaterialModules =[
   MatDialogModule,
@@ -23,7 +24,8 @@ export const materialEntryComponents = [
   DeleteDialogComponentComponent,
   EditCatDialogComponent,
   SnackbarComponent,
-  AddSubCatComponent
+  AddSubCatComponent,
+  PostsRatesDialogComponent
 ];
 
 

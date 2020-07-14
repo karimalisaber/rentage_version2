@@ -50,6 +50,7 @@ const routes: Routes = [
     {path: 'last-users', component:  LastedUsersComponent},
     {path: 'reviews', component:  UserReviewsComponent},
     {path: 'products/:cat_id', component:  ProductsComponent},
+    // {path: 'products/:cat_id/:subCat_id', component:  ProductsComponent},
     
 ]},
 

@@ -24,49 +24,48 @@
             </div>
         </div>
     
-        <button (click)=" deleteAlert(post.post_data.id)" class="btn delete">
+        <button (click)=" deleteAlert(post.post_data_dashboard?.id)" class="btn delete">
             <i class="fas fa-trash-alt"></i>
         </button>
     
         <div class="text-right post-data row pt-60 pb-20">
-            <div class="col-md-4 text-right pr-40 d-flex">
+            <div class="col-md-6 text-right pr-40 d-flex">
                 <div class="img-wrapper">
-                    <img class="hover img-fluid post-img" src="assets/images/karim.jpg" alt="">
-                
-                    <button class="d-block btn">
-                        <div class="d-inline fill-starts">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                    <img (click)="open(post?.post_data_dashboard?.post_imgs)" class="hover img-fluid post-img left-img" [src]="'http://rentage.clicktopass.com/public/posts/' + post.post_data_dashboard?.post_imgs[0]?.name" alt="">
+
+                    <!-- <div (click)="showRate(post.id)" *ngIf="post?.post_status==1" class="d-block btn">
+                        <div *ngIf="post?.rate" class="d-inline fill-starts">
+                            <i *ngFor="let rate of post.rate" class="fas fa-star"></i>
                         </div>
                 
-                        <div class="d-inline un-fill-starts">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                        <div *ngIf="post?.emptyRate" class="d-inline un-fill-starts">
+                            <i *ngFor="let emptyRate of post.emptyRate" class="fas fa-star"></i>
                         </div>
-                    </button>
+                    </div> -->
                 </div>
     
-                <h3 class="overflow-hidden text-center pr-30 font-weight-normal">{{post?.post_data?.name}}</h3>
+                <div class="overflow-hidden">
+                    <h3 class="text-center pl-0 pr-30 font-weight-normal">{{post?.post_data_dashboard?.name}}</h3>
+                    <h5 class="text-right pr-30 font-weight-normal">{{post?.post_data_dashboard?.des}}</h5>
+                </div>
             </div>
-            <div class="col-md-3 text-right pr-80">
-                <h3 class="second-title m-0 pb-10">السعر :  <span class="red-color">{{post?.price}}</span></h3>
+
+            <div class="col-md-3 text-right pr-7    0">
+                <h3 class="second-title m-0 pb-10">السعر :  <span class="red-color">{{post?.post_data_dashboard?.price}}</span></h3>
                 <h3 class="second-title m-0 pb-10">الكمية  :  <span> {{post?.count}}</span></h3>
-                <h3 class="second-title m-0 pb-10">الحالة :  <span>مستعملة</span></h3>
-               
-              
+                <h3 class="second-title m-0 pb-10">الموقع :  <span class="red-color">{{post?.post_data_dashboard?.map}}</span></h3>
+                <h3 class="second-title m-0 pb-10">التأمين  :  <span>{{post?.post_data_dashboard?.insurance_amount}}</span></h3>              
             </div>
-            <div class="col-md-2 text-right">
-                <h3 class="second-title m-0 pb-10">التأمين :  <span class="red-color">15</span></h3>
-                <h3 class="second-title m-0 pb-10">الموقع :  <span>مستعملة</span></h3>
-            </div>
-    
+
+
             <div class="col-md-3 text-right">
                 <h3 class="second-title date m-0 pb-10 text-success"><i class="fas fa-calendar-alt"></i>  تاريخ بدء الحجز :  <span class="date text-success">{{post.start}}</span></h3>
                 <h3 class="second-title date m-0 pb-10 red-color "> <i class="fas fa-calendar-alt"></i> تاريخ انتهاء الحجز :  <span class="date red-color">{{post.end}}</span></h3>
-                
-                <h3 *ngIf="post?.status === 0" class="second-title date m-0 pb-10"> <i class="hidden fas fa-calendar-alt"></i> حالة الطلب :  <span class="text-success date">في انتظار القبول</span></h3>
-                <h3 *ngIf="post?.status === 1" class="second-title date m-0 pb-10"> <i class="hidden fas fa-calendar-alt"></i> حالة الطلب :  <span class="text-success date">تم قبول الطلب</span></h3>
+                    <h4 *ngIf="post.post_data_dashboard?.delivery == 1" class="second-title m-0 pb-10">طريقة الاستلام: <span>توصيل</span></h4>
+                    <h4 *ngIf="post.post_data_dashboard?.delivery == 0" class="second-title m-0 pb-10">طريقة الاستلام: <span>من التاجر</span></h4>
+                    <h3 *ngIf="post.post_data_dashboard?.status == 1" class="second-title m-0 pb-10">الحالة :  <span>مستعملة</span></h3>
+                    <h3 *ngIf="post.post_data_dashboard?.status == 0" class="second-title m-0 pb-10">الحالة :  <span>جديدة</span></h3>
+        
             </div>
         </div>
     </section>        

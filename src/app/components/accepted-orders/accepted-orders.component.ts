@@ -1,4 +1,3 @@
-import { ViewProductDialogComponent } from './../view-product-dialog/view-product-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';

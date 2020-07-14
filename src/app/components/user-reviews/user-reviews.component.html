@@ -1,13 +1,8 @@
-<div class="reviews-wrapper custom-shadow">
+<!-- <div class="reviews-wrapper custom-shadow">
     <div class="row text-center">
         <div class="col-md-2">
             <h4 class="title">الاسم</h4>
             
-            <!-- <div *ngIf="type ==='services'" class="for-product">
-                <p class="product-name">asus laptop</p>
-                <img class="img-fluid review-img" src="assets/images/karim.jpg" alt="">   
-            </div> -->
-
             <div>
                 <p class="name">كريم علي</p>
             </div>
@@ -60,4 +55,75 @@
             <p class="number">50</p>
         </div>
     </div>
+</div> -->
+
+
+<div class="main-search">
+    <form action="">
+      <input (keyup)="search($event.target.value)" #searchWord  type="search" name="" id="" placeholder="بحث">
+      <input class="btn-search" type="submit" value="بحث">
+    </form>
 </div>
+
+<section *ngFor="let rate of filteredRates" class="client-wrapper">
+    <div class="user-header text-center row no-gutters">
+        <h3 class="header mb-0 text-right col-md-3 pr-70">الاسم</h3>
+        <h3 class="header mb-0 col-md-6"> التقييم  </h3>
+        <h3 class="header mb-0 col-md-3">اجمالي التقييمات</h3>      
+    </div>
+    
+    <div class="details row no-gutters text-center">
+       
+        <h4 class="col-md-2 mb-0 pr-50"> 
+            <span class="user"> <i class="fas fa-user"></i> </span>
+            
+            <span class="d-block text-right item p-0 pr-10">
+                {{rate.user_data.name}}
+            </span>
+        </h4>
+
+        <div class="rate-wrapper col-md-7 pr-30">
+            <div class="main-shadow spcific-rate row no-gutters align-items-center ph-10">
+                <h4 class="text-right col-md-4 mb-0 text-right"> <span class="item p-0">{{rate.sender_data.name}}</span> </h4>
+                
+                <h4 class="text-right col-md-4 mb-0 text-center"> <span class="item p-0"> جيد جدًا</span> </h4>
+                <h4 class="col-md-4 mb-0 text-left">
+            
+                    <button class="btn">
+                        <div class="d-inline fill-starts">
+                            <i *ngFor="let r of rate.rate" class="fas fa-star"></i>
+                            
+                        </div>
+                
+                        <div class="d-inline un-fill-starts">
+                            <i *ngFor="let empty of rate.emptyRate" class="fas fa-star"></i>
+                        </div>
+                    </button>
+                </h4>
+            </div>
+            
+            <div class="text-left mt-10">
+                <button (click)="showRate(rate.user_data.id)" class="btn text-primary"> المزيد <i class="fas fa-chevron-down"></i></button>
+            </div>
+        </div>
+
+
+        <h4 class="col-md-3 mb-0 text-center"> 
+                <span class="m-auto d-flex justify-content-center user"> <div class="number"> 15 </div> </span>
+                
+                <span class="d-block item p-0">
+                    <button class="btn">
+                        <div class="d-inline fill-starts">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                
+                        <div class="d-inline un-fill-starts">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </button>    
+                </span> 
+        </h4>
+    </div>    
+</section>

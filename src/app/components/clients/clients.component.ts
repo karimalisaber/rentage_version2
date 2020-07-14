@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AssetsService } from './../../services/assets.service';
 import { map } from 'rxjs/operators';
+import { UserRatesDialogComponent } from '../user-rates-dialog/user-rates-dialog.component';
 
 @Component({
   selector: 'app-clients',
@@ -66,4 +67,13 @@ export class ClientsComponent implements OnInit {
         ()=> this.isLoading = false
       );
   }
+
+  
+  showRate(id){    
+    this.dialog.open(UserRatesDialogComponent, {
+      data: id,
+      panelClass: 'rate-order-wrapper',
+      width: '80%'
+    });
+    }
 }

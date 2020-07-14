@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from './../../services/api.service';
 import { AssetsService } from 'src/app/services/assets.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Lightbox } from 'ngx-lightbox';
 
 @Component({
   selector: 'app-all-owners-orders',
@@ -14,9 +15,9 @@ userName;
 userId;
 posts;
 isLoading: boolean = false;
+url = 'http://rentage.clicktopass.com/public/posts/';
 
-
-  constructor(private route: ActivatedRoute, private api: ApiService, private assets: AssetsService, private snackBar: MatSnackBar) { }
+  constructor(private route: ActivatedRoute, private api: ApiService, private assets: AssetsService, private snackBar: MatSnackBar, private _lightbox: Lightbox) { }
 
   ngOnInit(): void {
     this.getOwnerData();
@@ -72,6 +73,14 @@ isLoading: boolean = false;
 
       }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     );
+  }
+
+  
+  open(post){
+    let postsImgs =[];
+    post.filter(res=> postsImgs.push({'src': this.url + res.name}));
+      
+    this._lightbox.open(postsImgs, 0);
   }
 
 }

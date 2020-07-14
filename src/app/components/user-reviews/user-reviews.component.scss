@@ -53,3 +53,55 @@
         }
     }
 }
+
+
+
+@import "variables";
+
+.spcific-rate{
+    margin-top: 10px;
+    border: 1px solid $thirdColor;
+    border-radius: 10px;
+}
+
+ .fa-user, .number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    border: 1px solid $thirdColor;
+    border-radius: 50%;
+    font-size: 3.5rem;
+    color: $thirdColor;
+    width: 85px;
+    height: 85px;
+    margin-bottom: 10px;
+}
+
+.fa-eye, .fa-eye-slash{
+    font-size: .7rem;
+    margin: 0;
+    color: $thirdColor;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+span.dots{
+    font-size: 3rem;
+    margin: -7px;
+}
+
+.stars-wrapper{
+    font-size: 1.2rem;
+}
+
+
+.whtie-color:hover{
+    color: $mainColor !important;
+}
+
+.details{
+    height: auto !important;
+}

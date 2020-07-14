@@ -78,7 +78,7 @@ mat-slide-toggle{
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 1515;    
+        z-index: 5;    
         .fas{
             margin: 0;
             padding: 0;
@@ -95,7 +95,7 @@ mat-slide-toggle{
         transform: translate(-50%, -50%);
         // transform: translateY(-50%);
         background-color:#fff;
-        z-index: 145485;
+        z-index: 5;
         border: 1px solid  #797979;
         border-radius: 15px;
         width: 200px;
@@ -123,24 +123,4 @@ mat-slide-toggle{
         }
     }
 
-    .post-data{
-
-        .post-img{
-            width: 140px;
-            max-width: 140px;
-            min-width: 140px;
-            height: 110px;
-            max-height: 110px;
-            min-height: 110px;
-        }
-         
-        .fa-star{
-            font-size: .8rem;
-            margin-left: 5px;
-        }
-
-        h3{
-            font-size: 1.2rem ;
-        }
-    }
 }

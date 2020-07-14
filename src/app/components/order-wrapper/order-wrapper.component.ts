@@ -5,6 +5,8 @@ import { AssetsService } from './../../services/assets.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs/operators';
 import { Lightbox } from 'ngx-lightbox';
+import { MatDialog } from '@angular/material/dialog';
+import { PostsRatesDialogComponent } from 'src/app/components/posts-rates-dialog/posts-rates-dialog.component';
 @Component({
   selector: 'app-order-wrapper',
   templateUrl: './order-wrapper.component.html',
@@ -13,12 +15,12 @@ import { Lightbox } from 'ngx-lightbox';
 export class OrderWrapperComponent implements OnInit {
   @Input('post') post;
   @Input('wattingOrders') wattingOrders;
-  url = 'http://rentage.clicktopass.com/public/posts/';  
- 
+  url = 'http://rentage.clicktopass.com/public/posts/'; 
+  zIndexNone: boolean = false;
 
 
 
- constructor(private api : ApiService, private router: Router , private assets: AssetsService, private snackBar: MatSnackBar, private _lightbox: Lightbox) { }
+ constructor(private api : ApiService, private router: Router , private assets: AssetsService, private snackBar: MatSnackBar, private _lightbox: Lightbox, private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -50,5 +52,14 @@ export class OrderWrapperComponent implements OnInit {
     post.filter(res=> postsImgs.push({'src': this.url + res.name}));
       
     this._lightbox.open(postsImgs, 0);
+  }
+
+  showRate(id){
+    this.zIndexNone = true;    
+    this.dialog.open(PostsRatesDialogComponent, {
+      data: id,
+      panelClass: 'rate-order-wrapper',
+      width: '80%'
+    }).afterClosed().subscribe(res=>{this.zIndexNone = false})
   }
 }

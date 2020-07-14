@@ -58,6 +58,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AddSubCatComponent } from './add-sub-cat/add-sub-cat.component';
 import { AllClientsOrdersComponent } from './components/all-clients-orders/all-clients-orders.component';
 import { UserRatesDialogComponent } from './components/user-rates-dialog/user-rates-dialog.component';
+import { PostsRatesDialogComponent } from './components/posts-rates-dialog/posts-rates-dialog.component';
 
 declare var require: any;
 @NgModule({
@@ -104,8 +105,7 @@ declare var require: any;
     AddSubCatComponent,
     AllClientsOrdersComponent,
     UserRatesDialogComponent,
-
-
+    PostsRatesDialogComponent,
   ],
   entryComponents:[
     materialEntryComponents,

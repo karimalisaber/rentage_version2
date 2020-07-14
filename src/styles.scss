@@ -766,3 +766,36 @@ mat-progress-spinner circle, .mat-spinner circle {
     margin-top: -40px !important;
 
 }
+
+.rate-order-wrapper{
+    overflow: auto;
+    z-index: 5587501;
+    position: relative;
+    background-color: white;
+}
+
+.z-none{
+    z-index: 0 !important;
+}
+
+
+.post-data{
+
+    .post-img{
+        width: 140px;
+        max-width: 140px;
+        min-width: 140px;
+        height: 110px;
+        max-height: 110px;
+        min-height: 110px;
+    }
+     
+    .fa-star{
+        font-size: .8rem;
+        margin-left: 5px;
+    }
+
+    h3{
+        font-size: 1.2rem ;
+    }
+}

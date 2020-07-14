@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map, take} from "rxjs/operators";
-import {getAllPostsForOwnersUrl,  getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl, getAllAdminsUrl, deleteUserUrl, postUserUrl, getPostsSearchUrl, updateSubCategoryNameUrl, deleteSubCategoryUrl, addSubCategoryUrl, getAcceptedPostsForOwnersUrl, getSubCatPostesUrl } from 'src/assets/environment/environmentVariables';
+import {getAllPostsForOwnersUrl,  getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl, getAllAdminsUrl, deleteUserUrl, postUserUrl, getPostsSearchUrl, updateSubCategoryNameUrl, deleteSubCategoryUrl, addSubCategoryUrl, getAcceptedPostsForOwnersUrl, getSubCatPostesUrl, getPostRatesUrl, getAllUsersRatesUrl, getSpecificUserRatesUrl } from 'src/assets/environment/environmentVariables';
 import { Categories } from '../interfaces/categories';
 import { Slider } from '../interfaces/slider';
   
@@ -83,6 +83,10 @@ export class ApiService {
     return this.http.get(getAllNewPostesUrl + pageNumber).pipe(map((res: any)=>res.data), take(1));
   }
 
+  getPostRates(id){
+    return this.http.get(getPostRatesUrl + id).pipe(map((res: any)=>res.data), take(1));
+  }
+
   getAcceptedPosts(pageNumber){
     return this.http.get(getAllAcceptedPostesUrl + pageNumber).pipe(map((res: any)=>res.data), take(1));
   }
@@ -106,6 +110,18 @@ export class ApiService {
   getPostsSearch(name, type, page){
     return this.http.post(getPostsSearchUrl, {name, type, page}).pipe(map((res: any)=>res.data), take(1));
   }
+
+
+  // rates
+  getAllUsersRates(){
+    return this.http.get(getAllUsersRatesUrl).pipe(map((res: any)=>res.data), take(1));
+  }
+
+  
+  getSpecificUserRates(id){
+    return this.http.get(getSpecificUserRatesUrl + id).pipe(map((res: any)=>res.data), take(1));
+  }
+  
 
   // user list 
   getUserList(){

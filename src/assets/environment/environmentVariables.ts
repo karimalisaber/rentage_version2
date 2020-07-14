@@ -3,6 +3,8 @@
                     // dashboard
 //-------------------------------------------
 // all get 
+export const getAllUsersRatesUrl = "https://rentage.clicktopass.com/api/dashboard/all_users_rates";
+export const getSpecificUserRatesUrl = "https://rentage.clicktopass.com/api/dashboard/user_rates/";
 
 export const getAllCategoriesUrl = "https://rentage.clicktopass.com/api/dashboard/all_categories";
 export const getSpecificCategoriesUrl = "https://rentage.clicktopass.com/api/dashboard/specific_categories/";
@@ -25,9 +27,10 @@ export const getAllAcceptedPostesUrl = "https://rentage.clicktopass.com/api/dash
 export const getSpecificPostesUrl = "https://rentage.clicktopass.com/api/mobile/specific_post/";
 export const getAllNewPostesUrl = "https://rentage.clicktopass.com/api/dashboard/all_new_posts?page=";
 export const getAllCatPostesUrl = "https://rentage.clicktopass.com/api/dashboard/dashboard_category_posts_data_paginate/";
-export const getSubCatPostesUrl = "https://rentage.clicktopass.com/api/mobile/sub_category_posts_data_paginate/";
-export const getAllPostsForOwnersUrl = "https://rentage.clicktopass.com/api/mobile/all_orders_for_owner/";
+export const getSubCatPostesUrl = "https://rentage.clicktopass.com/api/mobile/sub_category_posts_data_paginate_dashboard/";
+export const getAllPostsForOwnersUrl = "https://rentage.clicktopass.com/api/dashboard/all_orders_for_owner_dashboard/";
 export const getAcceptedPostsForOwnersUrl = "https://rentage.clicktopass.com/api/mobile/all_accepted_orders/";
+export const getPostRatesUrl = "https://rentage.clicktopass.com/api/mobile/all_post_rates/";
 
 
 export const getPostsSearchUrl = "https://rentage.clicktopass.com/api/search/search_dashboard";
