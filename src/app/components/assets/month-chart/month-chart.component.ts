@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+import { Categories } from './../../../interfaces/categories';
 
 @Component({
   selector: 'app-month-chart',
@@ -9,9 +11,74 @@ export class MonthChartComponent implements OnInit {
   options: Object;
   date = new Date();
 
+  postsCategories = [];
+  postsData:Array<any> = [];
+  ordersCategories = [];
+  ordersData:Array<any> = [];
 
-  constructor() { 
-    this.options = {      
+  max;
+
+
+
+  constructor(private api: ApiService) { 
+   
+  }
+
+  ngOnInit(): void {
+  this.getMonthPosts();
+
+  }
+
+  
+  getMonthPosts(){
+    this.api.getPostsMonth()
+    .subscribe(res=>{
+      
+      let keys = Object.keys(res);
+      let values = Object.values(res);
+      
+      keys.forEach((element,i) => {
+        
+        this.postsData.push([parseInt(element) , values[i]])
+        
+      });
+      
+
+
+      this.max = Math.max.apply(null , values)
+     
+ 
+      
+      this.getMonthOrders();
+    })
+  }
+
+
+  
+  getMonthOrders(){
+    this.api.getOrdersMonth()
+    .subscribe(res=>{
+      let keys = Object.keys(res);
+      let values = Object.values(res);
+      
+      keys.forEach((element,i) => {
+        
+        this.ordersData.push([parseInt(element) , values[i]])
+        
+      });
+      
+      let max = Math.max.apply(null , values)
+
+      this.max = Math.max(max , this.max)
+
+      
+      this.setCart();
+    })
+  }
+
+
+  setCart(){
+    this.options = {
       credits:{
         enabled: false
       },
@@ -29,10 +96,14 @@ export class MonthChartComponent implements OnInit {
   
         reversed: true,
         tickInterval: null,
-        categories: this.getMonthArray()
+        
+        // categories:  this.ordersCategories
+
       },
+
+
   
-      tooltip:{      
+      tooltip:{
         style:{
           color: '#000',
           borderRadius: '20px'
@@ -50,7 +121,7 @@ export class MonthChartComponent implements OnInit {
       borderRadius: 5,
       // itemWidth: 10,
       layout: "vertical",
-      reversed: false,
+      // reversed: false,
       squareSymbol: false,
       height: 150,
       itemMarginTop: 10,      
@@ -63,41 +134,36 @@ export class MonthChartComponent implements OnInit {
         text: '',
       },
       min: 0,
-      max: 100,
-      tickInterval: 20,
+      max: this.max + (this.max/10),
+      // tickInterval: 20,
       gridLineWidth: false, // disable grid lines
       
       opposite: true,
-      plotLines: [{
-        value: 1,
-        width: 1,
-        
-        color: '#808080'
-      }]
+      
     },
 
     series: [
       {
           name: 'الاعلانات',
-          data: [50.7, 8.8, 122.4, 55.2, 40, 27, 90], //come from api 
+          data: this.postsData, //come from api 
+
+
         }, 
         
         {
           name: 'الطلبات',
-          data: [20.7, 88.8, 22.4, 15.2, 50,17,20], //come from api 
-        },
-
-        {
-          name: 'أداء الشهر',
-          data: [0.7, 8.8, 42.4, 35.2, 40, 27, 40], //come from api 
+          data:this.ordersData, //come from api
+         
+          // data: this.postsData //come from api 
         }
-
       ]
     }
   }
 
-  ngOnInit(): void {
-  }
+
+
+
+
 
   private getMonthArray(){
     let data = [];
@@ -105,6 +171,7 @@ export class MonthChartComponent implements OnInit {
       data.push(i)
     }
 
+    data = ['يناير', 'فبراير', 'مارس' , 'أبريل' , 'مايو' , 'يونيو' , 'يوليو' , 'أغسطس' , 'سبتمبر' , 'أكتوبر' , 'نوفمبر', 'ديسمبر']
     return data;    
   }
 

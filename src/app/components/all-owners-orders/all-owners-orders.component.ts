@@ -17,48 +17,142 @@ posts;
 isLoading: boolean = false;
 url = 'http://rentage.clicktopass.com/public/posts/';
 
-  constructor(private route: ActivatedRoute, private api: ApiService, private assets: AssetsService, private snackBar: MatSnackBar, private _lightbox: Lightbox) { }
+type = 'all';
+
+  constructor(private route: ActivatedRoute, private api: ApiService, private assets: AssetsService, private snackBar: MatSnackBar, private _lightbox: Lightbox , private router: Router) { }
 
   ngOnInit(): void {
     this.getOwnerData();
- 
-    this.getAllPostsForOwners();
+    this.getQueryParam();
   }
+
+
+  private getQueryParam(){
+    this.route.queryParamMap.subscribe(
+      res=>{
+        this.type = res.get('type') || 'all';
+
+        this.filterPosts(this.type);        
+      }
+    )
+  }
+
 
   private getOwnerData(){
     this.userName = this.route.snapshot.paramMap.get('name');
     this.userId = this.route.snapshot.paramMap.get('id');
   }
 
-  private getAllPostsForOwners(){
+  private getAllPostsForOwners(){ // all posts
+    this.router.navigate(
+      [], 
+      {
+        queryParams:{'type': 'all'}, 
+        queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
+
+    this.type = 'all';
     this.isLoading = true;
     this.api.getAllPostsForOwner(this.userId)
       .subscribe(
-        res=> this.posts = res,
+        res=> {
+          this.mapAllOrders(res.data)
+        },
       ()=>{},
       ()=> this.isLoading = false
       );
   }
 
-  private getAcceptedPostsForOwners(){
+
+  mapAllOrders(res){    
+    res.forEach(element => {
+      element.post_data_dashboard = {}
+    
+      element.post_data_dashboard.id = element.id
+      element.post_data_dashboard.category_id = element.category_id
+      element.post_data_dashboard.sub_category_id = element.sub_category_id
+      element.post_data_dashboard.name = element.name
+      element.post_data_dashboard.price = element.price
+      element.post_data_dashboard.des = element.des
+      element.post_data_dashboard.count = element.count
+      element.post_data_dashboard.status = element.status
+      element.post_data_dashboard.start_date = element.start_date
+      element.post_data_dashboard.end_date = element.end_date
+      element.post_data_dashboard.delivery = element.delivery
+      element.post_data_dashboard.city = element.city
+      element.post_data_dashboard.insurance_amount = element.insurance_amount
+      element.post_data_dashboard.rent = element.rent
+      element.post_data_dashboard.map = element.map
+      element.post_data_dashboard.post_status = element.post_status
+      element.post_data_dashboard.user_id = element.user_id
+      element.post_data_dashboard.post_imgs = element.post_imgs
+      
+    });
+
+    this.posts = res
+  }
+
+  private getAcceptedPostsForOwners(){ // all orders
+    this.type = 'owner';
+
+    
+    this.router.navigate(
+      [], 
+      {
+        queryParams:{'type': 'owner'}, 
+        queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
+
     this.isLoading = true;
     this.api.getAcceptedPostsForOwner(this.userId)
       .subscribe(
-        res=> this.posts = res,
+        res=> {
+          this.posts = res.reverse()
+        },
       ()=>{},
       ()=> this.isLoading = false
       );
   }
 
-  filterPosts(type){
-    if(type==="all"){
+  
+  private getAllPostsForClient(){
+    this.type ='client';
+
+    
+    this.router.navigate(
+      [], 
+      {
+        queryParams:{'type': 'client'}, 
+        queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
+
+    this.isLoading = true;
+    this.api.getAllPostsForClients(this.userId)
+      .subscribe(
+        res=> {
+          this.posts = res;
+        },
+      ()=>{},
+      ()=> this.isLoading = false
+      );
+    }
+
+  filterPosts(type?){
+
+    this.type = type || this.type;
+
+    if(this.type==="all"){
       this.getAllPostsForOwners();
       return
     }
     
-    if(type==="accepted"){
+    if(this.type==="owner"){
       this.getAcceptedPostsForOwners();
       return
+    }
+
+    if(this.type==='client'){
+      this.getAllPostsForClient();
     }
   }
 
@@ -83,4 +177,7 @@ url = 'http://rentage.clicktopass.com/public/posts/';
     this._lightbox.open(postsImgs, 0);
   }
 
+  showRate(t){
+
+  }
 }

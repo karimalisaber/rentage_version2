@@ -37,5 +37,11 @@ export class AuthService {
     return !isExpired;
   }
 
+  
+  getToken(){
+    let token = localStorage.getItem('token');
+
+    return token;
+  }
 
 }

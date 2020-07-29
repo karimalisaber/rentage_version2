@@ -27,7 +27,6 @@
             </div>
         </div>
 
-
         <h4 class="col-md-3 mb-0 text-center">
             <span class="m-auto d-flex justify-content-center user">
                 <div class="number"> {{total}} </div>
@@ -36,16 +35,13 @@
             <span class="d-block item p-0">
                 <button class="btn">
                     <div class="d-inline fill-starts">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i *ngFor="let start of averageArray" class="fas fa-star"></i>
                     </div>
 
                     <div class="d-inline un-fill-starts">
-                        <i class="fas fa-star"></i>
+                        <i *ngFor="let start of emptyAverageArray" class="fas fa-star"></i>
                     </div>
                 </button>
-
             </span>
         </h4>
     </div>

@@ -52,8 +52,8 @@
             </h4>
             <h3 class="col-md-2 mb-0 "> <span class="item email font-weight-lighter p-0">{{client.email}}</span> </h3>
             <h3 class="col-md-2 mb-0 "> <span class="item font-weight-lighter p-0">{{client.phone}}</span> </h3>
-            <a [routerLink]="['/owner_orders', client.id, client.name]"  class="col-md-1 mb-0 text-center"> <span class="item click  ">{{client.all_posts_count}} </span> </a>
-            <a [routerLink]="['/clients_orders', client.id, client.name]" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_orders_count}}</span> </a>
+            <a [routerLink]="['/user', client.id, client.name]"  class="col-md-1 mb-0 text-center"> <span class="item click  ">{{client.all_posts_count}} </span> </a>
+            <a [routerLink]="['/user', client.id, client.name]" [queryParams]= "{'type': 'client'}" class="col-md-2 mb-0 text-center"> <span class="item click  ">{{client.all_orders_count}}</span> </a>
             <a [routerLink]="['/messages', client.id, client.name]" class="col-md-1 mb-0 text-center"> <span class="item click  ">{{client?.chats_count}}</span> </a>
             
             <h4 class="col-md-2 text-center mb-0 pl-50"> <span class="item date">{{client.created_at | date}}</span> </h4>

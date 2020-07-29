@@ -1,17 +1,21 @@
 <div class="add-something mb-30">
     <form #userForm="ngForm" action="" class="user-form">
-     <div class="row">        
-        <div class="col-md-3 user-input-wrapper file-wrapper">
-            <input ngModel name="image" required (change)="imageUpload($event)" type="file" class="ml-10 form-control user-input" />
-            <label for="f02">تحميل صورة</label>
+     <div class="row no-gutters">        
+        <div class="col-md-3 user-input-wrapper file-wrapper ml-20">
+            
+                <input ngModel name="image" required (change)="imageUpload($event)" type="file" class="ml-10 form-control user-input" accept="image/*"/>
+                <label for="f02">تحميل صورة</label>
         </div>
 
         <div class="col-md-3 text-center user-input-add">
-            <button type="submit" [disabled]="userForm.invalid" (click) = "addSlider()" class="add btn">
-                <span>+</span>
-                <p class="d-inline-block">اضافة سلايدر</p>
+            <div class="">
+
+            <button type="submit" [disabled]="userForm.invalid" (click) = "addSlider()" class="w-100 add btn">
+                <!-- <span>+</span> -->
+                اضافة سلايدر
             </button>
         </div>
+    </div>
      </div>
     </form>
 </div>

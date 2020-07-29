@@ -39,14 +39,14 @@
     
                 <div class="overflow-hidden">
                     <h3 class="text-center pl-0 pr-30 font-weight-normal">{{post?.post_data_dashboard?.name}}</h3>
-                    <h5 class="text-right pr-30 font-weight-normal">{{post?.post_data_dashboard?.des}}</h5>
+                    <h4 class="text-right pr-30 font-weight-lighter">{{post?.post_data_dashboard?.des}}</h4>
                 </div>
             </div>
 
             <div class="col-md-3 text-right pr-7    0">
                 <h3 class="second-title m-0 pb-10">السعر :  <span class="red-color">{{post?.post_data_dashboard?.price}}</span></h3>
                 <h3 class="second-title m-0 pb-10">الكمية  :  <span> {{post?.count}}</span></h3>
-                <h3 class="second-title m-0 pb-10">الموقع :  <span class="red-color">{{post?.post_data_dashboard?.map}}</span></h3>
+                <h3 class="second-title m-0 pb-10">المدينة :  <span class="red-color">{{post?.post_data_dashboard?.city}}</span></h3>
                 <h3 class="second-title m-0 pb-10">التأمين  :  <span>{{post?.post_data_dashboard?.insurance_amount}}</span></h3>              
             </div>
 
@@ -54,11 +54,10 @@
             <div class="col-md-3 text-right">
                 <h3 class="second-title date m-0 pb-10 text-success"><i class="fas fa-calendar-alt"></i>  تاريخ بدء الحجز :  <span class="date text-success">{{post.start}}</span></h3>
                 <h3 class="second-title date m-0 pb-10 red-color "> <i class="fas fa-calendar-alt"></i> تاريخ انتهاء الحجز :  <span class="date red-color">{{post.end}}</span></h3>
-                    <h4 *ngIf="post.post_data_dashboard?.delivery == 1" class="second-title m-0 pb-10">طريقة الاستلام: <span>توصيل</span></h4>
-                    <h4 *ngIf="post.post_data_dashboard?.delivery == 0" class="second-title m-0 pb-10">طريقة الاستلام: <span>من التاجر</span></h4>
-                    <h3 *ngIf="post.post_data_dashboard?.status == 1" class="second-title m-0 pb-10">الحالة :  <span>مستعملة</span></h3>
-                    <h3 *ngIf="post.post_data_dashboard?.status == 0" class="second-title m-0 pb-10">الحالة :  <span>جديدة</span></h3>
-        
+                <h4 *ngIf="post.post_data_dashboard?.delivery == 1" class="second-title m-0 pb-10">طريقة الاستلام: <span>توصيل</span></h4>
+                <h4 *ngIf="post.post_data_dashboard?.delivery == 0" class="second-title m-0 pb-10">طريقة الاستلام: <span>من التاجر</span></h4>
+                <h3 *ngIf="post.post_data_dashboard?.status == 1" class="second-title m-0 pb-10">الحالة :  <span>مستعملة</span></h3>
+                <h3 *ngIf="post.post_data_dashboard?.status == 2" class="second-title m-0 pb-10">الحالة :  <span>جديدة</span></h3>        
             </div>
         </div>
     </section>        

@@ -1,5 +1,5 @@
 import { DeleteDialogComponentComponent } from './../components/assets/delete-dialog-component/delete-dialog-component.component';
-import { Injectable, TemplateRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {map, take} from "rxjs/operators"; 
 import { MatSnackBar } from '@angular/material/snack-bar';

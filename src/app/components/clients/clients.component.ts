@@ -55,7 +55,7 @@ export class ClientsComponent implements OnInit {
     let index = this.clients.findIndex(res=> res.id == id);
     var item = this.clients.splice(index, 1);
     this.filteredClients = this.clients;
-     console.log(item);
+    
      
     this.api.deleteUser(id)
       .subscribe(

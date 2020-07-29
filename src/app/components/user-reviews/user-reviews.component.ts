@@ -12,17 +12,31 @@ export class UserReviewsComponent implements OnInit {
   rates;
   filteredRates;
   isLoading: boolean = false;
-
+  total;
+  average  =0;
+  averageArray = [];
+  emptyAverageArray = [];
   constructor(private api: ApiService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.isLoading = true;
     this.api.getAllUsersRates()
       .subscribe(res=>{
+        this.total = res.length;     
+         
         res.filter(res=> { // map result
           res.rate = Array(Math.round(res.number)).fill('').map((res, i)=> res = i+1);
           res.emptyRate = Array( 5 - Math.round(res.number)).fill('').map((res, i)=> res = i+1);
+
+          this.average = this.average + res.number
+
         });
+
+        this.average = this.average / this.total;
+
+          this.averageArray = Array(Math.round(this.average)).fill('').map((res, i)=> res = i+1);
+          this.emptyAverageArray = Array( 5 - Math.round(this.average)).fill('').map((res, i)=> res = i+1);
+        
 
         this.filteredRates = this.rates = res
        
@@ -39,7 +53,11 @@ export class UserReviewsComponent implements OnInit {
 
   showRate(id){    
     this.dialog.open(UserRatesDialogComponent, {
-      data: id,
+      data: {
+        id,
+        averageArray: this.averageArray,
+        emptyAverageArray: this.emptyAverageArray
+      },
       panelClass: 'rate-order-wrapper',
       width: '80%'
     });

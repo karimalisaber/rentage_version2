@@ -6,6 +6,7 @@
         position: absolute;
         z-index: 1000;
         left: 30px;
+        
         // width: 150px;
         color:$mainColor;
         .custom-control-input{
@@ -18,10 +19,10 @@
 mat-slide-toggle{
     position: absolute;
     z-index: 1000;
-    left: 30px;
+    left: 0px;
     // top: 20px;
     width: 150px;
-    bottom: 35px;
+    bottom: 15px;
 
     color:$mainColor;
     
@@ -98,7 +99,7 @@ mat-slide-toggle{
         z-index: 5;
         border: 1px solid  #797979;
         border-radius: 15px;
-        width: 200px;
+        width: 250px;
         text-align: center;
         padding: 12px;
 

@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./user-rates-dialog.component.scss']
 })
 export class UserRatesDialogComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public id, private api: ApiService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data, private api: ApiService) { }
 rates;
 total;
 ngOnInit(): void {
@@ -16,7 +16,7 @@ ngOnInit(): void {
   }
 
   getSpecificUserRates(){
-    this.api.getSpecificUserRates(this.id)
+    this.api.getSpecificUserRates(this.data.id)
       .subscribe(
         res=> {
           res.filter(res=> { // map result

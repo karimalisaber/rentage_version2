@@ -1,4 +1,4 @@
-<div class="widget mb-60 row">
+<!-- <div class="widget mb-60 row">
     <div class="right-widget-wrapper shadow col-md-3">
         <app-right-widget [title] = "'أداء الأسبوع'"></app-right-widget>
     </div>
@@ -8,27 +8,33 @@
             <app-chart> </app-chart>
         </div>    
     </div>
-</div>
+</div> -->
 
-<div class="widget mb-60 row">
-    <div class="right-widget-wrapper shadow col-md-3">
-        <app-right-widget [title] = "'أداء الشهر'"></app-right-widget>
-    </div>
-    <div class="col-md-9">
-        <div class="mr-50 shadow chart-wrapper">
-            <app-month-chart> </app-month-chart>
-        </div>    
-    </div>
-</div>
-
-<div class="widget mb-60 row">
-    <div class="right-widget-wrapper shadow col-md-3">
-        <app-right-widget [title] = "'أداء السنة'"></app-right-widget>
-    </div>
-
-    <div class="col-md-9">
-        <div class="mr-50 shadow chart-wrapper">
-            <app-year-chart> </app-year-chart>
+<section class="main-wrapper">
+    <div class="widget mb-60 row ">
+        <h2>أداء الشهر</h2>
+        <!-- <div class="right-widget-wrapper shadow col-md-3">
+            <app-right-widget [title] = "'أداء الشهر'"></app-right-widget>
+        </div> -->
+        <div class="col-md-12">
+            <div class="mr-50 shadow chart-wrapper">
+                <app-month-chart> </app-month-chart>
+            </div>    
         </div>
     </div>
-</div>
+    
+    <div class="widget mb-60 row">
+        <h2>أداء السنة</h2>
+
+        <!-- <div class="right-widget-wrapper shadow col-md-3">
+            <app-right-widget [title] = "'أداء السنة'"></app-right-widget>
+        </div> -->
+    
+        <div class="col-md-12">
+            <div class="mr-50 shadow chart-wrapper">
+                <app-year-chart> </app-year-chart>
+            </div>
+        </div>
+    </div>    
+</section>
+

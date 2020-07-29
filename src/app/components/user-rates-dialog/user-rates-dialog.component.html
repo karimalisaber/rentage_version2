@@ -11,7 +11,9 @@
                 <h4 class="text-right col-md-4 mb-0 text-right"> <span class="item p-0">{{rate.sender_data.name}}</span>
                 </h4>
 
-                <h4 class="text-right col-md-4 mb-0 text-center"> <span class="item p-0"> جيد جدًا</span> </h4>
+                <div class="col-md-4"></div>
+
+                <!-- <h4 class="text-right col-md-4 mb-0 text-center"> <span class="item p-0"> جيد جدًا</span> </h4> -->
                 <h4 class="col-md-4 mb-0 text-left">
 
                     <button class="btn">
@@ -36,13 +38,11 @@
             <span class="d-block item p-0">
                 <button class="btn">
                     <div class="d-inline fill-starts">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i *ngFor="let start of data.averageArray" class="fas fa-star"></i>
                     </div>
 
                     <div class="d-inline un-fill-starts">
-                        <i class="fas fa-star"></i>
+                        <i *ngFor="let start of data.emptyAverageArray" class="fas fa-star"></i>
                     </div>
                 </button>
 

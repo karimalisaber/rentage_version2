@@ -37,7 +37,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { ApiService } from './services/api.service';
 // import {MatIconModule} from '@angular/material/menu';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DeleteDialogComponentComponent } from './components/assets/delete-dialog-component/delete-dialog-component.component';
 import { FormsModule } from '@angular/forms';
 import { ViewProductDialogComponent } from './components/view-product-dialog/view-product-dialog.component';
@@ -59,6 +59,8 @@ import { AddSubCatComponent } from './add-sub-cat/add-sub-cat.component';
 import { AllClientsOrdersComponent } from './components/all-clients-orders/all-clients-orders.component';
 import { UserRatesDialogComponent } from './components/user-rates-dialog/user-rates-dialog.component';
 import { PostsRatesDialogComponent } from './components/posts-rates-dialog/posts-rates-dialog.component';
+import { OrdersOwnerComponent } from './components/orders-owner/orders-owner.component';
+import { InterceptorService } from './service/interceptor.service';
 
 declare var require: any;
 @NgModule({
@@ -106,6 +108,7 @@ declare var require: any;
     AllClientsOrdersComponent,
     UserRatesDialogComponent,
     PostsRatesDialogComponent,
+    OrdersOwnerComponent,
   ],
   entryComponents:[
     materialEntryComponents,
@@ -123,7 +126,9 @@ declare var require: any;
     ChartModule.forRoot(require('highcharts')),
   ],
   providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService , multi: true}
+
   ],
   bootstrap: [AppComponent]
 })

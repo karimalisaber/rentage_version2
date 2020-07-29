@@ -3,7 +3,7 @@
         <label #emailLabel for="email" class="user-label"> البريد الالكتروني</label>
         <input 
             [ngClass]="{ 'is-invalid': email.invalid && email.touched , 'is-valid': !email.invalid && email.touched, 'pr-50': email.touched }"
-            ngModel #email="ngModel" required email (click)="animateLabel(emailLabel)" (focus)="animateLabel(emailLabel)" name="email" type="text" class="form-control input-user">
+            ngModel #email="ngModel" required email (click)="animateLabel(emailLabel)" (focus)="animateLabel(emailLabel)" name="email" id="email" type="text" class="form-control input-user">
 
             
       <div *ngIf="!email.valid && email.touched" class="" >
@@ -13,11 +13,11 @@
     </div>
 
     <div class="form-group user-wrapper">
-        <label #passwordLabel for="email" class="user-label"> كلمة المرور</label>
+        <label #passwordLabel for="password" class="user-label"> كلمة المرور</label>
         <input 
             [ngClass]="{ 'is-invalid': password.invalid && password.touched , 'pr-50': password.touched , 'is-valid': !password.invalid && password.touched}"
 
-            password ngModel required #password="ngModel" (click)="animateLabel(passwordLabel)" (focus)="animateLabel(passwordLabel)" name="password" type="password" class="form-control input-user">
+            password ngModel required id="password" #password="ngModel" (click)="animateLabel(passwordLabel)" (focus)="animateLabel(passwordLabel)" name="password" type="password" class="form-control input-user">
 
         <div *ngIf="!password.valid && password.touched" class="" >
             <div class="alert alert-danger text-right" *ngIf="password.errors.required">من فضلك أدخل كلمة المرور </div>
@@ -32,6 +32,7 @@
     <div class="form-group">
 
         <input [disabled]="!userForm.valid" type="submit" class="form-control submit" value="تسجيل الدخول">
+    
     </div>
     
     <!-- forget password and remember me -->
@@ -48,5 +49,5 @@
 
 <div *ngIf="isLoading" class="mt-100 d-flex justify-content-center" >
     <mat-spinner></mat-spinner>
-  </div>
+</div>
   

@@ -90,13 +90,7 @@ export class ChartComponent implements OnInit {
         {
           name: 'الطلبات',
           data: [20.7, 88.8, 22.4, 15.2, 50,17,20], //come from api 
-        },
-
-        {
-          name: 'أداء الشهر',
-          data: [0.7, 8.8, 42.4, 35.2, 40, 27, 40], //come from api 
         }
-
       ]
     }
   }

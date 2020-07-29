@@ -45,7 +45,7 @@ export class AcceptedOrdersComponent implements OnInit {
         res.emptyRate = Array( 5 - Math.round(res.rate)).fill('').map((res, i)=> res = i+1);
       });
     
-      this.posts = res.data;
+      this.posts = res.data.reverse();
       this.pages.current_page = res.current_page;
       this.pages.lastPage = res.last_page;
       this.pages.pagesNumber = Array(this.pages.lastPage);

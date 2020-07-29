@@ -12,6 +12,14 @@
             // globals
 // ----------------------------------
 
+// fonts 
+@import 'https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Amiri';
+@import 'https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Changa';
+
+*{
+    font-family: Changa;
+}
+
 html, body { 
     padding-bottom: 40px !important; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
@@ -494,7 +502,7 @@ p.product-name {
         .add{
             font-size: 1.2rem;
             color: #fff;
-            line-height: 18px;
+            // line-height: 18px;
             padding-top: 12px;
             span{
              padding: 0 5px;

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map, take} from "rxjs/operators";
-import {getAllPostsForOwnersUrl,  getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl, getAllAdminsUrl, deleteUserUrl, postUserUrl, getPostsSearchUrl, updateSubCategoryNameUrl, deleteSubCategoryUrl, addSubCategoryUrl, getAcceptedPostsForOwnersUrl, getSubCatPostesUrl, getPostRatesUrl, getAllUsersRatesUrl, getSpecificUserRatesUrl } from 'src/assets/environment/environmentVariables';
+import {getAllPostsForOwnersUrl,  getAllCategoriesUrl, getAllSlidersUrl, getSpecificSlidersUrl, addSliderUrl, deleteSliderUrl, deleteCategoryUrl, deletePostUrl, updateCategoryNameUrl, getAllNewPostesUrl, getAllAcceptedPostesUrl, getAllCatPostesUrl, getUserListUrl, getSpecificUserChatUrl, getSpecificRoomUrl, addCategoryUrl, acceptOrderUrl, getSpecificCategoryUrl, getAllAdminsUrl, deleteUserUrl, postUserUrl, getPostsSearchUrl, updateSubCategoryNameUrl, deleteSubCategoryUrl, addSubCategoryUrl, getAcceptedPostsForOwnersUrl, getSubCatPostesUrl, getPostRatesUrl, getAllUsersRatesUrl, getSpecificUserRatesUrl, getAllPostsForClientsUrl, getPostsYearUrl, getPostsMonthUrl, getOrdersMonthUrl, getOrdersYearUrl } from 'src/assets/environment/environmentVariables';
 import { Categories } from '../interfaces/categories';
 import { Slider } from '../interfaces/slider';
   
@@ -99,8 +99,13 @@ export class ApiService {
     return this.http.get(getSubCatPostesUrl + id + '?page=' + pageNumber).pipe(map((res: any)=>res.data), take(1));
   }
   
+  
   getAllPostsForOwner(id){
     return this.http.get(getAllPostsForOwnersUrl + id).pipe(map((res: any)=>res.data), take(1));
+  }
+
+  getAllPostsForClients(id){
+    return this.http.get(getAllPostsForClientsUrl + id).pipe(map((res: any)=>res.data), take(1));
   }
 
   getAcceptedPostsForOwner(id){
@@ -149,5 +154,27 @@ export class ApiService {
 
   postUser(user){
     return this.http.post(postUserUrl, user);
+  }
+
+
+// charts 
+
+  getPostsYear(){
+    return this.http.get(getPostsYearUrl).pipe(map((res: any)=>res.data), take(1));
+  }
+
+  
+  getOrdersYear(){
+    return this.http.get(getOrdersYearUrl).pipe(map((res: any)=>res.data), take(1));
+  }
+
+  
+  getPostsMonth(){
+    return this.http.get(getPostsMonthUrl).pipe(map((res: any)=>res.data), take(1));
+  }
+
+  
+  getOrdersMonth(){
+    return this.http.get(getOrdersMonthUrl).pipe(map((res: any)=>res.data), take(1));
   }
 }

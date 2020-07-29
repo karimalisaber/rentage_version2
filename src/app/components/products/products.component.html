@@ -1,12 +1,12 @@
-<div class="main-search">
+<!-- <div class="main-search">
   <form (ngSubmit)="search(searchWord.value.trim())" action="">
     <input #searchWord type="search" name="" id="" placeholder="بحث">
     <input class="btn-search" type="submit" value="بحث">
   </form>
-</div>
+</div> -->
 
 
-<div *ngIf="this.currentCategory" class="mb-40 mt--40 d-flex justify-content-start">
+<div *ngIf="this.currentCategory" class="mb-40 mt-40 d-flex justify-content-start">
   <mat-button-toggle-group  (change)="filterPosts($event.value)" value="all" name="filter" aria-label="Font Style">
       <mat-button-toggle value="all"> عرض الكل </mat-button-toggle>
       <mat-button-toggle  *ngFor="let subCat of this.currentCategory[0].sub_categories" [value]="subCat.id">{{subCat.name}}</mat-button-toggle>

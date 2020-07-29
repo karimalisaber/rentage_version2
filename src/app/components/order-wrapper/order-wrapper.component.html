@@ -1,12 +1,14 @@
 
 <section *ngIf="post" class="main-shadow post-wrapper mb-70">
-    <!-- <div class="user d-flex justify-content-center">
+    
+    <div class="user d-flex justify-content-center">
         <i class="rounded-circle ml-10 far fa-user p-10"></i>
         <div class="data m-0">
-            <h2 class="m-0 p-0">{{post?.name}}</h2>
-            <h3 class="m-0">{{post?.map}}</h3>
+            <h2 class="m-0 p-0"> {{post?.user_data?.name}}</h2>
+            <h3 class="m-0">{{post?.user_data?.email}}</h3>
+            <h3 class="m-0"> {{post?.user_data?.phone}}</h3>
         </div>
-    </div> -->
+    </div>
 
 
     <button (click) ="deleteAlert(post.id)" class="btn delete" [ngClass]="{'z-none': zIndexNone}">
@@ -33,9 +35,9 @@
                 </div>
             </div>
 
-            <div class="overflow-hidden">
+            <div class="overflow-hidden w-100">
                 <h3 class="text-center pl-0 pr-30 font-weight-normal">{{post?.name}}</h3>
-                <h5 class="text-right pr-30 font-weight-normal">{{post?.des}}</h5>
+                <h4 class="text-right pr-30 font-weight-lighter">{{post?.des}}</h4>
             </div>
         </div>
      
@@ -43,7 +45,7 @@
         <div class="col-md-3 text-right pr-70">
             <h3 class="second-title m-0 pb-10">السعر :  <span class="red-color">{{post?.price}}</span></h3>
             <h3 class="second-title m-0 pb-10">الكمية  :  <span> {{post?.count}}</span></h3>
-            <h3 class="second-title m-0 pb-10">الموقع :  <span class="red-color">{{post.map}}</span></h3>
+            <h3 class="second-title m-0 pb-10">المدينة :  <span class="red-color">{{post.city}}</span></h3>
             <h3 class="second-title m-0 pb-10">التأمين  :  <span>{{post?.insurance_amount}}</span></h3>
         </div>
         
@@ -51,7 +53,7 @@
             <h3 class="second-title date m-0 pb-10 text-success"><i class="fas fa-calendar-alt"></i>  متاح من تاريخ :  <span class="date text-success">{{post?.start_date}}</span></h3>
             <h3 class="second-title date m-0 pb-10 red-color "> <i class="fas fa-calendar-alt"></i> متاح حتى تاريخ:  <span class="date red-color">{{post?.end_date}}</span></h3>
             <h4 *ngIf="post.delivery == 1" class="second-title m-0 pb-10">طريقة الاستلام: <span>توصيل</span></h4>
-            <h4 *ngIf="post.delivery == 0" class="second-title m-0 pb-10">طريقة الاستلام: <span>من التاجر</span></h4>
+            <h4 *ngIf="post.delivery == 2" class="second-title m-0 pb-10">طريقة الاستلام: <span>من التاجر</span></h4>
             <h3 *ngIf="post.status == 1" class="second-title m-0 pb-10">الحالة :  <span>مستعملة</span></h3>
             <h3 *ngIf="post.status == 0" class="second-title m-0 pb-10">الحالة :  <span>جديدة</span></h3>
         </div>

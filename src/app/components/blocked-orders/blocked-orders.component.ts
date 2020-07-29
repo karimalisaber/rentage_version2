@@ -39,7 +39,7 @@ export class BlockedOrdersComponent implements OnInit {
     this.isLoading = true;
     this.api.getNewPosts(this.pages.current_page)
     .subscribe(res=>{
-      this.posts = res.data;
+      this.posts = res.data.reverse();
       this.pages.current_page = res.current_page;
       this.pages.lastPage = res.last_page;
       this.pages.pagesNumber = Array(this.pages.lastPage);

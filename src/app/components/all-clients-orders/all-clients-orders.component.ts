@@ -32,9 +32,13 @@ export class AllClientsOrdersComponent implements OnInit {
   
     private getAllPostsForOwners(){
       this.isLoading = true;
-      this.api.getAllPostsForOwner(this.userId)
+      this.api.getAllPostsForClients(this.userId)
         .subscribe(
-          res=> this.posts = res,
+          res=> {
+            this.posts = res;
+            console.log(res);
+            
+          },
         ()=>{},
         ()=> this.isLoading = false
         );

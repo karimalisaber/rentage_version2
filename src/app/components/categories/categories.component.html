@@ -1,7 +1,7 @@
-<div class="mb-20 col-md-2 text-center user-input-add mt-30">
-    <button class="btn add d-block" (click)="addCatEnabled = !addCatEnabled">
-        <span>+</span>
-         <p class="d-inline-block">اضافة قسم</p>
+<div class="mb-20 col-md-2 user-input-add mt-30 pv-0 ph-0 pr-0 pl-0">
+    <button class="btn add d-flex align-items-center justify-content-center pv-15 w-100" (click)="addCatEnabled = !addCatEnabled">
+      
+        اضافة قسم
     </button>
 </div>
 
@@ -22,16 +22,16 @@
                 </div> -->
             </div>
         
-            <div class="col-md-3 ph-10 user-input-wrapper file-wrapper">
+            <div class="col-md-3 mh-20 user-input-wrapper file-wrapper">
                 <input required ngModel #img="ngModel" name="img" (change)="imageUpload($event)" type="file" class="ml-10 form-control user-input" />
 
                 <label for="f02">تحميل صورة</label>
             </div>
 
             <div class="col-md-2 text-center user-input-add">
-                <button [disabled]="!userForm.valid" class="pr-20  text-center btn add d-block" type="submit">
-                    <span>+</span>
-                     <p class="d-inline-block">اضافة </p>
+                <button [disabled]="!userForm.valid" class=" text-center btn add d-flex align-items-center justify-content-center w-100 " type="submit">
+                   
+                 اضافة 
                 </button>
             </div>
         </div>

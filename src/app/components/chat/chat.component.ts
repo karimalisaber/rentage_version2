@@ -38,7 +38,7 @@ export class ChatComponent implements OnInit {
 
   // getSpecificChat(user){ 
   //   this.isLoading = true;
-  //   this.specificChat = true;
+  //   this.spec\ificChat = true;
   //   this.specificUserData = user;
   //   this.api.getSpecificRoom(user.chatRoomId)
   //   .subscribe(res=>{

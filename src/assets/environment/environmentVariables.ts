@@ -28,8 +28,9 @@ export const getSpecificPostesUrl = "https://rentage.clicktopass.com/api/mobile/
 export const getAllNewPostesUrl = "https://rentage.clicktopass.com/api/dashboard/all_new_posts?page=";
 export const getAllCatPostesUrl = "https://rentage.clicktopass.com/api/dashboard/dashboard_category_posts_data_paginate/";
 export const getSubCatPostesUrl = "https://rentage.clicktopass.com/api/mobile/sub_category_posts_data_paginate_dashboard/";
-export const getAllPostsForOwnersUrl = "https://rentage.clicktopass.com/api/dashboard/all_orders_for_owner_dashboard/";
-export const getAcceptedPostsForOwnersUrl = "https://rentage.clicktopass.com/api/mobile/all_accepted_orders/";
+export const getAllPostsForOwnersUrl = "https://rentage.clicktopass.com/api/mobile/user_posts/";
+export const getAllPostsForClientsUrl = "https://rentage.clicktopass.com/api/dashboard/all_orders_for_client_dashboard/";
+export const getAcceptedPostsForOwnersUrl = "https://rentage.clicktopass.com/api/dashboard/all_orders_for_owner_dashboard/";
 export const getPostRatesUrl = "https://rentage.clicktopass.com/api/mobile/all_post_rates/";
 
 
@@ -56,4 +57,8 @@ export const deleteSubCategoryUrl = "https://rentage.clicktopass.com/api/dashboa
 export const deletePostUrl = "https://rentage.clicktopass.com/api/dashboard/delete_post/";
 export const deleteUserUrl = "https://rentage.clicktopass.com/api/auth/delete_user/";
 
-// ://www.facebook.com/
+// CHARTS 
+export const getPostsYearUrl = "https://rentage.clicktopass.com/api/charts/posts/year";
+export const getPostsMonthUrl = "https://rentage.clicktopass.com/api/charts/posts/month";
+export const getOrdersYearUrl = "https://rentage.clicktopass.com/api/charts/orders/year";
+export const getOrdersMonthUrl = "https://rentage.clicktopass.com/api/charts/orders/month";

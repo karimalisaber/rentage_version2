@@ -31,14 +31,10 @@
             </div>
         </div>
     
-            <div class="col-md-2 text-center user-input-add">
-                <div class="add">
-                    <span>+</span>
-                     <input type="submit" [disabled]="userForm.invalid" class="d-inline-block btn whtie-color" value="اضافة أدمن">
-                     <!-- <p *ngIf="!admin" class="d-inline-block">اضافة عضو</p> -->
-                </div>
+            <div class="col-md text-center pr-0 pl-0 user-input-add d-flex align-items-center justify-content-center">
+                     <input type="submit" [disabled]="userForm.invalid" class="d-block btn whtie-color w-100 " value="اضافة أدمن">
             </div>
-        </div>
+      </div>
 
         <div class="alert alert-danger row col-md-10 mt-10" *ngIf="emailExists">هذا البريد الالكتروني موجود بالفعل من فضل أدخل بريد الكتروني آخر </div>
     </form>

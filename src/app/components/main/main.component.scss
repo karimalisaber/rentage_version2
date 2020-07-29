@@ -1,7 +1,15 @@
 @import "variables";
-.widget{
-     height: $widgetHeight;
 
+.main-wrapper{
+    // background-color: rgb(250,251,254);
+}
+
+.widget{
+    //  height: $widgetHeight;
+    //  box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+    //  background-color: #E5F0FF;
+    //  box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+     
     .right-widget-wrapper{
         height: 100%;
         // background: $itemBackground;
@@ -15,4 +23,9 @@
         // background: $itemBackground;
         overflow: hidden;
     }
+}
+
+h2{
+    font-size: 1.6rem;
+    padding: 0 30px
 }

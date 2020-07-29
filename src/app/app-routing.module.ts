@@ -44,7 +44,9 @@ const routes: Routes = [
     {path: 'settings/:type', component: AdminSettingsComponent},
     
     {path: 'recieved_orders', component:  BlockedOrdersComponent},
-    {path: 'owner_orders/:id/:name', component:  AllOwnersOrdersComponent},
+    
+    {path: 'user/:id/:name', component:  AllOwnersOrdersComponent},
+    
     {path: 'clients_orders/:id/:name', component:  AllClientsOrdersComponent},
     {path: 'accepted-orders', component:  AcceptedOrdersComponent},
     {path: 'last-users', component:  LastedUsersComponent},
